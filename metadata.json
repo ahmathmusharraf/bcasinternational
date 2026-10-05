@@ -1,0 +1,6 @@
+{
+  "name": "BCAS International University Placement",
+  "description": "Your Gateway to International Universities. Explore study destinations in the UK, Canada, Australia, New Zealand, USA, and UAE with expert university admissions and placement guidance.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
