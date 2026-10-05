@@ -66,14 +66,14 @@ export const IeltsSection: React.FC<IeltsSectionProps> = ({ onBookConsultation }
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-2 sm:mb-8">
-          <div className="inline-flex items-center gap-1 text-[#103578] text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-0.5 sm:mb-1">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-[#103578] text-[10px] sm:text-xs font-semibold uppercase tracking-[0.08em] leading-none brand-label mb-2">
             <BookOpen className="w-3.5 h-3.5 text-[#C41822]" />
             <span>Language Proficiency & Waiver Guidance</span>
           </div>
-          <h2 className="text-xl sm:text-4xl font-extrabold text-slate-900 tracking-tight [text-wrap:balance]">
+          <h2 className="text-xl sm:text-4xl lg:text-5xl font-bold text-slate-900 tracking-[-0.01em] leading-[1.05] brand-headline [text-wrap:balance]">
             IELTS Academy & English Waiver Desk
           </h2>
-          <p className="mt-0.5 text-slate-600 text-xs sm:text-base leading-relaxed line-clamp-1 sm:line-clamp-none">
+          <p className="mt-1 text-slate-600 text-xs sm:text-base leading-[1.4] tracking-normal brand-body line-clamp-1 sm:line-clamp-none">
             Official British Council & IDP coaching, or check for <strong>100% IELTS Waivers</strong> based on prior studies.
           </p>
 

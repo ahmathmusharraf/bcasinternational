@@ -70,15 +70,15 @@ export const BlogView: React.FC<BlogViewProps> = ({
 
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="text-base sm:text-xl font-extrabold text-slate-900 tracking-tight">
+                <h1 className="text-base sm:text-2xl font-bold text-slate-900 tracking-[-0.01em] leading-[1.05] brand-headline">
                   Insights & PR Blog
                 </h1>
-                <span className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-blue-100/70 text-[#103578] text-[10px] font-bold">
+                <span className="hidden sm:inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-blue-100/70 text-[#103578] text-[10px] font-semibold uppercase tracking-[0.08em] leading-none brand-label">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#103578]" />
                   Author: Ahmath Musharraf
                 </span>
               </div>
-              <p className="text-[11px] text-slate-500 hidden sm:block">
+              <p className="text-[11px] text-slate-500 hidden sm:block leading-[1.4] tracking-normal brand-body">
                 Post-study work rights, PR pathways, scholarship blueprints & visa compliance
               </p>
             </div>

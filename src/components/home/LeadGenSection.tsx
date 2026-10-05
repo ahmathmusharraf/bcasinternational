@@ -69,16 +69,16 @@ export const LeadGenSection: React.FC<LeadGenSectionProps> = ({ onSuccess }) => 
           
           {/* Left Column: Value Proposition & Trust */}
           <div className="lg:col-span-5 space-y-3 sm:space-y-5 text-center lg:text-left">
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/10 border border-white/20 text-rose-300 text-[10px] sm:text-xs font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-rose-300 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.08em] leading-none brand-label">
               <Sparkles className="w-3.5 h-3.5 text-rose-400" />
               <span>100% Free Counseling Desk</span>
             </div>
 
-            <h2 className="text-xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight [text-wrap:balance]">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.01em] leading-[1.05] brand-headline text-white [text-wrap:balance]">
               Free Study Abroad Guidance
             </h2>
 
-            <p className="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-lg mx-auto lg:mx-0 line-clamp-2 sm:line-clamp-none">
+            <p className="text-slate-300 text-xs sm:text-sm leading-[1.4] tracking-normal brand-body max-w-lg mx-auto lg:mx-0 line-clamp-2 sm:line-clamp-none">
               Get direct 1-on-1 counseling, university shortlist, tuition fee estimates, and visa eligibility report with zero agency fees.
             </p>
 

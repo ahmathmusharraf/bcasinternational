@@ -36,14 +36,19 @@ export const StudyDestinationsSection: React.FC<StudyDestinationsSectionProps> =
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-10 gap-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-blue-50 text-[#103578] text-xs font-bold uppercase tracking-wider mb-2">
-              <Compass className="w-3.5 h-3.5 text-[#C41822]" />
-              <span>Global Opportunities</span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 text-[#103578] border border-blue-100 text-xs font-semibold uppercase tracking-[0.08em] leading-none brand-label mb-2.5 shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-[#103578]"></span>
+              <span>DESTINATIONS</span>
+              <span className="text-slate-300">|</span>
+              <span className="text-slate-600 font-semibold flex items-center gap-1">
+                <Compass className="w-3.5 h-3.5 text-[#C41822]" />
+                11 Global Education Hubs
+              </span>
             </div>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight [text-wrap:balance]">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-slate-900 tracking-[-0.01em] leading-[1.05] brand-headline [text-wrap:balance]">
               Explore 11 Study Destinations
             </h2>
-            <p className="mt-2 text-slate-600 text-sm sm:text-base max-w-2xl">
+            <p className="mt-2 text-slate-600 text-sm sm:text-base max-w-2xl leading-[1.4] tracking-normal brand-body">
               Official education boards, post-study work rights, and accredited degrees across 11 premier countries.
             </p>
           </div>

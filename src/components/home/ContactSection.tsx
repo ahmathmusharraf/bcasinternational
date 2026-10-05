@@ -109,16 +109,21 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenConsultati
   return (
     <section id="contact" className="py-16 md:py-24 bg-white border-t border-slate-200 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        {/* Section Header */}
+        {/* Section Header with Creative Headline Heading */}
         <div className="text-center max-w-3xl mx-auto mb-8 md:mb-12 shrink-0">
-          <div className="inline-flex items-center gap-1.5 text-[#103578] text-xs font-bold uppercase tracking-wider mb-2">
-            <Building className="w-3.5 h-3.5 text-[#C41822]" />
-            <span>Campus Network & Locations</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 text-[#103578] border border-blue-100 text-xs font-semibold uppercase tracking-[0.08em] leading-none brand-label mb-2.5 shadow-2xs">
+            <span className="w-2 h-2 rounded-full bg-blue-600"></span>
+            <span>CAMPUSES</span>
+            <span className="text-slate-300">|</span>
+            <span className="text-slate-600 font-semibold flex items-center gap-1">
+              <Building className="w-3.5 h-3.5 text-[#C41822]" />
+              Island-Wide Placement Centers
+            </span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight [text-wrap:balance]">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-slate-900 tracking-[-0.01em] leading-[1.05] brand-headline [text-wrap:balance]">
             Our Campuses Across Sri Lanka
           </h2>
-          <p className="mt-2 text-slate-600 text-sm sm:text-base leading-relaxed">
+          <p className="mt-2 text-slate-600 text-sm sm:text-base leading-[1.4] tracking-normal brand-body">
             Visit our designated university placement centers in <strong>Colombo, Jaffna, Kalmunai, and Kandy</strong> for in-person document assessments and visa interviews.
           </p>
 

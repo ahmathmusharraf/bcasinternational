@@ -24,13 +24,13 @@ export const JourneyTimelineSection: React.FC<JourneyTimelineSectionProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12 shrink-0">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-blue-50 text-[#103578] text-xs font-bold uppercase tracking-wider mb-2 sm:mb-3">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-[#103578] text-xs font-semibold uppercase tracking-[0.08em] leading-none brand-label mb-2 sm:mb-3">
             <span>Seamless 5-Phase Progression</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight [text-wrap:balance]">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-slate-900 tracking-[-0.01em] leading-[1.05] brand-headline [text-wrap:balance]">
             Your Journey to an Overseas University
           </h2>
-          <p className="mt-2 sm:mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
+          <p className="mt-2 sm:mt-3 text-slate-600 text-sm sm:text-base leading-[1.4] tracking-normal brand-body">
             From your very first enquiry in Sri Lanka to your first lecture abroad, our structured roadmap ensures clarity.
           </p>
         </div>

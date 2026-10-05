@@ -65,6 +65,16 @@ export default function App() {
   // Navigation handler
   const handleNavigate = (page: PageView, sectionId?: string) => {
     setCurrentPage(page);
+    if (sectionId === 'dedicated-work-pr') {
+      setDedicatedView('work-pr');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    if (sectionId === 'dedicated-blog') {
+      setDedicatedView('blog');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
     if (dedicatedView !== 'none') {
       setDedicatedView('none');
     }

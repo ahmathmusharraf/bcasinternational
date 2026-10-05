@@ -80,18 +80,23 @@ export const BlogSection: React.FC<BlogSectionProps> = ({
       className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200 relative"
     >
       <div className="max-w-7xl mx-auto w-full">
-        {/* 1. Header */}
+        {/* 1. Header with Creative Insights Headline Heading */}
         <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-10">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-50 text-[#C41822] text-xs font-bold uppercase tracking-wider mb-2">
-            <BookOpen className="w-3.5 h-3.5 text-[#C41822]" />
-            <span>Authored by Ahmath Musharraf</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 text-[#103578] border border-blue-100 text-xs font-semibold uppercase tracking-[0.08em] leading-none brand-label mb-2.5 shadow-2xs">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>INSIGHTS</span>
+            <span className="text-slate-300">|</span>
+            <span className="text-[#C41822] flex items-center gap-1 font-semibold">
+              <BookOpen className="w-3.5 h-3.5" />
+              Coming Blogs & Knowledge Base
+            </span>
           </div>
 
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight [text-wrap:balance]">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-slate-900 tracking-[-0.01em] leading-[1.05] brand-headline [text-wrap:balance]">
             International Education & PR Blog
           </h2>
 
-          <p className="mt-2 text-slate-600 text-sm sm:text-base leading-relaxed">
+          <p className="mt-2 text-slate-600 text-sm sm:text-base leading-[1.4] tracking-normal brand-body">
             Verified guides on post-study work visas, PR points, scholarships, and campus lifestyle.
           </p>
 

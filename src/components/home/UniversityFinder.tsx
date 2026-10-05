@@ -87,13 +87,13 @@ export const UniversityFinder: React.FC<UniversityFinderProps> = ({
     <section id="finder" className="py-16 md:py-24 bg-white border-y border-slate-200/80 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="text-center max-w-3xl mx-auto mb-6 md:mb-12">
-          <span className="text-xs font-bold text-[#C41822] uppercase tracking-wider">
+          <span className="text-xs font-semibold text-[#C41822] uppercase tracking-[0.08em] leading-none brand-label block mb-1">
             Interactive Search Engine
           </span>
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-1 mb-2 sm:mb-3">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-slate-900 tracking-[-0.01em] leading-[1.05] brand-headline mt-1 mb-2 sm:mb-3 [text-wrap:balance]">
             Find the Right University for Your Future
           </h2>
-          <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+          <p className="text-slate-600 text-sm sm:text-base leading-[1.4] tracking-normal brand-body">
             Filter our verified partner universities by target study country, program level, intake cycle, and subject interest.
           </p>
         </div>

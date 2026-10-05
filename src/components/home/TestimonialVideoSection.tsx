@@ -113,14 +113,14 @@ export const TestimonialVideoSection: React.FC<TestimonialVideoSectionProps> = (
         {/* Friendly Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 sm:mb-10">
           <div>
-            <div className="inline-flex items-center gap-1.5 text-rose-300 text-xs font-bold uppercase tracking-wider mb-2">
+            <div className="inline-flex items-center gap-1.5 text-rose-300 text-xs font-semibold uppercase tracking-[0.08em] leading-none brand-label mb-2">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Verified Alumni Success</span>
             </div>
-            <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight [text-wrap:balance]">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.01em] leading-[1.05] brand-headline text-white [text-wrap:balance]">
               Student Video Testimonials
             </h2>
-            <p className="mt-2 text-slate-300 text-sm sm:text-base max-w-xl">
+            <p className="mt-2 text-slate-300 text-sm sm:text-base max-w-xl leading-[1.4] tracking-normal brand-body">
               Real stories from Sri Lankan students placed at top UK, Canada, and Australia universities.
             </p>
           </div>
@@ -240,9 +240,9 @@ export const TestimonialVideoSection: React.FC<TestimonialVideoSectionProps> = (
                 </div>
               </div>
 
-              {/* Student Quote Box */}
-              <div className="p-2.5 sm:p-4 rounded-xl bg-slate-900/90 border border-slate-700/80 text-[11px] sm:text-xs text-slate-200 leading-relaxed italic relative">
-                <Quote className="w-3.5 h-3.5 text-slate-500 mb-0.5 inline-block mr-1" />
+              {/* Student Quote Box: Pull Quote Brand Hierarchy (Grift Light Italic, 0 tracking, 120% leading) */}
+              <div className="p-3 sm:p-5 rounded-xl bg-slate-900/90 border border-slate-700/80 text-xs sm:text-sm text-slate-200 font-light italic leading-[1.2] tracking-normal brand-pull-quote relative">
+                <Quote className="w-4 h-4 text-rose-400/70 mb-1 inline-block mr-1.5" />
                 <span>"{activeStory.quote}"</span>
               </div>
 

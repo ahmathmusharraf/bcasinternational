@@ -26,8 +26,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Hero Column */}
           <div className="lg:col-span-7 space-y-4 sm:space-y-6">
-            {/* Most Important Headline Only */}
-            <h1 className="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.12] [text-wrap:balance]">
+            {/* Most Important Headline Only: Display / Hero Hierarchy */}
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-slate-900 tracking-[-0.02em] leading-[0.98] brand-hero [text-wrap:balance]">
               Your Gateway to{' '}
               <span className="text-[#103578] relative inline-block">
                 Top International Universities
@@ -37,13 +37,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </span>
             </h1>
 
-            <p className="text-xs sm:text-base text-slate-600 max-w-2xl leading-relaxed line-clamp-2 sm:line-clamp-none">
+            {/* Body Hierarchy: Grift Regular, Tracking 0, Leading 140% */}
+            <p className="text-sm sm:text-base text-slate-600 max-w-2xl leading-[1.4] tracking-normal brand-body">
               Explore accredited global universities, discover high-demand degree courses, and navigate your visa with <strong className="text-slate-900 font-semibold">BCAS International Placement</strong>. Certified counseling with zero agency fees.
             </p>
 
             {/* Quick Interactive Destination Switcher with Destination Logos */}
             <div className="bg-white/95 border border-slate-200/90 rounded-2xl p-2.5 sm:p-3 shadow-xs max-w-xl transition-all">
-              <div className="flex items-center justify-between pb-1.5 mb-1.5 border-b border-slate-100 text-[10px] sm:text-[11px] text-slate-500 font-bold uppercase tracking-wider">
+              {/* LABEL / FACULTY TAB Hierarchy: Grift SemiBold UPPERCASE, Tracking +8%, Leading 100% */}
+              <div className="flex items-center justify-between pb-1.5 mb-1.5 border-b border-slate-100 text-[10px] sm:text-xs text-slate-500 font-semibold uppercase tracking-[0.08em] leading-none brand-label">
                 <span>Select Target Destination:</span>
                 <span className="text-[#103578] font-bold">Live Intake 2026/2027</span>
               </div>
@@ -70,16 +72,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <DestinationLogo country={activeCountry} variant="card-badge" className="!py-1 !px-2.5 shrink-0" />
                 <div className="grid grid-cols-3 gap-2 text-xs flex-1">
                   <div>
-                    <span className="text-[9px] sm:text-[10px] text-slate-400 block font-semibold">Work Rights</span>
-                    <span className="font-bold text-slate-900 truncate block text-[11px] sm:text-xs">{activeDest.postStudyWork.split(':')[0]}</span>
+                    <span className="text-[9px] sm:text-[10px] text-slate-400 block font-medium tracking-[0.02em] leading-[1.3] brand-caption">Work Rights</span>
+                    <span className="font-bold text-slate-900 truncate block text-[11px] sm:text-xs leading-[1.15]">{activeDest.postStudyWork.split(':')[0]}</span>
                   </div>
                   <div>
-                    <span className="text-[9px] sm:text-[10px] text-slate-400 block font-semibold">Est. Tuition</span>
-                    <span className="font-bold text-slate-900 truncate block text-[11px] sm:text-xs">{activeDest.averageTuitionYearly.split('–')[0]}</span>
+                    <span className="text-[9px] sm:text-[10px] text-slate-400 block font-medium tracking-[0.02em] leading-[1.3] brand-caption">Est. Tuition</span>
+                    <span className="font-bold text-slate-900 truncate block text-[11px] sm:text-xs leading-[1.15]">{activeDest.averageTuitionYearly.split('–')[0]}</span>
                   </div>
                   <div>
-                    <span className="text-[9px] sm:text-[10px] text-slate-400 block font-semibold">Intakes</span>
-                    <span className="font-bold text-[#C41822] truncate block text-[11px] sm:text-xs">{activeDest.typicalIntakes[0]}</span>
+                    <span className="text-[9px] sm:text-[10px] text-slate-400 block font-medium tracking-[0.02em] leading-[1.3] brand-caption">Intakes</span>
+                    <span className="font-bold text-[#C41822] truncate block text-[11px] sm:text-xs leading-[1.15]">{activeDest.typicalIntakes[0]}</span>
                   </div>
                 </div>
               </div>
@@ -89,7 +91,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             <div className="flex flex-row items-center gap-2 pt-0.5">
               <button
                 onClick={onFindUniversity}
-                className="flex-1 sm:flex-none py-2.5 sm:py-3.5 px-3 sm:px-6 bg-[#103578] hover:bg-[#0a234e] text-white text-xs sm:text-sm font-bold rounded-xl shadow-md hover:shadow-xl transition-all duration-200 flex items-center justify-center gap-1.5 group cursor-pointer active:scale-98"
+                className="flex-1 sm:flex-none py-2.5 sm:py-3.5 px-3 sm:px-6 bg-[#103578] hover:bg-[#0a234e] text-white text-xs sm:text-sm font-bold tracking-normal leading-[1.15] rounded-xl shadow-md hover:shadow-xl transition-all duration-200 flex items-center justify-center gap-1.5 group cursor-pointer active:scale-98"
               >
                 <span>Find Universities</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
@@ -97,7 +99,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
               <button
                 onClick={onBookConsultation}
-                className="flex-1 sm:flex-none py-2.5 sm:py-3.5 px-3 sm:px-6 bg-[#C41822] hover:bg-[#a3141a] text-white text-xs sm:text-sm font-bold rounded-xl shadow-md hover:shadow-xl transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer active:scale-98"
+                className="flex-1 sm:flex-none py-2.5 sm:py-3.5 px-3 sm:px-6 bg-[#C41822] hover:bg-[#a3141a] text-white text-xs sm:text-sm font-bold tracking-normal leading-[1.15] rounded-xl shadow-md hover:shadow-xl transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer active:scale-98"
               >
                 <Sparkles className="w-3.5 h-3.5 text-rose-200" />
                 <span>Free Consultation</span>
@@ -107,16 +109,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             {/* Credibility Counters */}
             <div className="pt-2 sm:pt-4 border-t border-slate-200/90 grid grid-cols-3 gap-2 sm:gap-4 text-slate-700">
               <div className="space-y-0.5">
-                <div className="text-base sm:text-2xl font-black text-[#103578] tabular-nums">27+</div>
-                <div className="text-[10px] sm:text-xs text-slate-500 font-medium">Years Heritage</div>
+                <div className="text-base sm:text-2xl font-black text-[#103578] tabular-nums tracking-[-0.02em] leading-[0.98]">27+</div>
+                <div className="text-[10px] sm:text-xs text-slate-500 font-medium tracking-[0.02em] leading-[1.3] brand-caption">Years Heritage</div>
               </div>
               <div className="space-y-0.5">
-                <div className="text-base sm:text-2xl font-black text-[#103578] tabular-nums">11</div>
-                <div className="text-[10px] sm:text-xs text-slate-500 font-medium">Destinations</div>
+                <div className="text-base sm:text-2xl font-black text-[#103578] tabular-nums tracking-[-0.02em] leading-[0.98]">11</div>
+                <div className="text-[10px] sm:text-xs text-slate-500 font-medium tracking-[0.02em] leading-[1.3] brand-caption">Destinations</div>
               </div>
               <div className="space-y-0.5">
-                <div className="text-base sm:text-2xl font-black text-emerald-600 tabular-nums">100%</div>
-                <div className="text-[10px] sm:text-xs text-slate-500 font-medium">Free Advisory</div>
+                <div className="text-base sm:text-2xl font-black text-emerald-600 tabular-nums tracking-[-0.02em] leading-[0.98]">100%</div>
+                <div className="text-[10px] sm:text-xs text-slate-500 font-medium tracking-[0.02em] leading-[1.3] brand-caption">Free Advisory</div>
               </div>
             </div>
           </div>

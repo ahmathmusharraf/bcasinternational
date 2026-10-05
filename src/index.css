@@ -1,5 +1,168 @@
 @import "tailwindcss";
 
+/* --------------------------------------------------------------------------
+   02 · TYPOGRAPHY BRAND GUIDELINE - Grift Type Hierarchy
+   Role              Weight                     Tracking    Leading
+   Display / hero    Grift Black or ExtraBold   -2%         95–100%
+   Headline          Grift Bold                 -1%         105%
+   Sub-headline      Grift SemiBold             0           115%
+   Body              Grift Regular              0           140%
+   LABEL/FACULTY TAB Grift SemiBold, UPPERCASE  +8%         100%
+   Caption / legal   Grift Medium               +2%         130%
+   Pull quote        Grift Light Italic         0           120%
+   -------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: 'Grift';
+  src: local('Grift Black'), local('Grift-Black'), local('Grift ExtraBold'), local('Grift-ExtraBold');
+  font-weight: 800 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Grift';
+  src: local('Grift Bold'), local('Grift-Bold');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Grift';
+  src: local('Grift SemiBold'), local('Grift-SemiBold');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Grift';
+  src: local('Grift Medium'), local('Grift-Medium');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Grift';
+  src: local('Grift Regular'), local('Grift-Regular'), local('Grift');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Grift';
+  src: local('Grift Light Italic'), local('Grift-LightItalic');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: 'Grift', 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Grift', 'Cabinet Grotesk', 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-grift: 'Grift', 'Plus Jakarta Sans', system-ui, sans-serif;
+
+  /* Brand Guideline Tracking / Letter Spacing */
+  --tracking-brand-hero: -0.02em;       /* -2% */
+  --tracking-brand-headline: -0.01em;   /* -1% */
+  --tracking-brand-normal: 0em;         /* 0 */
+  --tracking-brand-label: 0.08em;       /* +8% */
+  --tracking-brand-caption: 0.02em;     /* +2% */
+
+  /* Brand Guideline Leading / Line Height */
+  --leading-brand-hero: 0.98;           /* 95–100% */
+  --leading-brand-headline: 1.05;       /* 105% */
+  --leading-brand-subheadline: 1.15;    /* 115% */
+  --leading-brand-body: 1.4;            /* 140% */
+  --leading-brand-label: 1.0;           /* 100% */
+  --leading-brand-caption: 1.3;         /* 130% */
+  --leading-brand-quote: 1.2;           /* 120% */
+}
+
+/* Base Typographic Hierarchy rules */
+body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.4;
+}
+
+h1 {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 0.98;
+}
+
+h2 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+
+h3, h4 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.15;
+}
+
+/* Explicit Brand Hierarchy Utilities */
+.brand-hero {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 0.98;
+}
+
+.brand-headline {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+
+.brand-subheadline {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.15;
+}
+
+.brand-body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.4;
+}
+
+.brand-label, .brand-faculty-tab {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+.brand-caption, .brand-legal {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+}
+
+.brand-pull-quote {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
 @layer utilities {
   @keyframes floatSlow {
     0%, 100% {

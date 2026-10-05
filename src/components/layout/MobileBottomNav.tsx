@@ -66,7 +66,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
         <span className="text-[10px]">Work & PR</span>
       </button>
 
-      {/* 5. Blog */}
+      {/* 5. Insights (Blog) */}
       <button
         onClick={() => onNavigate('blog', 'blog')}
         className={`flex flex-col items-center justify-center py-1 px-2 rounded-lg transition-colors cursor-pointer flex-1 relative ${
@@ -74,7 +74,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
         }`}
       >
         <FileText className={`w-5 h-5 mb-0.5 ${currentPage === 'blog' ? 'text-[#103578]' : 'text-slate-500'}`} />
-        <span className="text-[10px]">Blog</span>
+        <span className="text-[10px]">Insights</span>
       </button>
     </nav>
   );

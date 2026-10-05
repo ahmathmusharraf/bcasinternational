@@ -16,14 +16,19 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-[#103578] text-xs font-bold uppercase tracking-wider mb-2">
-            <Award className="w-3.5 h-3.5 text-[#C41822]" />
-            <span>27+ Years of Educational Heritage</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 text-[#103578] border border-blue-100 text-xs font-semibold uppercase tracking-[0.08em] leading-none brand-label mb-2.5 shadow-2xs">
+            <span className="w-2 h-2 rounded-full bg-amber-500"></span>
+            <span>HERITAGE</span>
+            <span className="text-slate-300">|</span>
+            <span className="text-slate-600 font-semibold flex items-center gap-1">
+              <Award className="w-3.5 h-3.5 text-amber-600" />
+              27+ Years Academic Legacy
+            </span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight [text-wrap:balance]">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-slate-900 tracking-[-0.01em] leading-[1.05] brand-headline [text-wrap:balance]">
             About BCAS International Placement
           </h2>
-          <p className="mt-2 text-slate-600 text-sm sm:text-base leading-relaxed">
+          <p className="mt-2 text-slate-600 text-sm sm:text-base leading-[1.4] tracking-normal brand-body">
             Established in 1999, British College of Applied Studies bridges ambitious students with premier global universities.
           </p>
         </div>

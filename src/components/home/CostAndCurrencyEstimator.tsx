@@ -93,14 +93,14 @@ export const CostAndCurrencyEstimator: React.FC<CostAndCurrencyEstimatorProps> =
     <section id="cost-calculator" className="py-16 md:py-24 bg-slate-50 border-t border-slate-200 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-[#103578] text-xs font-bold uppercase tracking-wider mb-2">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-[#103578] text-xs font-semibold uppercase tracking-[0.08em] leading-none brand-label mb-2">
             <Calculator className="w-3.5 h-3.5 text-[#C41822]" />
             <span>Interactive Financial Planner</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight [text-wrap:balance]">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-slate-900 tracking-[-0.01em] leading-[1.05] brand-headline [text-wrap:balance]">
             International Study Cost & Currency Estimator
           </h2>
-          <p className="mt-2 text-slate-600 text-sm sm:text-base leading-relaxed">
+          <p className="mt-2 text-slate-600 text-sm sm:text-base leading-[1.4] tracking-normal brand-body">
             Estimate your annual tuition, living expenses, and part-time work offsets in foreign currencies or Sri Lankan Rupees (LKR).
           </p>
         </div>

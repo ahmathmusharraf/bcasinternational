@@ -50,14 +50,14 @@ export const CoursesSection: React.FC<CoursesSectionProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-10 gap-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-blue-50 text-[#103578] text-xs font-bold uppercase tracking-wider mb-2">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-blue-50 text-[#103578] text-xs font-semibold uppercase tracking-[0.08em] leading-none brand-label mb-2">
               <BookOpen className="w-3.5 h-3.5 text-[#C41822]" />
               <span>Academic Programs</span>
             </div>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-slate-900 tracking-[-0.01em] leading-[1.05] brand-headline [text-wrap:balance]">
               Popular International Courses & Degrees
             </h2>
-            <p className="mt-2 text-slate-600 text-sm sm:text-base max-w-2xl">
+            <p className="mt-2 text-slate-600 text-sm sm:text-base max-w-2xl leading-[1.4] tracking-normal brand-body">
               From fast-track Bachelor's degrees to specialized Master's programs across 11 global destinations.
             </p>
           </div>

@@ -57,16 +57,16 @@ export const WorkAndPrView: React.FC<WorkAndPrViewProps> = ({
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-rose-500/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-6xl mx-auto relative text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-rose-300 text-xs font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 border border-white/20 text-rose-300 text-xs font-semibold uppercase tracking-[0.08em] leading-none brand-label">
             <Briefcase className="w-3.5 h-3.5 text-rose-400" />
             <span>2026/2027 Immigration & Employment Guide</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-black tracking-tight leading-tight [text-wrap:balance]">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-[-0.02em] leading-[0.98] brand-hero [text-wrap:balance]">
             Country Work Opportunities & Pathway to PR
           </h1>
 
-          <p className="text-slate-300 text-sm sm:text-lg max-w-3xl mx-auto leading-relaxed">
+          <p className="text-slate-300 text-sm sm:text-base max-w-3xl mx-auto leading-[1.4] tracking-normal brand-body">
             Compare legal part-time student work rights, post-study graduate visas (PSW, PGWP, OPT, 485), and permanent residency requirements across all 11 destinations.
           </p>
 
