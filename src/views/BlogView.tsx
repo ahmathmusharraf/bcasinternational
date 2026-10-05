@@ -54,8 +54,8 @@ export const BlogView: React.FC<BlogViewProps> = ({
   });
 
   return (
-    <div className="h-[100dvh] max-h-[100dvh] min-h-[100dvh] bg-slate-50 text-slate-900 pt-16 pb-2 px-3 sm:px-6 flex flex-col justify-between overflow-hidden font-sans">
-      {/* 1. Header Toolbar (Fits in One View) */}
+    <div className="min-h-screen bg-slate-50 text-slate-900 pt-20 pb-16 px-4 sm:px-6 lg:px-8 flex flex-col font-sans">
+      {/* 1. Header Toolbar */}
       <div className="max-w-7xl mx-auto w-full shrink-0 pt-1.5 pb-2">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-200">
           <div className="flex items-center gap-3">
