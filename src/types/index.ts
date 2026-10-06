@@ -179,8 +179,15 @@ export type PageView =
   | 'universities'
   | 'courses'
   | 'scholarships'
+  | 'pathway'
+  | 'cost-calculator'
+  | 'ielts'
+  | 'work-pr'
+  | 'blog'
   | 'services'
   | 'about'
-  | 'contact'
-  | 'work-pr'
-  | 'blog';
+  | 'why-bcas'
+  | 'journey'
+  | 'stories'
+  | 'advisors'
+  | 'contact';

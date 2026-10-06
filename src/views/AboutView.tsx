@@ -1,29 +1,59 @@
 import React from 'react';
-import { Award, Shield, Globe, Users, ArrowRight, Building2, CheckCircle2 } from 'lucide-react';
+import { Award, Shield, Globe, Users, ArrowRight, Building2, CheckCircle2, ArrowLeft, Sparkles } from 'lucide-react';
 import { BcasLogo } from '../components/common/BcasLogo';
 
 interface AboutViewProps {
   onBookConsultation: () => void;
   onExploreDestinations: () => void;
+  onNavigateHome?: () => void;
 }
 
 export const AboutView: React.FC<AboutViewProps> = ({
   onBookConsultation,
-  onExploreDestinations
+  onExploreDestinations,
+  onNavigateHome
 }) => {
   return (
-    <div className="pt-24 pb-20 bg-slate-50 min-h-screen">
+    <div className="pt-20 pb-20 bg-slate-50 min-h-screen">
+      {/* Top Breadcrumb Navigation */}
+      <div className="bg-white border-b border-slate-200 py-3">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+          <div className="flex items-center gap-2 text-xs text-slate-500">
+            {onNavigateHome && (
+              <button
+                onClick={onNavigateHome}
+                className="hover:text-[#103578] font-semibold flex items-center gap-1 cursor-pointer transition-colors"
+              >
+                <ArrowLeft className="w-3.5 h-3.5" />
+                <span>Home</span>
+              </button>
+            )}
+            {onNavigateHome && <span>/</span>}
+            <span className="text-[#103578] font-bold">About BCAS Heritage</span>
+          </div>
+
+          <button
+            onClick={onBookConsultation}
+            className="px-3.5 py-1.5 rounded-lg bg-[#C41822] hover:bg-[#a3141a] text-white text-xs font-bold transition-all shadow-2xs cursor-pointer flex items-center gap-1.5"
+          >
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Book Consultation</span>
+          </button>
+        </div>
+      </div>
+
       {/* Header */}
-      <div className="bg-[#103578] text-white py-14 border-b border-blue-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-rose-300 text-xs font-semibold uppercase tracking-wider mb-3">
+      <div className="bg-[#103578] text-white py-14 border-b border-blue-900 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-rose-300 text-xs font-semibold uppercase tracking-[0.08em] leading-none brand-label mb-3">
             <Award className="w-3.5 h-3.5" />
             <span>27+ Years of Heritage</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight">
+          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-[-0.02em] leading-[0.98] brand-hero [text-wrap:balance]">
             About BCAS International University Placement
           </h1>
-          <p className="mt-3 text-slate-200 text-sm sm:text-base max-w-2xl">
+          <p className="mt-3 text-slate-200 text-sm sm:text-base max-w-2xl leading-[1.4] tracking-normal brand-body">
             Established in 1999, the British College of Applied Studies (BCAS) is one of Sri Lanka’s premier higher education providers, bridging ambitious students with leading international universities.
           </p>
         </div>

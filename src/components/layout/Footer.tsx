@@ -137,50 +137,146 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenConsultation }
 
           <div>
             <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">
-              Student Navigation
+              All Section Pages
             </h4>
-            <ul className="space-y-2.5 text-xs text-slate-400">
+            <ul className="space-y-2 text-xs text-slate-400">
               <li>
                 <button
                   onClick={() => onNavigate('home')}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
-                  Home
+                  Home Overview
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => onNavigate('destinations', 'destinations')}
+                  onClick={() => onNavigate('destinations')}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
-                  Study Destinations
+                  Study Destinations (11 Countries)
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => onNavigate('universities', 'universities')}
+                  onClick={() => onNavigate('universities')}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
-                  Featured Universities
+                  Universities Directory
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => onNavigate('work-pr', 'work-pr')}
+                  onClick={() => onNavigate('courses')}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  Courses & Degree Programs
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate('scholarships')}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  Scholarships & Merit Awards
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate('pathway')}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  Study Path Wizard
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate('cost-calculator')}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  Cost & Currency Estimator
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate('ielts')}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  IELTS Academy & Waivers
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate('work-pr')}
                   className="hover:text-white transition-colors cursor-pointer text-amber-300 font-semibold"
                 >
-                  Work Opportunities & PR
+                  Country Work Rights & PR
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => onNavigate('blog', 'blog')}
+                  onClick={() => onNavigate('blog')}
                   className="hover:text-white transition-colors cursor-pointer text-blue-300 font-semibold"
                 >
                   Insights & PR Blog
                 </button>
               </li>
-              <li className="pt-1 border-t border-slate-800">
+              <li>
+                <button
+                  onClick={() => onNavigate('services')}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  Comprehensive Services
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate('about')}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  About BCAS Heritage
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate('why-bcas')}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  Why BCAS (8 Core Advantages)
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate('journey')}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  University Journey Roadmap
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate('stories')}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  Student Video Testimonials
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate('advisors')}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  Placement Advisors Directory
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate('contact')}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  Campuses & Contact
+                </button>
+              </li>
+              <li className="pt-1.5 border-t border-slate-800">
                 <button
                   onClick={onOpenConsultation}
                   className="text-rose-400 font-bold hover:underline cursor-pointer"

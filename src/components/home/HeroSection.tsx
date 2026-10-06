@@ -7,11 +7,13 @@ import { DestinationLogo } from '../common/DestinationLogos';
 interface HeroSectionProps {
   onFindUniversity: () => void;
   onBookConsultation: () => void;
+  onExploreSubPages?: () => void;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
   onFindUniversity,
-  onBookConsultation
+  onBookConsultation,
+  onExploreSubPages
 }) => {
   const [activeCountry, setActiveCountry] = useState<DestinationCountry>('UK');
   const activeDest = DESTINATIONS_DATA.find(d => d.country === activeCountry) || DESTINATIONS_DATA[0];
@@ -103,6 +105,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               >
                 <Sparkles className="w-3.5 h-3.5 text-rose-200" />
                 <span>Free Consultation</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={onExploreSubPages || (() => {
+                  document.getElementById('sub-pages')?.scrollIntoView({ behavior: 'smooth' });
+                })}
+                className="hidden sm:inline-flex py-2.5 sm:py-3.5 px-3 sm:px-4 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs sm:text-sm font-bold rounded-xl transition-all items-center justify-center gap-1.5 cursor-pointer border border-slate-200/80"
+              >
+                <span>Explore Sub-Pages</span>
+                <ArrowRight className="w-3.5 h-3.5 text-slate-500" />
               </button>
             </div>
 

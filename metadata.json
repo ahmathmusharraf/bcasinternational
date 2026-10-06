@@ -1,6 +1,6 @@
 {
-  "name": "BCAS International University Placement",
-  "description": "Your Gateway to International Universities. Explore study destinations in the UK, Canada, Australia, New Zealand, USA, and UAE with expert university admissions and placement guidance.",
+  "name": "BCAS International University Placement – Study Abroad & Visa Advisory",
+  "description": "Official overseas university placement portal by BCAS Sri Lanka. Free admissions counseling, scholarships up to 50%, IELTS waivers, and visa guidance for UK, Canada, Australia, USA & more.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

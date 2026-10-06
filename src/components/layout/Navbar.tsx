@@ -175,7 +175,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
                     <button
                       type="button"
-                      onClick={() => handleLinkClick('home', 'about')}
+                      onClick={() => handleLinkClick('about')}
                       className="w-full text-left p-2 rounded-xl hover:bg-blue-50/70 border border-transparent hover:border-blue-200/60 transition-all flex items-start gap-2.5 group cursor-pointer"
                     >
                       <div className="w-7 h-7 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center shrink-0 mt-0.5">
@@ -191,7 +191,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
                     <button
                       type="button"
-                      onClick={() => handleLinkClick('home', 'why-bcas')}
+                      onClick={() => handleLinkClick('why-bcas')}
                       className="w-full text-left p-2 rounded-xl hover:bg-blue-50/70 border border-transparent hover:border-blue-200/60 transition-all flex items-start gap-2.5 group cursor-pointer"
                     >
                       <div className="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
@@ -207,7 +207,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
                     <button
                       type="button"
-                      onClick={() => handleLinkClick('home', 'stories')}
+                      onClick={() => handleLinkClick('stories')}
                       className="w-full text-left p-2 rounded-xl hover:bg-blue-50/70 border border-transparent hover:border-blue-200/60 transition-all flex items-start gap-2.5 group cursor-pointer"
                     >
                       <div className="w-7 h-7 rounded-lg bg-purple-50 text-purple-700 flex items-center justify-center shrink-0 mt-0.5">
@@ -223,7 +223,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
                     <button
                       type="button"
-                      onClick={() => handleLinkClick('home', 'contact')}
+                      onClick={() => handleLinkClick('contact')}
                       className="w-full text-left p-2 rounded-xl hover:bg-blue-50/70 border border-transparent hover:border-blue-200/60 transition-all flex items-start gap-2.5 group cursor-pointer"
                     >
                       <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center shrink-0 mt-0.5">
@@ -410,7 +410,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
                     <button
                       type="button"
-                      onClick={() => handleLinkClick('universities', 'pathway')}
+                      onClick={() => handleLinkClick('pathway')}
                       className="w-full text-left p-2 rounded-xl hover:bg-blue-50/70 border border-transparent hover:border-blue-200/60 transition-all flex items-start gap-2.5 group cursor-pointer"
                     >
                       <div className="w-7 h-7 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center shrink-0 mt-0.5">
@@ -426,7 +426,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
                     <button
                       type="button"
-                      onClick={() => handleLinkClick('universities', 'courses')}
+                      onClick={() => handleLinkClick('courses')}
                       className="w-full text-left p-2 rounded-xl hover:bg-blue-50/70 border border-transparent hover:border-blue-200/60 transition-all flex items-start gap-2.5 group cursor-pointer"
                     >
                       <div className="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
@@ -442,7 +442,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
                     <button
                       type="button"
-                      onClick={() => handleLinkClick('universities', 'scholarships')}
+                      onClick={() => handleLinkClick('scholarships')}
                       className="w-full text-left p-2 rounded-xl hover:bg-blue-50/70 border border-transparent hover:border-blue-200/60 transition-all flex items-start gap-2.5 group cursor-pointer"
                     >
                       <div className="w-7 h-7 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center shrink-0 mt-0.5">
@@ -458,7 +458,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
                     <button
                       type="button"
-                      onClick={() => handleLinkClick('universities', 'cost-calculator')}
+                      onClick={() => handleLinkClick('cost-calculator')}
                       className="w-full text-left p-2 rounded-xl hover:bg-blue-50/70 border border-transparent hover:border-blue-200/60 transition-all flex items-start gap-2.5 group cursor-pointer"
                     >
                       <div className="w-7 h-7 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center shrink-0 mt-0.5">
@@ -474,7 +474,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
                     <button
                       type="button"
-                      onClick={() => handleLinkClick('universities', 'ielts')}
+                      onClick={() => handleLinkClick('ielts')}
                       className="w-full text-left p-2 rounded-xl hover:bg-blue-50/70 border border-transparent hover:border-blue-200/60 transition-all flex items-start gap-2.5 group cursor-pointer"
                     >
                       <div className="w-7 h-7 rounded-lg bg-blue-50 text-[#103578] flex items-center justify-center shrink-0 mt-0.5">
@@ -749,6 +749,22 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </div>
               )}
             </div>
+
+            {/* 6. Sub-Pages Hub Navigation Link */}
+            <button
+              type="button"
+              onClick={() => {
+                if (currentPage === 'home') {
+                  document.getElementById('sub-pages')?.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                  handleLinkClick('home', 'sub-pages');
+                }
+              }}
+              className="px-3 py-2 rounded-xl text-slate-700 hover:text-[#103578] hover:bg-slate-50 transition-all whitespace-nowrap cursor-pointer inline-flex items-center gap-1.5"
+            >
+              <Compass className="w-4 h-4 text-[#C41822]" />
+              <span>Sub-Pages Hub</span>
+            </button>
           </nav>
 
           {/* Action & Quick Contact */}
@@ -851,7 +867,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </button>
                   <button
                     type="button"
-                    onClick={() => handleLinkClick('home', 'about')}
+                    onClick={() => handleLinkClick('about')}
                     className="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-white hover:text-[#103578] flex items-center gap-2 transition-all cursor-pointer"
                   >
                     <Award className="w-3.5 h-3.5 text-amber-600 shrink-0" />
@@ -862,7 +878,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </button>
                   <button
                     type="button"
-                    onClick={() => handleLinkClick('home', 'why-bcas')}
+                    onClick={() => handleLinkClick('why-bcas')}
                     className="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-white hover:text-[#103578] flex items-center gap-2 transition-all cursor-pointer"
                   >
                     <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
@@ -873,7 +889,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </button>
                   <button
                     type="button"
-                    onClick={() => handleLinkClick('home', 'stories')}
+                    onClick={() => handleLinkClick('stories')}
                     className="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-white hover:text-[#103578] flex items-center gap-2 transition-all cursor-pointer"
                   >
                     <Users className="w-3.5 h-3.5 text-purple-600 shrink-0" />
@@ -884,7 +900,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </button>
                   <button
                     type="button"
-                    onClick={() => handleLinkClick('home', 'contact')}
+                    onClick={() => handleLinkClick('contact')}
                     className="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-white hover:text-[#103578] flex items-center gap-2 transition-all cursor-pointer"
                   >
                     <MapPin className="w-3.5 h-3.5 text-blue-600 shrink-0" />
@@ -1019,7 +1035,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </button>
                   <button
                     type="button"
-                    onClick={() => handleLinkClick('universities', 'pathway')}
+                    onClick={() => handleLinkClick('pathway')}
                     className="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-white hover:text-[#103578] flex items-center gap-2 transition-all cursor-pointer"
                   >
                     <Sparkles className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
@@ -1030,7 +1046,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </button>
                   <button
                     type="button"
-                    onClick={() => handleLinkClick('universities', 'courses')}
+                    onClick={() => handleLinkClick('courses')}
                     className="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-white hover:text-[#103578] flex items-center gap-2 transition-all cursor-pointer"
                   >
                     <BookOpen className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
@@ -1041,7 +1057,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </button>
                   <button
                     type="button"
-                    onClick={() => handleLinkClick('universities', 'scholarships')}
+                    onClick={() => handleLinkClick('scholarships')}
                     className="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-white hover:text-[#103578] flex items-center gap-2 transition-all cursor-pointer"
                   >
                     <Award className="w-3.5 h-3.5 text-amber-600 shrink-0" />
@@ -1052,7 +1068,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </button>
                   <button
                     type="button"
-                    onClick={() => handleLinkClick('universities', 'cost-calculator')}
+                    onClick={() => handleLinkClick('cost-calculator')}
                     className="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-white hover:text-[#103578] flex items-center gap-2 transition-all cursor-pointer"
                   >
                     <Calculator className="w-3.5 h-3.5 text-teal-600 shrink-0" />
@@ -1063,7 +1079,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </button>
                   <button
                     type="button"
-                    onClick={() => handleLinkClick('universities', 'ielts')}
+                    onClick={() => handleLinkClick('ielts')}
                     className="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-white hover:text-[#103578] flex items-center gap-2 transition-all cursor-pointer"
                   >
                     <ShieldCheck className="w-3.5 h-3.5 text-[#103578] shrink-0" />
@@ -1265,6 +1281,30 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </div>
                 </div>
               )}
+            </div>
+
+            {/* 6. Sub-Pages Hub Button in Mobile Drawer */}
+            <div className="rounded-xl overflow-hidden mt-1">
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  if (currentPage === 'home') {
+                    document.getElementById('sub-pages')?.scrollIntoView({ behavior: 'smooth' });
+                  } else {
+                    handleLinkClick('home', 'sub-pages');
+                  }
+                }}
+                className="w-full text-left px-4 py-3 rounded-xl text-sm font-bold cursor-pointer transition-colors flex items-center justify-between bg-blue-50/80 text-[#103578] hover:bg-blue-100/80"
+              >
+                <div className="flex items-center gap-2">
+                  <Compass className="w-4 h-4 text-[#C41822]" />
+                  <span>Explore All Sub-Pages</span>
+                </div>
+                <span className="text-[10px] font-bold bg-[#103578] text-white px-2 py-0.5 rounded-full">
+                  16 Sections
+                </span>
+              </button>
             </div>
           </div>
 
