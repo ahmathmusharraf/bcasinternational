@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle2, MessageSquare, Building2, User } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send, CheckCircle2, MessageSquare, Building2, User, MessageCircle } from 'lucide-react';
+import { SocialMediaLinks } from '../components/common/SocialMediaLinks';
 
 interface ContactViewProps {
   onBookConsultation: () => void;
@@ -260,6 +261,34 @@ export const ContactView: React.FC<ContactViewProps> = ({ onBookConsultation, on
                   </button>
                 </form>
               )}
+            </div>
+
+            {/* Official WhatsApp & Social Media Card */}
+            <div className="mt-6 bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200/80 rounded-3xl p-6 shadow-xs">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 rounded-xl bg-[#25D366] text-white flex items-center justify-center shadow-xs">
+                  <MessageCircle className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-slate-900">Direct WhatsApp Advisory</h4>
+                  <p className="text-[11px] text-slate-600">Fast response for admissions & visa screening</p>
+                </div>
+              </div>
+              <a
+                href="https://wa.me/94761415273?text=Hello%20BCAS%20International%20Placements%2C%20I%20would%20like%20to%20inquire%20about%20university%20placements."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-2.5 px-4 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all shadow-xs cursor-pointer mb-5"
+              >
+                <span>Chat on WhatsApp: +94 76 141 5273</span>
+              </a>
+
+              <div className="pt-4 border-t border-emerald-200/60">
+                <div className="text-[11px] font-bold text-slate-600 uppercase tracking-wider mb-2.5">
+                  Follow BCAS Official Channels
+                </div>
+                <SocialMediaLinks variant="color" size="sm" />
+              </div>
             </div>
           </div>
         </div>

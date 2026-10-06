@@ -8,7 +8,7 @@ import destinationGermanyImg from '../assets/images/destination_germany_17910053
 
 export const AHMATH_MUSHARRAF_AUTHOR = {
   name: 'Ahmath Musharraf',
-  role: 'Assistant Marketing Manager, BCAS International University Placements',
+  role: 'Assistant Manager – Marketing, BCAS International University Placements',
   avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=256'
 };
 

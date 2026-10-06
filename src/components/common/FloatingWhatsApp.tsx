@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const FloatingWhatsApp: React.FC = () => {
-  const bcasWhatsAppNumber = '94777222555';
+  const bcasWhatsAppNumber = '94761415273';
   const targetUrl = `https://wa.me/${bcasWhatsAppNumber}?text=${encodeURIComponent(
     'Hello BCAS International Placement team, I would like to inquire about university options.'
   )}`;
@@ -11,8 +11,8 @@ export const FloatingWhatsApp: React.FC = () => {
       href={targetUrl}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Chat on WhatsApp (+94 77 722 2555)"
-      title="Chat on WhatsApp (+94 77 722 2555)"
+      aria-label="Chat on WhatsApp (+94 76 141 5273)"
+      title="Chat on WhatsApp (+94 76 141 5273)"
       className="fixed bottom-20 md:bottom-6 right-4 sm:right-6 z-40 w-12 h-12 sm:w-14 sm:h-14 bg-[#25D366] hover:bg-[#20ba59] text-white rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center justify-center cursor-pointer transform hover:scale-108 active:scale-95 group focus:outline-none focus:ring-4 focus:ring-[#25D366]/40"
     >
       {/* Authentic Official WhatsApp Logo Only */}

@@ -341,8 +341,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenConsultation }
                 </div>
                 <div className="flex items-center gap-2">
                   <MessageCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                  <a href="https://wa.me/94777222555" className="hover:text-white transition-colors">
-                    +94 77 722 2555 (WhatsApp)
+                  <a href="https://wa.me/94761415273" className="hover:text-white transition-colors">
+                    +94 76 141 5273 (WhatsApp)
                   </a>
                 </div>
               </div>

@@ -535,7 +535,7 @@ export const StudyPathWizard: React.FC<StudyPathWizardProps> = ({
                   </button>
 
                   <a
-                    href="https://wa.me/94777222555?text=Hello%20BCAS%2C%20I%20completed%20the%20Study%20Path%20evaluation%20and%20would%20like%20guidance."
+                    href="https://wa.me/94761415273?text=Hello%20BCAS%2C%20I%20completed%20the%20Study%20Path%20evaluation%20and%20would%20like%20guidance."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer"

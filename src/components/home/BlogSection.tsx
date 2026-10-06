@@ -300,7 +300,7 @@ export const BlogSection: React.FC<BlogSectionProps> = ({
           <div className="flex items-center gap-1.5 truncate">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
             <span className="text-[10px] sm:text-xs text-slate-300 truncate font-medium">
-              Lead Author: <strong>Ahmath Musharraf</strong> • Assistant Marketing Manager
+              Lead Author: <strong>Ahmath Musharraf</strong> • Assistant Manager – Marketing
             </span>
           </div>
 

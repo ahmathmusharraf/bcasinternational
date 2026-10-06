@@ -41,7 +41,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenConsultati
       address: '356, Galle Road, Colombo 03',
       country: 'Sri Lanka',
       phone: '+94 11 7 999 300',
-      whatsapp: '+94 77 722 2555',
+      whatsapp: '+94 76 141 5273',
       email: 'colombo@bcas.lk',
       status: 'Main International Campus',
       mapUrl: 'https://www.google.com/maps/search/?api=1&query=356+Galle+Road+Colombo+03+Sri+Lanka',
@@ -53,7 +53,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenConsultati
       address: '16, Point Pedro Road, Jaffna',
       country: 'Sri Lanka',
       phone: '+94 21 221 9910',
-      whatsapp: '+94 77 722 2555',
+      whatsapp: '+94 76 141 5273',
       email: 'jaffna@bcas.lk',
       status: 'Northern Regional Campus',
       mapUrl: 'https://www.google.com/maps/search/?api=1&query=16+Point+Pedro+Road+Jaffna+Sri+Lanka',
@@ -65,7 +65,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenConsultati
       address: '392/1, Main Street, Kalmunai',
       country: 'Sri Lanka',
       phone: '+94 67 222 6899',
-      whatsapp: '+94 77 722 2555',
+      whatsapp: '+94 76 141 5273',
       email: 'kalmunai@bcas.lk',
       status: 'Eastern Regional Campus',
       mapUrl: 'https://www.google.com/maps/search/?api=1&query=392%2F1+Main+Street+Kalmunai+Sri+Lanka',
@@ -77,7 +77,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenConsultati
       address: '344, Peradeniya Road, Kandy',
       country: 'Sri Lanka',
       phone: '+94 81 222 4731',
-      whatsapp: '+94 77 722 2555',
+      whatsapp: '+94 76 141 5273',
       email: 'kandy@bcas.lk',
       status: 'Central Regional Campus',
       mapUrl: 'https://www.google.com/maps/search/?api=1&query=344+Peradeniya+Road+Kandy+Sri+Lanka',
@@ -183,8 +183,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenConsultati
             <div>
               <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">WhatsApp Advisory</span>
               <div className="text-base font-bold text-slate-900 mt-0.5">
-                <a href="https://wa.me/94777222555" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-700 transition-colors">
-                  +94 77 722 2555
+                <a href="https://wa.me/94761415273" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-700 transition-colors">
+                  +94 76 141 5273
                 </a>
               </div>
               <div className="text-xs text-slate-500 mt-1">Instant document screening & chat</div>
@@ -350,7 +350,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenConsultati
 
               <div className="hidden sm:block p-4 bg-white rounded-2xl border border-slate-200/80 text-xs space-y-2">
                 <div className="font-bold text-slate-900">Fast Regional Assistance:</div>
-                <div className="text-slate-600">WhatsApp: <strong className="text-slate-900">+94 77 722 2555</strong></div>
+                <div className="text-slate-600">WhatsApp: <strong className="text-slate-900">+94 76 141 5273</strong></div>
                 <div className="text-slate-600">Hotline: <strong className="text-slate-900">+94 11 7 999 300</strong></div>
                 <div className="text-slate-600">Email: <strong className="text-slate-900">placements@bcas.lk</strong></div>
               </div>

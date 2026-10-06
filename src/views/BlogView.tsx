@@ -291,7 +291,7 @@ export const BlogView: React.FC<BlogViewProps> = ({
         <div className="flex items-center gap-2 truncate">
           <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
           <span className="truncate">
-            Written by <strong>Ahmath Musharraf</strong> • Assistant Marketing Manager, BCAS International Placements
+            Written by <strong>Ahmath Musharraf</strong> • Assistant Manager – Marketing, BCAS International Placements
           </span>
         </div>
 

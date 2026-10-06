@@ -383,7 +383,9 @@ export default function App() {
             <div id="home">
               <HeroSection
                 onFindUniversity={() => handleNavigate('universities')}
-                onBookConsultation={() => handleOpenConsultation()}
+                onBookConsultation={(country) => handleOpenConsultation(country)}
+                onSelectDestination={(country) => handleOpenDestinationPage(country)}
+                onExploreSubPages={() => scrollToSection('sub-pages')}
               />
             </div>
 

@@ -120,7 +120,7 @@ export const LeadGenSection: React.FC<LeadGenSectionProps> = ({ onSuccess }) => 
                   </p>
                   <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-2">
                     <a
-                      href={`https://wa.me/94777222555?text=${encodeURIComponent(`Hello BCAS, I requested free study abroad guidance for ${formData.preferredDestination}. My name is ${formData.fullName}.`)}`}
+                      href={`https://wa.me/94761415273?text=${encodeURIComponent(`Hello BCAS, I requested free study abroad guidance for ${formData.preferredDestination}. My name is ${formData.fullName}.`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full sm:w-auto py-2 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-sm"

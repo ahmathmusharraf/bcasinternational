@@ -50,9 +50,33 @@ export const WorkAndPrView: React.FC<WorkAndPrViewProps> = ({
   const activeCountry = COUNTRY_WORK_PR_DATA.find(c => c.id === activeCountryId) || COUNTRY_WORK_PR_DATA[0];
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 pt-24 pb-20">
+    <div className="min-h-screen bg-slate-50 text-slate-900 pt-20 pb-20">
+      {/* Top Breadcrumb Navigation */}
+      <div className="bg-white border-b border-slate-200 py-3">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+          <div className="flex items-center gap-2 text-xs text-slate-500">
+            <button
+              onClick={onNavigateHome}
+              className="hover:text-[#103578] font-semibold flex items-center gap-1 cursor-pointer transition-colors"
+            >
+              <ArrowRight className="w-3.5 h-3.5 rotate-180" />
+              <span>Home</span>
+            </button>
+            <span>/</span>
+            <span className="text-[#103578] font-bold">Country Work Rights & PR Pathways</span>
+          </div>
+
+          <button
+            onClick={() => onBookConsultation()}
+            className="px-3.5 py-1.5 rounded-lg bg-[#C41822] hover:bg-[#a3141a] text-white text-xs font-bold transition-all shadow-2xs cursor-pointer flex items-center gap-1.5"
+          >
+            <span>Consultation</span>
+          </button>
+        </div>
+      </div>
+
       {/* Hero Header */}
-      <section className="bg-gradient-to-b from-[#103578] to-[#0a234e] text-white py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <section className="bg-gradient-to-b from-[#103578] to-[#0a234e] text-white py-14 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-rose-500/10 rounded-full blur-3xl pointer-events-none" />
 

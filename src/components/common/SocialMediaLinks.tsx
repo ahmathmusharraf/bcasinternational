@@ -16,7 +16,7 @@ export const SocialMediaLinks: React.FC<SocialMediaLinksProps> = ({
   const socials = [
     {
       name: 'Facebook',
-      url: 'https://www.facebook.com/bcas.lk',
+      url: 'https://www.facebook.com/bcasinternationalcentre',
       hoverColor: 'hover:bg-[#1877F2] hover:text-white hover:border-[#1877F2]',
       colorBg: 'bg-[#1877F2] text-white',
       icon: (
@@ -27,7 +27,7 @@ export const SocialMediaLinks: React.FC<SocialMediaLinksProps> = ({
     },
     {
       name: 'Instagram',
-      url: 'https://www.instagram.com/bcas_campus',
+      url: 'https://www.instagram.com/bcasinternational/',
       hoverColor: 'hover:bg-gradient-to-tr hover:from-[#F58529] hover:via-[#DD2A7B] hover:to-[#8134AF] hover:text-white hover:border-transparent',
       colorBg: 'bg-gradient-to-tr from-[#F58529] via-[#DD2A7B] to-[#8134AF] text-white',
       icon: (
@@ -38,7 +38,7 @@ export const SocialMediaLinks: React.FC<SocialMediaLinksProps> = ({
     },
     {
       name: 'LinkedIn',
-      url: 'https://www.linkedin.com/school/bcas-campus/',
+      url: 'https://www.linkedin.com/company/bcasinternationaluniversityplacements/',
       hoverColor: 'hover:bg-[#0A66C2] hover:text-white hover:border-[#0A66C2]',
       colorBg: 'bg-[#0A66C2] text-white',
       icon: (
@@ -49,7 +49,7 @@ export const SocialMediaLinks: React.FC<SocialMediaLinksProps> = ({
     },
     {
       name: 'TikTok',
-      url: 'https://www.tiktok.com/@bcas_campus',
+      url: 'https://www.tiktok.com/@bcasstudyabroad',
       hoverColor: 'hover:bg-black hover:text-white hover:border-black',
       colorBg: 'bg-black text-white',
       icon: (
@@ -60,7 +60,7 @@ export const SocialMediaLinks: React.FC<SocialMediaLinksProps> = ({
     },
     {
       name: 'YouTube',
-      url: 'https://www.youtube.com/@BCASCampusSriLanka',
+      url: 'https://www.youtube.com/@bcasinternationalplacements',
       hoverColor: 'hover:bg-[#FF0000] hover:text-white hover:border-[#FF0000]',
       colorBg: 'bg-[#FF0000] text-white',
       icon: (
