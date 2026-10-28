@@ -74,8 +74,10 @@ export const BlogsPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="flex items-center justify-between pt-3 border-t border-slate-100 text-xs">
-              <span className="text-slate-500 font-medium">By {featuredPost.author.name}</span>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between pt-3 border-t border-slate-100 text-xs gap-1">
+              <span className="text-slate-600 font-medium">
+                Written by <strong className="text-slate-900 font-semibold">{featuredPost.author.name}</strong> ({featuredPost.author.role})
+              </span>
               <span className="text-[#00239C] font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
                 <span>Read Full Guide</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -171,9 +173,14 @@ export const BlogsPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="p-4 pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-[#00239C] font-semibold">
-                <span>Read guide</span>
-                <span className="group-hover:translate-x-1 transition-transform">↗</span>
+              <div className="p-4 pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
+                <span className="text-slate-500 text-[11px] font-medium truncate max-w-[180px]">
+                  By {post.author.name}
+                </span>
+                <span className="text-[#00239C] font-semibold flex items-center gap-0.5">
+                  <span>Read guide</span>
+                  <span className="group-hover:translate-x-1 transition-transform">↗</span>
+                </span>
               </div>
             </article>
           ))}

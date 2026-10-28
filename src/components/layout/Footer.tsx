@@ -96,6 +96,24 @@ export const Footer: React.FC = () => {
                   Course Search & Shortlist
                 </button>
               </li>
+              <li>
+                <button
+                  onClick={() => navigateTo('ossd')}
+                  className="text-amber-300 hover:text-white transition-colors cursor-pointer text-left font-semibold flex items-center gap-1.5"
+                >
+                  <span>Canadian High School (OSSD)</span>
+                  <span className="text-xs">🇨🇦</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => navigateTo('ielts')}
+                  className="text-emerald-300 hover:text-white transition-colors cursor-pointer text-left font-semibold flex items-center gap-1.5"
+                >
+                  <span>Study IELTS (British Council/IDP)</span>
+                  <span className="text-xs">🎯</span>
+                </button>
+              </li>
             </ul>
           </div>
 
@@ -115,10 +133,10 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <button
-                  onClick={() => navigateTo('portal')}
+                  onClick={() => navigateTo('events')}
                   className="hover:text-white transition-colors cursor-pointer text-left"
                 >
-                  Student Portal & Tracker
+                  Event & Campus Gallery
                 </button>
               </li>
               <li>
@@ -135,6 +153,14 @@ export const Footer: React.FC = () => {
                   className="hover:text-white transition-colors cursor-pointer text-left"
                 >
                   BCAS Student Journal
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => navigateTo('faq')}
+                  className="hover:text-white transition-colors cursor-pointer text-left text-amber-300 font-medium"
+                >
+                  Frequent Questions (FAQ)
                 </button>
               </li>
               <li>

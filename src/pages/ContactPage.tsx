@@ -73,7 +73,7 @@ export const ContactPage: React.FC = () => {
         {/* Quick CTA Actions */}
         <div className="pt-1 sm:pt-2 flex flex-wrap items-center gap-2 sm:gap-3">
           <a
-            href="https://wa.me/94761415273"
+            href="https://wa.me/94761415273?text=Hi%20BCAS,%20I%20would%20like%20to%20speak%20with%20an%20international%20admissions%20counselor."
             target="_blank"
             rel="noopener noreferrer"
             className="px-3.5 py-2 sm:px-5 sm:py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs sm:text-sm rounded-xl flex items-center gap-1.5 sm:gap-2 transition-colors shadow-xs"

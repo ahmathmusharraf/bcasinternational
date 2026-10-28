@@ -194,6 +194,30 @@ export const CourseModal: React.FC = () => {
           </button>
 
           <div className="flex items-center gap-2">
+            {course.id === 'ossd-cambridge' && (
+              <button
+                onClick={() => {
+                  setActiveCourseModal(null);
+                  navigateTo('ossd');
+                }}
+                className="px-3 py-2 text-xs font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg flex items-center gap-1.5 transition-colors cursor-pointer"
+              >
+                <span>View OSSD Page</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            )}
+            {course.id === 'bcas-ielts-prep' && (
+              <button
+                onClick={() => {
+                  setActiveCourseModal(null);
+                  navigateTo('ielts');
+                }}
+                className="px-3 py-2 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg flex items-center gap-1.5 transition-colors cursor-pointer"
+              >
+                <span>View IELTS Page</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            )}
             <a
               href={`https://wa.me/94761415273?text=Hi%20BCAS,%20I%20would%20like%20to%20know%20more%20about%20studying%20${encodeURIComponent(course.title)}.`}
               target="_blank"

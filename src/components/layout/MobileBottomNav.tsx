@@ -6,7 +6,7 @@ import {
   BookOpen,
   GraduationCap,
   Send,
-  User,
+  Camera,
   Menu
 } from 'lucide-react';
 
@@ -17,8 +17,8 @@ export const MobileBottomNav: React.FC = () => {
     { id: 'home', label: 'Home', icon: Home },
     { id: 'universities', label: 'Universities', icon: GraduationCap },
     { id: 'courses', label: 'Courses', icon: BookOpen },
-    { id: 'apply', label: 'Apply', icon: Send },
-    { id: 'portal', label: 'Portal', icon: User }
+    { id: 'events', label: 'Events', icon: Camera },
+    { id: 'apply', label: 'Apply', icon: Send }
   ];
 
   return (

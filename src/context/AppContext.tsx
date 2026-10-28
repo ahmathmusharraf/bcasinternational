@@ -65,9 +65,13 @@ const VALID_PAGES: PageId[] = [
   'destinations',
   'universities',
   'courses',
+  'ossd',
+  'ielts',
   'apply',
+  'inquiry',
   'stories',
   'blogs',
+  'events',
   'portal',
   'contact',
   'privacy',
@@ -186,8 +190,8 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   useEffect(() => {
     const seoData: Record<PageId, { title: string; description: string }> = {
       home: {
-        title: 'BCAS International University Placements | Study Abroad Sri Lanka',
-        description: 'Official international university placement portal for BCAS Sri Lanka. Direct admissions, visas & scholarships for UK, Australia, Canada, Europe & UAE.'
+        title: 'Study Abroad, IELTS & Canadian OSSD | BCAS International Placements',
+        description: 'Official portal for BCAS Sri Lanka. Direct admissions, IELTS preparation classes, Canadian OSSD high school diploma & scholarships for UK, Australia, Canada, Europe & UAE.'
       },
       destinations: {
         title: 'Study Abroad Destinations (UK, Australia, Canada, Europe, UAE) | BCAS',
@@ -200,6 +204,14 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
       courses: {
         title: 'International Courses & Degree Pathways | BCAS Sri Lanka',
         description: 'Discover undergraduate degrees, Master’s programs, and Pearson BTEC HND top-up routes in Computing, Business, Engineering, Law, and Health.'
+      },
+      ossd: {
+        title: 'Canadian High School (OSSD) in Sri Lanka | Cambridge International Academy & BCAS',
+        description: 'Study Canadian OSSD in Sri Lanka (BSID: 669463). Fast-track pathway to world top universities in Canada, UK, and Australia without foundation.'
+      },
+      ielts: {
+        title: 'Study IELTS | The Qualification You Need to Go Abroad | BCAS Campus',
+        description: 'IELTS preparation classes & mock exams in Sri Lanka. Online & hybrid mode, expert certified trainers, guaranteed band scores, and free visa counselling.'
       },
       apply: {
         title: 'Start Your Study Abroad Enquiry & Pre-Assessment | BCAS',
@@ -216,6 +228,10 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
       blogs: {
         title: 'Study Abroad Guides, Visa Policies & Student Life | BCAS',
         description: 'Expert guides on UK Graduate Route, Australia migration changes, Pearson BTEC credit transfers, proof of funds, and IELTS preparation.'
+      },
+      events: {
+        title: 'BCAS Event & Campus Gallery | University Fairs & Delegations',
+        description: 'Explore photo highlights from BCAS World Education Fairs, Embassy visa briefings, and partner university visits in Sri Lanka.'
       },
       portal: {
         title: 'Student Application & Document Tracker Portal | BCAS',
@@ -240,6 +256,10 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
       'cookie-preferences': {
         title: 'Cookie Preferences | BCAS International University Placements',
         description: 'Manage and update your browser cookie and tracking preferences for the BCAS portal.'
+      },
+      faq: {
+        title: 'Frequently Asked Questions (FAQ) | Study Abroad & Visa Guidance | BCAS',
+        description: 'Find clear answers to questions on free counseling, university requirements, IELTS waivers, HND top-up degrees, visas, and scholarships.'
       }
     };
 

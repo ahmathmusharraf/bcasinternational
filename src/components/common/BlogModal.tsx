@@ -94,9 +94,18 @@ export const BlogModal: React.FC = () => {
         <div className="p-6 sm:p-8 overflow-y-auto space-y-6 text-slate-800">
           {/* Author Byline */}
           <div className="flex items-center justify-between pb-4 border-b border-slate-100 text-xs text-slate-600">
-            <div>
-              <span className="font-semibold text-slate-900 block">{post.author.name}</span>
-              <span>{post.author.role}</span>
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-full bg-[#00239C] text-white font-bold text-xs flex items-center justify-center shrink-0 shadow-2xs">
+                AM
+              </div>
+              <div>
+                <span className="font-bold text-slate-900 block text-xs sm:text-sm leading-tight">
+                  {post.author.name}
+                </span>
+                <span className="text-[11px] text-slate-500 font-medium">
+                  {post.author.role}
+                </span>
+              </div>
             </div>
             <button
               onClick={handleShare}

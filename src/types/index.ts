@@ -3,16 +3,20 @@ export type PageId =
   | 'destinations'
   | 'universities'
   | 'courses'
+  | 'ossd'
+  | 'ielts'
   | 'apply'
   | 'inquiry'
   | 'stories'
   | 'blogs'
+  | 'events'
   | 'portal'
   | 'contact'
   | 'privacy'
   | 'terms'
   | 'cookie-policy'
-  | 'cookie-preferences';
+  | 'cookie-preferences'
+  | 'faq';
 
 export interface Campus {
   id: string;
@@ -40,7 +44,7 @@ export interface University {
   tuitionRange: string;
   intakes: string[];
   popularSubjects: string[];
-  level: ('Foundation' | 'Diploma' | 'Bachelor’s' | 'Postgraduate')[];
+  level: ('Foundation' | 'Diploma' | 'Diploma / HND' | 'Bachelor’s' | 'Postgraduate')[];
   minIELTS: string;
   highlights: string[];
   scholarshipAvailable: boolean;
@@ -138,6 +142,8 @@ export interface TestimonialVideo {
   videoDuration: string;
   storyHighlight: string;
   videoUrl?: string;
+  youtubeId?: string;
+  youtubeUrl?: string;
   viewsCount?: string;
 }
 

@@ -22,7 +22,10 @@ import {
   FileText,
   Home,
   MapPin,
-  ArrowRight
+  ArrowRight,
+  Camera,
+  Award,
+  HelpCircle
 } from 'lucide-react';
 
 export const Header: React.FC = () => {
@@ -62,8 +65,11 @@ export const Header: React.FC = () => {
   ];
 
   const secondaryNavItems: { id: PageId; label: string; desc: string; icon: React.ComponentType<{ className?: string }> }[] = [
+    { id: 'ossd', label: 'Canadian OSSD', desc: 'Direct university entry after O/Levels via CIA', icon: Award },
+    { id: 'ielts', label: 'Study IELTS', desc: 'Online & hybrid classes, mock exams & band 7+ prep', icon: Sparkles },
+    { id: 'events', label: 'Event Gallery', desc: 'University fairs, seminars & visa sessions', icon: Camera },
     { id: 'stories', label: 'Student Stories', desc: 'Real pathways and alumni milestones', icon: Sparkles },
-    { id: 'portal', label: 'Student Portal', desc: 'Track application & checklist', icon: Layers },
+    { id: 'faq', label: 'Frequent Questions', desc: 'Admissions, visas, scholarships & requirements', icon: HelpCircle },
     { id: 'contact', label: 'Campuses & Contact', desc: 'Colombo, Jaffna, Kalmunai, Kandy', icon: MapPin },
     { id: 'privacy', label: 'Privacy Policy', desc: 'Student data protection & compliance', icon: FileText }
   ];
@@ -107,7 +113,7 @@ export const Header: React.FC = () => {
             </a>
             <span className="text-blue-400/80 hidden sm:inline">|</span>
             <a
-              href="https://wa.me/94761415273"
+              href="https://wa.me/94761415273?text=Hi%20BCAS,%20I%20would%20like%20to%20inquire%20about%20university%20admissions%20and%20visa%20guidance."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-white hover:text-emerald-300 transition-colors font-medium"
@@ -445,7 +451,7 @@ export const Header: React.FC = () => {
                   </div>
                 </a>
                 <a
-                  href="https://wa.me/94761415273"
+                  href="https://wa.me/94761415273?text=Hi%20BCAS,%20I%20would%20like%20to%20inquire%20about%20university%20admissions%20and%20visa%20guidance."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full py-2.5 px-3 text-xs font-semibold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 rounded-xl flex items-center gap-2.5 transition-colors border border-emerald-200"

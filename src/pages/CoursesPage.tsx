@@ -82,6 +82,35 @@ export const CoursesPage: React.FC = () => {
         <p className="text-xs sm:text-base text-slate-600 leading-relaxed font-normal">
           Browse study disciplines, compare career outcomes, and bookmark subjects of interest. Your saved courses stay stored in your browser so you can revisit them anytime or transfer them into your application enquiry.
         </p>
+
+        {/* OSSD Canadian High School Spotlight Ribbon */}
+        <div className="bg-gradient-to-r from-[#001869] to-[#00239C] text-white p-3.5 sm:p-4 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-md border border-blue-400/30">
+          <div className="flex items-center gap-3">
+            <span className="w-9 h-9 rounded-xl bg-red-600 text-white flex items-center justify-center font-bold text-sm shrink-0">
+              🍁
+            </span>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] uppercase font-bold tracking-wider text-red-200">
+                  Canadian High School Qualification
+                </span>
+                <span className="px-1.5 py-0.2 rounded bg-white/20 text-[9px] font-semibold">
+                  Cambridge International Academy (CIA)
+                </span>
+              </div>
+              <h3 className="text-xs sm:text-sm font-bold text-white mt-0.5">
+                Ontario Secondary School Diploma (OSSD) — Fast Track After O/Levels
+              </h3>
+            </div>
+          </div>
+          <button
+            onClick={() => navigateTo('ossd')}
+            className="px-3.5 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-bold transition-all shadow-xs flex items-center gap-1.5 shrink-0 self-start sm:self-center cursor-pointer"
+          >
+            <span>View OSSD Curriculum</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </button>
+        </div>
       </div>
 
       {/* Filter and Search Bar */}
@@ -148,94 +177,108 @@ export const CoursesPage: React.FC = () => {
       </div>
 
       {/* 2-Column Split: Courses Grid + Saved Shortlist Drawer */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 lg:gap-8 items-start">
-        {/* Main Courses Grid (8 Cols) */}
-        <div className="lg:col-span-8 space-y-4 sm:space-y-6">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-start">
+        {/* Main Courses Grid (8 Cols) - Rendered with Compact Small Cards */}
+        <div className="lg:col-span-8 space-y-4">
           {filteredCourses.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3">
               {filteredCourses.map(course => {
                 const isSaved = savedCourses.includes(course.title);
                 return (
                   <div
                     key={course.id}
-                    className="bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs hover:shadow-lg transition-all duration-200 flex flex-col justify-between"
+                    className="bg-white rounded-xl border border-slate-200/90 overflow-hidden shadow-2xs hover:shadow-md hover:border-blue-400 transition-all duration-200 flex flex-col justify-between group"
                   >
                     <div>
-                      <div className="relative h-36 sm:h-44 bg-slate-900 overflow-hidden">
+                      {/* Small Compact Image Header */}
+                      <div className="relative h-24 sm:h-28 bg-slate-950 overflow-hidden">
                         <img
                           src={course.image}
                           alt={course.title}
-                          className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                          loading="lazy"
+                          decoding="async"
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 opacity-90"
                           onError={e => {
                             (e.currentTarget as HTMLImageElement).src =
                               'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80';
                           }}
                         />
-                        <div className="absolute top-3 left-3 bg-white/95 px-2.5 py-1 rounded-md text-[11px] font-bold text-slate-900 shadow-xs">
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+                        
+                        <div className="absolute top-2 left-2 bg-black/60 backdrop-blur-xs px-2 py-0.5 rounded text-[10px] font-bold text-white border border-white/20">
                           {course.category}
                         </div>
-                        <div className="absolute top-3 right-3">
+
+                        <div className="absolute top-2 right-2">
                           <button
                             onClick={() => toggleSaveCourse(course.title)}
                             aria-label={isSaved ? 'Remove from saved' : 'Save course'}
-                            className={`p-2 rounded-lg backdrop-blur-md transition-colors cursor-pointer ${
+                            className={`p-1.5 rounded-md backdrop-blur-md transition-colors cursor-pointer ${
                               isSaved
-                                ? 'bg-[#BA141A] text-white shadow-md'
+                                ? 'bg-[#BA141A] text-white shadow-xs'
                                 : 'bg-black/50 text-white hover:bg-black/70'
                             }`}
                           >
-                            <Bookmark className={`w-4 h-4 ${isSaved ? 'fill-white' : ''}`} />
+                            <Bookmark className={`w-3.5 h-3.5 ${isSaved ? 'fill-white' : ''}`} />
                           </button>
                         </div>
-                        <div className="absolute bottom-2 left-3 text-white text-[11px] font-medium drop-shadow-md">
-                          {course.duration}
+
+                        <div className="absolute bottom-1.5 left-2 text-amber-300 text-[10px] font-mono">
+                          {course.duration} · {course.level}
                         </div>
                       </div>
 
-                      <div className="p-3.5 sm:p-5 space-y-2 sm:space-y-3">
-                        <h3 className="text-sm sm:text-base font-bold text-slate-900 font-display leading-tight">
+                      {/* Small Compact Text Body */}
+                      <div className="p-2.5 sm:p-3 space-y-1">
+                        <h3 className="text-xs sm:text-sm font-bold text-slate-900 font-display leading-snug line-clamp-1 group-hover:text-[#00239C] transition-colors">
                           {course.title}
                         </h3>
-                        <p className="text-xs text-slate-600 line-clamp-3 leading-relaxed">
+                        <p className="text-[11px] text-slate-500 line-clamp-2 leading-relaxed">
                           {course.overview}
                         </p>
-
-                        {/* Sample Career Outcomes */}
-                        <div className="pt-2 border-t border-slate-100">
-                          <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-1">
-                            Sample Career Outcomes:
-                          </span>
-                          <div className="flex flex-wrap gap-1 text-[11px] text-slate-700">
-                            {course.careerOpportunities.slice(0, 2).map((c, i) => (
-                              <span key={i} className="px-2 py-0.5 bg-slate-100 rounded">
-                                {c}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
                       </div>
                     </div>
 
-                    {/* Actions */}
-                    <div className="p-5 pt-3 border-t border-slate-100 bg-slate-50/50 flex items-center justify-between text-xs">
-                      <button
-                        onClick={() => setActiveCourseModal(course)}
-                        className="text-[#00239C] font-semibold hover:underline cursor-pointer"
-                      >
-                        Syllabus & Modules ↗
-                      </button>
-                      <button
-                        onClick={() =>
-                          navigateTo('apply', {
-                            subject: course.category === 'Computing' ? 'Computing & IT' : course.title,
-                            level: course.level === 'Bachelor’s' ? 'Bachelor’s' : 'Diploma'
-                          })
-                        }
-                        className="px-3.5 py-1.5 bg-[#00239C] hover:bg-[#001869] text-white font-semibold rounded-lg transition-colors cursor-pointer inline-flex items-center gap-1"
-                      >
-                        <span>Enquire</span>
-                        <ArrowRight className="w-3 h-3" />
-                      </button>
+                    {/* Compact Actions Bar */}
+                    <div className="p-2.5 pt-0">
+                      <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                        {course.id === 'ossd-cambridge' ? (
+                          <button
+                            onClick={() => navigateTo('ossd')}
+                            className="text-[#BA141A] font-bold hover:underline cursor-pointer flex items-center gap-0.5"
+                          >
+                            <span>OSSD Page</span>
+                            <ArrowRight className="w-2.5 h-2.5" />
+                          </button>
+                        ) : course.id === 'bcas-ielts-prep' ? (
+                          <button
+                            onClick={() => navigateTo('ielts')}
+                            className="text-emerald-700 font-bold hover:underline cursor-pointer flex items-center gap-0.5"
+                          >
+                            <span>IELTS Page</span>
+                            <ArrowRight className="w-2.5 h-2.5" />
+                          </button>
+                        ) : (
+                          <button
+                            onClick={() => setActiveCourseModal(course)}
+                            className="text-[#00239C] font-semibold hover:underline cursor-pointer"
+                          >
+                            Syllabus ↗
+                          </button>
+                        )}
+                        <button
+                          onClick={() =>
+                            navigateTo('apply', {
+                              subject: course.category === 'Computing' ? 'Computing & IT' : course.title,
+                              level: course.level === 'Bachelor’s' ? 'Bachelor’s' : 'Diploma'
+                            })
+                          }
+                          className="px-2.5 py-1 bg-[#00239C] hover:bg-[#001869] text-white font-semibold rounded text-[10px] transition-colors cursor-pointer inline-flex items-center gap-1"
+                        >
+                          <span>Enquire</span>
+                          <ArrowRight className="w-2.5 h-2.5" />
+                        </button>
+                      </div>
                     </div>
                   </div>
                 );

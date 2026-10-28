@@ -20,10 +20,10 @@ export const BCAS_CAMPUSES: Campus[] = [
     address: ['356, Galle Road', 'Colombo 03, Sri Lanka'],
     city: 'Colombo',
     phone: '+94 76 141 5273',
-    whatsapp: 'https://wa.me/94761415273',
+    whatsapp: 'https://wa.me/94761415273?text=Hi%20BCAS,%20I%20would%20like%20to%20inquire%20about%20study%20abroad%20pathways%20at%20the%20Colombo%20Campus.',
     mapQuery: 'BCAS City Campus 356 Galle Road Colombo 03',
     email: 'Digital_Int@bcas.lk',
-    hours: 'Monday – Saturday: 8:30 AM – 5:00 PM'
+    hours: 'Monday – Sunday: 08:00 AM – 06:00 PM'
   },
   {
     id: 'jaffna',
@@ -33,10 +33,10 @@ export const BCAS_CAMPUSES: Campus[] = [
     address: ['16, Point Pedro Road', 'Jaffna, Sri Lanka'],
     city: 'Jaffna',
     phone: '+94 76 141 5273',
-    whatsapp: 'https://wa.me/94761415273',
+    whatsapp: 'https://wa.me/94761415273?text=Hi%20BCAS,%20I%20would%20like%20to%20inquire%20about%20study%20abroad%20pathways%20at%20the%20Jaffna%20Campus.',
     mapQuery: 'BCAS Northern Regional Campus 16 Point Pedro Road Jaffna',
     email: 'Digital_Int@bcas.lk',
-    hours: 'Monday – Saturday: 8:30 AM – 5:00 PM'
+    hours: 'Monday – Sunday: 08:00 AM – 06:00 PM'
   },
   {
     id: 'kalmunai',
@@ -46,10 +46,10 @@ export const BCAS_CAMPUSES: Campus[] = [
     address: ['392/1, Main Street', 'Kalmunai, Sri Lanka'],
     city: 'Kalmunai',
     phone: '+94 76 141 5273',
-    whatsapp: 'https://wa.me/94761415273',
+    whatsapp: 'https://wa.me/94761415273?text=Hi%20BCAS,%20I%20would%20like%20to%20inquire%20about%20study%20abroad%20pathways%20at%20the%20Kalmunai%20Campus.',
     mapQuery: 'BCAS Eastern Regional Campus 392/1 Main Street Kalmunai',
     email: 'Digital_Int@bcas.lk',
-    hours: 'Monday – Saturday: 8:30 AM – 5:00 PM'
+    hours: 'Monday – Sunday: 08:00 AM – 06:00 PM'
   },
   {
     id: 'kandy',
@@ -59,10 +59,10 @@ export const BCAS_CAMPUSES: Campus[] = [
     address: ['344, Peradeniya Road', 'Kandy, Sri Lanka'],
     city: 'Kandy',
     phone: '+94 76 141 5273',
-    whatsapp: 'https://wa.me/94761415273',
+    whatsapp: 'https://wa.me/94761415273?text=Hi%20BCAS,%20I%20would%20like%20to%20inquire%20about%20study%20abroad%20pathways%20at%20the%20Kandy%20Campus.',
     mapQuery: 'BCAS Central Province Campus 344 Peradeniya Road Kandy',
     email: 'Digital_Int@bcas.lk',
-    hours: 'Monday – Saturday: 8:30 AM – 5:00 PM'
+    hours: 'Monday – Sunday: 08:00 AM – 06:00 PM'
   }
 ];
 
@@ -105,873 +105,15 @@ export const BCAS_SOCIAL_LINKS = [
   }
 ];
 
-export const DESTINATIONS: Destination[] = [
-  {
-    id: 'uk',
-    name: 'United Kingdom',
-    code: 'UK',
-    flag: '🇬🇧',
-    tagline: 'World-renowned degrees, 1-year Master’s & 2-year Graduate Route visa',
-    heroImage: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1200&q=80',
-    overview: 'The UK continues to be a premier choice for Sri Lankan students. Offering internationally accredited qualifications, accelerated 3-year bachelor’s and 1-year master’s programmes, and the Graduate Route visa allowing up to 2 years of post-study work.',
-    avgTuitionPerYear: '£12,000 – £22,000',
-    avgLivingPerYear: '£9,207 (outside London) / £12,006 (inside London)',
-    workDuringStudy: 'Up to 20 hours/week during term time, full-time in holidays',
-    postStudyWorkVisa: 'Graduate Route: 2 years (3 years for PhD graduates)',
-    primaryIntakes: 'September/October (Major) and January/February (Secondary)',
-    currency: 'GBP (£)',
-    officialImmigrationName: 'GOV.UK Student Visa Guidance',
-    officialImmigrationUrl: 'https://www.gov.uk/student-visa',
-    popularCities: ['London', 'Birmingham', 'Manchester', 'Coventry', 'Leeds', 'Edinburgh'],
-    topReasons: [
-      'Fast-track completion: 1-Year Master’s save substantial living and tuition costs',
-      'Graduate Route allows 2 full years of post-graduation employment in the UK',
-      'Direct pathway and credit exemptions from BCAS diplomas and HND qualifications',
-      'Multicultural student cities with strong Sri Lankan student communities'
-    ]
-  },
-  {
-    id: 'australia',
-    name: 'Australia',
-    code: 'AU',
-    flag: '🇦🇺',
-    tagline: 'High quality of life, leading research universities and post-study work',
-    heroImage: 'https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=1200&q=80',
-    overview: 'Australia combines exceptional educational standards with an enviable lifestyle. Renowned for practical research, modern campuses, and regional migration incentives that reward study in vibrant regional university cities.',
-    avgTuitionPerYear: 'AUD 24,000 – 42,000',
-    avgLivingPerYear: 'AUD 29,710 / year (Official migration guideline)',
-    workDuringStudy: 'Up to 48 hours per fortnight during study semesters',
-    postStudyWorkVisa: 'Temporary Graduate Visa (Subclass 485): 2 to 4 years depending on degree level and regional location',
-    primaryIntakes: 'February (Semester 1) and July (Semester 2)',
-    currency: 'AUD ($)',
-    officialImmigrationName: 'Department of Home Affairs Student Visa (Subclass 500)',
-    officialImmigrationUrl: 'https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500',
-    popularCities: ['Melbourne', 'Sydney', 'Brisbane', 'Perth', 'Adelaide', 'Wollongong'],
-    topReasons: [
-      'Universities consistently ranked in the global top 100 with world-class facilities',
-      'Flexible work rights of 48 hours per fortnight during university terms',
-      'Generous post-study work visas with extra duration for regional university campuses',
-      'Clear vocational and higher education progression pathways'
-    ]
-  },
-  {
-    id: 'canada',
-    name: 'Canada',
-    code: 'CA',
-    flag: '🇨🇦',
-    tagline: 'Co-op work placements, high safety index and Post-Graduation Work Permits',
-    heroImage: 'https://images.unsplash.com/photo-1517935706615-2717063c2225?auto=format&fit=crop&w=1200&q=80',
-    overview: 'Canada is celebrated for its welcoming society, safe university towns, and comprehensive Co-op work-integrated learning programmes that give students paid Canadian work experience prior to graduating.',
-    avgTuitionPerYear: 'CAD 18,000 – 35,000',
-    avgLivingPerYear: 'CAD 20,635 / year (Official IRCC guideline)',
-    workDuringStudy: 'Up to 24 hours per week off-campus during academic sessions; full-time during scheduled breaks',
-    postStudyWorkVisa: 'Post-Graduation Work Permit (PGWP): Up to 3 years based on programme length',
-    primaryIntakes: 'September (Fall) and January (Winter)',
-    currency: 'CAD ($)',
-    officialImmigrationName: 'Immigration, Refugees and Citizenship Canada (IRCC)',
-    officialImmigrationUrl: 'https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada.html',
-    popularCities: ['Toronto', 'Vancouver', 'Montreal', 'Ottawa', 'Calgary', 'Halifax'],
-    topReasons: [
-      'Paid Co-op semesters provide invaluable North American work experience',
-      'Post-Graduation Work Permit (PGWP) of up to 3 years',
-      'High safety index and student-friendly immigration policies',
-      'Strong industries in Technology, Biomedical, AI and Project Management'
-    ]
-  },
-  {
-    id: 'sweden',
-    name: 'Sweden',
-    code: 'SE',
-    flag: '🇸🇪',
-    tagline: 'Global innovation capital, English-taught degrees & 1-year job seeker residence permit',
-    heroImage: 'https://images.unsplash.com/photo-1509356843151-3e7d96241e11?auto=format&fit=crop&w=1200&q=80',
-    overview: 'Sweden is the birthplace of global tech giants like Spotify, Skype, and IKEA, and consistently ranks among the most innovative societies on earth. Swedish universities offer cutting-edge English-taught bachelor’s and master’s programmes with generous working rights and post-study opportunities.',
-    avgTuitionPerYear: 'SEK 85,000 – 145,000 (~EUR €7,500 – €13,000)',
-    avgLivingPerYear: 'SEK 9,500 – 12,000 / month (~EUR €850 – €1,050/mo)',
-    workDuringStudy: 'No statutory hourly limit on working during studies for degree students with a valid residence permit',
-    postStudyWorkVisa: '1-Year Residence Permit to Seek Employment or Explore Starting a Business after graduation',
-    primaryIntakes: 'August/September (Autumn) and January (Spring)',
-    currency: 'SEK (Swedish Krona)',
-    officialImmigrationName: 'Migrationsverket (Swedish Migration Agency)',
-    officialImmigrationUrl: 'https://www.migrationsverket.se/English/Private-individuals/Studying-and-researching-in-Sweden.html',
-    popularCities: ['Stockholm', 'Gothenburg', 'Uppsala', 'Lund', 'Malmö'],
-    topReasons: [
-      'Pioneer of global technology, sustainability, and clean tech innovation',
-      'Unrestricted working hours during academic semesters with a valid residence permit',
-      '1-Year post-graduation residence permit to secure professional employment or launch a startup',
-      'Ranked among the top 10 happiest and safest nations with over 90% English fluency'
-    ]
-  },
-  {
-    id: 'finland',
-    name: 'Finland',
-    code: 'FI',
-    flag: '🇫🇮',
-    tagline: 'World’s #1 education system, 2-year post-study job search visa & 30 hrs/wk work rights',
-    heroImage: 'https://images.unsplash.com/photo-1538332576228-eb5b4c4de6f5?auto=format&fit=crop&w=1200&q=80',
-    overview: 'Ranked the happiest country in the world for seven consecutive years, Finland boasts the globe’s most admired education model, exceptional safety, and an advanced tech and green-energy economy. International graduates benefit from a 2-year job-search visa.',
-    avgTuitionPerYear: 'EUR €8,000 – €14,000',
-    avgLivingPerYear: 'EUR €8,000 – €11,000 / year',
-    workDuringStudy: 'Up to 30 hours per week during term time and unrestricted hours during holidays',
-    postStudyWorkVisa: '2-Year Post-Study Job Search Residence Permit (can be split or extended)',
-    primaryIntakes: 'August/September (Autumn) and January (Spring)',
-    currency: 'EUR (€)',
-    officialImmigrationName: 'Migri (Finnish Immigration Service)',
-    officialImmigrationUrl: 'https://migri.fi/en/residence-permit-application-for-studies',
-    popularCities: ['Helsinki', 'Espoo', 'Tampere', 'Oulu', 'Turku'],
-    topReasons: [
-      'Consistently ranked #1 Happiest Country in the World with unmatched quality of life',
-      'Generous 30 hours per week part-time student work rights',
-      '2-Year post-study residence permit for job search or tech entrepreneurship',
-      'Global pioneer in Artificial Intelligence, communications, gaming, and sustainability'
-    ]
-  },
-  {
-    id: 'malta',
-    name: 'Malta',
-    code: 'MT',
-    flag: '🇲🇹',
-    tagline: 'English-speaking EU island, affordable Schengen degrees & 9-month post-study visa',
-    heroImage: 'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1200&q=80',
-    overview: 'Malta is an English-speaking European Union archipelago located in the sunny Mediterranean. With affordable tuition rates, recognized European bachelor’s and master’s programmes, and Schengen visa privileges, it offers unmatched value for international students.',
-    avgTuitionPerYear: 'EUR €7,500 – €14,000',
-    avgLivingPerYear: 'EUR €7,000 – €11,000 / year',
-    workDuringStudy: 'Up to 20 hours/week after completing the first 90 days of study',
-    postStudyWorkVisa: '9-Month post-study work visa for graduates to seek employment across Malta and the EU',
-    primaryIntakes: 'October (Autumn) and February (Spring)',
-    currency: 'EUR (€)',
-    officialImmigrationName: 'Identità Malta (Central Visa Unit)',
-    officialImmigrationUrl: 'https://identita.gov.mt/',
-    popularCities: ['Valletta', 'Msida', 'St. Julian’s', 'Sliema'],
-    topReasons: [
-      'Official English-speaking nation within the European Union',
-      'Highly affordable tuition and living expenses compared to Western Europe',
-      'Full Schengen visa mobility to travel throughout 29 European countries',
-      'Fast-growing European center for Financial Technology, iGaming, and Tourism'
-    ]
-  },
-  {
-    id: 'uae',
-    name: 'United Arab Emirates',
-    code: 'AE',
-    flag: '🇦🇪',
-    tagline: 'Dubai Academic City, tax-free career opportunities & world-class branch campuses',
-    heroImage: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80',
-    overview: 'The UAE, specifically Dubai and Abu Dhabi, hosts the world’s largest concentration of international university branch campuses (including British, Australian, and American institutions). Study an internationally accredited degree in a dynamic, tax-free economy.',
-    avgTuitionPerYear: 'AED 35,000 – 75,000 (Approx. USD 9,500 – 20,000)',
-    avgLivingPerYear: 'AED 30,000 – 48,000 / year',
-    workDuringStudy: 'Part-time work permitted with university No Objection Certificate (NOC)',
-    postStudyWorkVisa: 'Green Visa (5 years) for skilled graduates, and Golden Visa options for outstanding academic achievers',
-    primaryIntakes: 'September (Fall) and January (Spring)',
-    currency: 'AED (Dh)',
-    officialImmigrationName: 'Federal Authority for Identity, Citizenship & Customs (ICP)',
-    officialImmigrationUrl: 'https://u.ae/en/information-and-services/visa-and-emirates-id/residence-visas/student-visa',
-    popularCities: ['Dubai (DIAC & Knowledge Park)', 'Abu Dhabi', 'Sharjah University City'],
-    topReasons: [
-      'Study at world-class British or Australian universities located in Dubai',
-      'Tax-free income environment with vibrant regional employment hubs',
-      'Rapid visa issuance with straightforward processing and low documentation hurdles',
-      'Short 4-hour direct flight connection to Colombo'
-    ]
-  }
-];
-
-export const UNIVERSITIES: University[] = [
-  {
-    id: 'uel',
-    name: 'University of East London',
-    country: 'United Kingdom',
-    city: 'London',
-    established: 1898,
-    type: 'Public Modern University',
-    tuitionRange: '£14,500 – £17,500 / yr',
-    intakes: ['September', 'January'],
-    popularSubjects: ['Computing & IT', 'Business & Management', 'Engineering', 'Health & Applied Science'],
-    level: ['Foundation', 'Bachelor’s', 'Postgraduate'],
-    minIELTS: '6.0 (Undergraduate) / 6.5 (Postgraduate)',
-    highlights: [
-      'Modern Docklands campus with on-campus student accommodation',
-      'Direct pathway and generous credit recognition for BCAS diploma holders',
-      'Close proximity to Canary Wharf financial center and Tech City London',
-      'International merit scholarships up to £3,000'
-    ],
-    scholarshipAvailable: true,
-    description: 'A career-focused university known for diversity, practical industry partnerships, and strong support for international students starting in London.',
-    image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 'wlv',
-    name: 'University of Wolverhampton',
-    country: 'United Kingdom',
-    city: 'Wolverhampton / West Midlands',
-    established: 1992,
-    type: 'Public University',
-    tuitionRange: '£13,950 – £15,950 / yr',
-    intakes: ['September', 'January'],
-    popularSubjects: ['Engineering', 'Law & Legal Studies', 'Computing & IT', 'Business'],
-    level: ['Diploma', 'Bachelor’s', 'Postgraduate'],
-    minIELTS: '6.0 (min 5.5 in each component)',
-    highlights: [
-      'Low cost of living compared to London, making study very affordable',
-      'Outstanding engineering labs and moot court facilities',
-      'Well-established Top-Up degree arrangements for BCAS HND students',
-      'Lord Paul international scholarships available'
-    ],
-    scholarshipAvailable: true,
-    description: 'Renowned for high graduate employability, state-of-the-art STEM facilities, and exceptional value for international students.',
-    image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 'coventry',
-    name: 'Coventry University',
-    country: 'United Kingdom',
-    city: 'Coventry / London',
-    established: 1843,
-    type: 'Top Modern University',
-    tuitionRange: '£16,000 – £19,800 / yr',
-    intakes: ['September', 'January', 'May'],
-    popularSubjects: ['Business & Management', 'Engineering', 'Computing & IT', 'Hospitality & Tourism'],
-    level: ['Foundation', 'Bachelor’s', 'Postgraduate'],
-    minIELTS: '6.5 overall',
-    highlights: [
-      'Ranked among top modern universities for student satisfaction',
-      'Dedicated international student onboarding and career center',
-      'Three intake options (September, January, and May)',
-      'Innovative project-based learning with automotive & corporate ties'
-    ],
-    scholarshipAvailable: true,
-    description: 'Award-winning university recognised for forward-thinking teaching methods, vibrant campus, and strong employability coaching.',
-    image: 'https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 'deakin',
-    name: 'Deakin University',
-    country: 'Australia',
-    city: 'Melbourne / Geelong',
-    established: 1974,
-    type: 'World Top 1% University',
-    tuitionRange: 'AUD 32,000 – 41,000 / yr',
-    intakes: ['February', 'July', 'November'],
-    popularSubjects: ['Computing & IT', 'Health & Applied Science', 'Business & Management'],
-    level: ['Bachelor’s', 'Postgraduate'],
-    minIELTS: '6.5 (min 6.0)',
-    highlights: [
-      'Ranked top 1% of universities globally',
-      'Geelong campuses qualify for Australian regional migration visa incentives',
-      'Leader in cloud campus and digital learning tools',
-      'Deakin STEM scholarships and Vice-Chancellor awards'
-    ],
-    scholarshipAvailable: true,
-    description: 'Progressive, globally minded institution with top-tier research, flexible trimester intakes, and strong graduate outcomes across Victoria.',
-    image: 'https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 'uow',
-    name: 'University of Wollongong (UOW)',
-    country: 'Australia',
-    city: 'Wollongong / Sydney',
-    established: 1951,
-    type: 'Top 1% Global University',
-    tuitionRange: 'AUD 31,000 – 43,000 / yr',
-    intakes: ['February', 'July'],
-    popularSubjects: ['Engineering', 'Computing & IT', 'Business & Management', 'Health'],
-    level: ['Bachelor’s', 'Postgraduate'],
-    minIELTS: '6.0 – 6.5',
-    highlights: [
-      'Coastal campus located just 1 hour from central Sydney',
-      'Designated regional location with additional post-study work visa rights',
-      'Internationally ranked engineering and computer science schools',
-      'UOW University Excellence Scholarship: Up to 30% fee reduction'
-    ],
-    scholarshipAvailable: true,
-    description: 'Renowned for high research output, beautiful seaside campus environment, and exceptional links with global tech and engineering firms.',
-    image: 'https://images.unsplash.com/photo-1525921429624-479b6a26d84d?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 'brock',
-    name: 'Brock University',
-    country: 'Canada',
-    city: 'St. Catharines / Niagara, Ontario',
-    established: 1964,
-    type: 'Comprehensive Public University',
-    tuitionRange: 'CAD 29,000 – 34,000 / yr',
-    intakes: ['September', 'January'],
-    popularSubjects: ['Business & Management', 'Computing & IT', 'Health & Applied Science'],
-    level: ['Bachelor’s', 'Postgraduate'],
-    minIELTS: '6.5 (no band below 6.0)',
-    highlights: [
-      'Renowned Goodman School of Business with AACSB accreditation',
-      'One of the top Co-op programmes in Canada with 95% placement rate',
-      'Low cost of living in beautiful Niagara region, 1 hour from Toronto',
-      'Brock Scholars Awards based on academic performance'
-    ],
-    scholarshipAvailable: true,
-    description: 'Known for student-centered learning, safe community, and paid co-op placements providing students with practical Canadian work experience.',
-    image: 'https://images.unsplash.com/photo-1592280771190-3e2e4d571952?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 'ucsi',
-    name: 'UCSI University',
-    country: 'Malaysia',
-    city: 'Kuala Lumpur',
-    established: 1986,
-    type: 'Top Malaysian Private University',
-    tuitionRange: 'MYR 28,000 – 45,000 / yr (Approx. $6,500 – $10,500)',
-    intakes: ['January', 'May', 'September'],
-    popularSubjects: ['Computing & IT', 'Hospitality & Tourism', 'Engineering', 'Business'],
-    level: ['Foundation', 'Diploma', 'Bachelor’s', 'Postgraduate'],
-    minIELTS: '5.5 – 6.0',
-    highlights: [
-      'Ranked in top 300 universities worldwide in QS World University Rankings',
-      'Direct credit transfer and twinning programmes with UK and Australia',
-      'Very affordable living expenses in central Kuala Lumpur',
-      'Co-op education pioneer with global corporate partner network'
-    ],
-    scholarshipAvailable: true,
-    description: 'Malaysia’s leading private institution offering internationally accredited degrees, dynamic industry integration, and cost-effective tuition.',
-    image: 'https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 'teesside',
-    name: 'Teesside University',
-    country: 'United Kingdom',
-    city: 'Middlesbrough',
-    established: 1930,
-    type: 'Public Modern University',
-    tuitionRange: '£14,000 – £16,500 / yr',
-    intakes: ['September', 'January'],
-    popularSubjects: ['Computing & IT', 'Engineering', 'Health & Applied Science', 'Business'],
-    level: ['Foundation', 'Bachelor’s', 'Postgraduate'],
-    minIELTS: '6.0 (no band below 5.5)',
-    highlights: [
-      'Consistently ranked as one of the most affordable student towns in the UK',
-      'World-leading animation, games design, and digital tech programmes',
-      'Global Excellence Scholarships worth up to £2,000/year',
-      'Dedicated international advice service for visa, housing, and careers'
-    ],
-    scholarshipAvailable: true,
-    description: 'Pioneering university with high student satisfaction, modern digital campus facilities, and generous scholarships for international candidates.',
-    image: 'https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 'neu-usa',
-    name: 'Northeastern University',
-    country: 'United States of America',
-    city: 'Boston, Massachusetts',
-    established: 1898,
-    type: 'Top Tier Tier-1 Research University',
-    tuitionRange: 'USD $36,000 – $48,000 / yr',
-    intakes: ['September (Fall)', 'January (Spring)'],
-    popularSubjects: ['Computing & IT', 'Engineering', 'Business & Management', 'Health & Applied Science'],
-    level: ['Bachelor’s', 'Postgraduate'],
-    minIELTS: '6.5 – 7.0',
-    highlights: [
-      'Ranked #1 for Co-op and internships in the United States',
-      'Eligible for up to 3 years of STEM OPT post-study employment',
-      'Historic Boston campus surrounded by top global biotech and tech firms',
-      'Merit-based Dean’s Scholarship awards for high achievers'
-    ],
-    scholarshipAvailable: true,
-    description: 'World-renowned private research university famous for its experiential Co-op education system and strong ties to international industry.',
-    image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 'asu-usa',
-    name: 'Arizona State University (ASU)',
-    country: 'United States of America',
-    city: 'Phoenix / Tempe, Arizona',
-    established: 1885,
-    type: 'Public Research University',
-    tuitionRange: 'USD $28,000 – $36,000 / yr',
-    intakes: ['August (Fall)', 'January (Spring)'],
-    popularSubjects: ['Business & Management', 'Engineering', 'Computing & IT'],
-    level: ['Bachelor’s', 'Postgraduate'],
-    minIELTS: '6.0 – 6.5',
-    highlights: [
-      'Ranked #1 in the US for Innovation ahead of MIT and Stanford',
-      'Ira A. Fulton Schools of Engineering with cutting-edge labs',
-      'New American University Scholarships up to $15,000 per year',
-      'Wide range of on-campus research and teaching assistantships'
-    ],
-    scholarshipAvailable: true,
-    description: 'A major public research university recognized for innovation, student success, and extensive STEM research programs with full OPT eligibility.',
-    image: 'https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 'iu-germany',
-    name: 'IU International University of Applied Sciences',
-    country: 'Germany',
-    city: 'Berlin & Bad Honnef',
-    established: 1998,
-    type: 'State-Accredited German University',
-    tuitionRange: 'EUR €7,500 – €11,500 / yr (English Taught)',
-    intakes: ['October (Winter)', 'April (Summer)'],
-    popularSubjects: ['Computing & IT', 'Business & Management', 'Engineering'],
-    level: ['Bachelor’s', 'Postgraduate'],
-    minIELTS: '6.0 (or English medium certificate)',
-    highlights: [
-      '100% English-taught degree programmes in the heart of Berlin',
-      'Eligible for 18-month German post-study work visa and EU Blue Card',
-      'Up to 35% early bird international tuition reductions',
-      'Close connections to Berlin’s thriving tech startup ecosystem'
-    ],
-    scholarshipAvailable: true,
-    description: 'Germany’s largest state-accredited private university, specializing in career-focused digital tech, software, and international business degrees.',
-    image: 'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 'jcu-singapore',
-    name: 'James Cook University (Singapore Campus)',
-    country: 'Singapore',
-    city: 'Singapore (Kallang)',
-    established: 2003,
-    type: 'Australian University Branch Campus in Singapore',
-    tuitionRange: 'SGD $22,000 – $32,000 / yr',
-    intakes: ['March', 'July', 'November'],
-    popularSubjects: ['Computing & IT', 'Business & Management', 'Hospitality & Tourism'],
-    level: ['Foundation', 'Diploma', 'Bachelor’s', 'Postgraduate'],
-    minIELTS: '6.0 (Undergraduate) / 6.5 (Postgraduate)',
-    highlights: [
-      'Earn an identical Australian James Cook University degree in Singapore',
-      'Inter-campus mobility: Option to transfer or spend semesters in Australia',
-      'Awarded EduTrust Star certification (highest quality mark in Singapore)',
-      'Merit scholarships awarding up to 100% tuition for top entrance exam scorers'
-    ],
-    scholarshipAvailable: true,
-    description: 'Direct Asian branch campus of JCU Australia offering accelerated trimesters, allowing students to graduate with an Australian Bachelor’s in just 2 years.',
-    image: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 'uowd-uae',
-    name: 'University of Wollongong in Dubai (UOWD)',
-    country: 'United Arab Emirates',
-    city: 'Dubai (Knowledge Park)',
-    established: 1993,
-    type: 'Premier Australian University in UAE',
-    tuitionRange: 'AED 48,000 – 68,000 / yr (Approx. $13,000 – $18,500)',
-    intakes: ['September (Autumn)', 'January (Spring)'],
-    popularSubjects: ['Computing & IT', 'Engineering', 'Business & Management', 'Health & Applied Science'],
-    level: ['Bachelor’s', 'Postgraduate'],
-    minIELTS: '6.0 overall',
-    highlights: [
-      'Accredited by UAE Ministry of Education (CAA) and TEQSA Australia',
-      'Brand new high-tech campus in Dubai Knowledge Park',
-      'Option to transfer to UOW Australia campus anytime during degree',
-      'Academic excellence scholarships up to 50% tuition reduction'
-    ],
-    scholarshipAvailable: true,
-    description: 'The oldest and most prestigious foreign university in the UAE, providing Australian-accredited degrees and direct access to Dubai’s multinational job market.',
-    image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 'um-malta',
-    name: 'University of Malta',
-    country: 'Malta',
-    city: 'Msida / Valletta',
-    established: 1592,
-    type: 'Historic Public European University',
-    tuitionRange: 'EUR €8,500 – €13,500 / yr',
-    intakes: ['October (Annual Intake)'],
-    popularSubjects: ['Computing & IT', 'Health & Applied Science', 'Business & Management', 'Law & Legal Studies'],
-    level: ['Bachelor’s', 'Postgraduate'],
-    minIELTS: '6.0 (Undergraduate) / 6.5 (Postgraduate)',
-    highlights: [
-      '400-year academic tradition with full European Union Bologna recognition',
-      'English is the official language of instruction and everyday life in Malta',
-      'Affordable tuition and Mediterranean living costs with 9-month stay-back visa',
-      'Extensive research in Maritime, Artificial Intelligence, and Biomedical sciences'
-    ],
-    scholarshipAvailable: true,
-    description: 'Malta’s national university, renowned for high academic standards, vibrant international student community, and affordable EU accredited degrees.',
-    image: 'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 'eu-spain',
-    name: 'EU Business School Barcelona',
-    country: 'Spain',
-    city: 'Barcelona (Diagonal & Ganduxer)',
-    established: 1973,
-    type: 'Top-Ranked International Business School',
-    tuitionRange: 'EUR €12,500 – €15,500 / yr',
-    intakes: ['October', 'February', 'June'],
-    popularSubjects: ['Business & Management', 'Computing & IT', 'Hospitality & Tourism'],
-    level: ['Bachelor’s', 'Postgraduate'],
-    minIELTS: '6.0 overall',
-    highlights: [
-      'Ranked in top tier for global MBA and international business education',
-      'English-taught programmes in one of Europe’s most vibrant smart cities',
-      'Dual degree options with University of Derby and London Metropolitan University',
-      '1-Year job search residence authorization for graduates in Spain'
-    ],
-    scholarshipAvailable: true,
-    description: 'High-caliber international business school combining North American and European business education in the heart of Barcelona.',
-    image: 'https://images.unsplash.com/photo-1543783207-ec64e4d95325?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 'nci-ireland',
-    name: 'National College of Ireland (NCI)',
-    country: 'Ireland',
-    city: 'Dublin (IFSC Tech District)',
-    established: 1951,
-    type: 'State-Supported Higher Education College',
-    tuitionRange: 'EUR €11,500 – €15,000 / yr',
-    intakes: ['September', 'January'],
-    popularSubjects: ['Computing & IT', 'Business & Management'],
-    level: ['Bachelor’s', 'Postgraduate'],
-    minIELTS: '6.0 – 6.5',
-    highlights: [
-      'Located in Dublin’s Silicon Docks next to Google, Meta, and Citi',
-      '2-Year Third Level Graduate stay-back visa for Master’s students',
-      'NCI International Dean’s scholarships up to €4,000',
-      'Exceptional graduate employment rate in Irish tech and financial services'
-    ],
-    scholarshipAvailable: true,
-    description: 'Specialist college renowned for cloud computing, cybersecurity, data analytics, and business management in Dublin.',
-    image: 'https://images.unsplash.com/photo-1590089415225-401ed6f9db8e?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 'kth-sweden',
-    name: 'KTH Royal Institute of Technology',
-    country: 'Sweden',
-    city: 'Stockholm',
-    established: 1827,
-    type: 'Top European Technical University (QS World Top 100)',
-    tuitionRange: 'SEK 120,000 – 155,000 / yr (~EUR €10,500 – €13,800)',
-    intakes: ['August (Autumn)'],
-    popularSubjects: ['Computing & IT', 'Engineering & Technology', 'Data Science'],
-    level: ['Bachelor’s', 'Postgraduate'],
-    minIELTS: '6.5 (minimum 5.5 in each component)',
-    highlights: [
-      'Sweden’s largest and top-ranked technical university; global QS Top 75',
-      'Strong career pipelines to Stockholm tech cluster (Spotify, Klarna, Ericsson)',
-      '1-Year post-study residence permit with no weekly working hour restriction during studies',
-      'KTH Scholarship covering 100% tuition for outstanding international students'
-    ],
-    scholarshipAvailable: true,
-    description: 'Renowned world-leading technical university at the forefront of European software engineering, telecommunications, and green tech innovation.',
-    image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 'aalto-finland',
-    name: 'Aalto University',
-    country: 'Finland',
-    city: 'Espoo / Helsinki',
-    established: 2010,
-    type: 'Leading Multidisciplinary Nordic University (QS Top 110)',
-    tuitionRange: 'EUR €12,000 – €15,000 / yr',
-    intakes: ['August/September (Autumn)'],
-    popularSubjects: ['Computing & IT', 'Business & Management', 'Design & Technology'],
-    level: ['Bachelor’s', 'Postgraduate'],
-    minIELTS: '6.5 (minimum 6.0 in writing)',
-    highlights: [
-      'Otaniemi campus is the largest high-tech and startup innovation hub in the Nordic countries',
-      '2-Year post-study residence permit for international graduates',
-      'Generous 30 hours per week student employment rights during semesters',
-      'Aalto University Scholarship Programme awards up to 100% tuition fee waivers'
-    ],
-    scholarshipAvailable: true,
-    description: 'A global powerhouse where science and art meet business and technology, located in the world’s happiest country with direct industry immersion.',
-    image: 'https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 'lund-sweden',
-    name: 'Lund University',
-    country: 'Sweden',
-    city: 'Lund & Malmö',
-    established: 1666,
-    type: 'World Top 100 Comprehensive European University',
-    tuitionRange: 'SEK 110,000 – 145,000 / yr (~EUR €9,800 – €12,900)',
-    intakes: ['August/September (Autumn)'],
-    popularSubjects: ['Business & Management', 'Computing & IT', 'Engineering & Construction', 'Health & Applied Science'],
-    level: ['Bachelor’s', 'Postgraduate'],
-    minIELTS: '6.5 overall (no band below 5.5)',
-    highlights: [
-      'Ranked in the global top 85 universities (QS World Rankings)',
-      'Vibrant student city located 35 minutes by train from Copenhagen Airport',
-      'No weekly work restriction during studies for full-time degree students',
-      'Lund University Global Scholarship awards partial to full tuition waivers'
-    ],
-    scholarshipAvailable: true,
-    description: 'One of Scandinavia’s oldest and most prestigious research institutions, offering over 100 international master’s and bachelor’s degrees in English.',
-    image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 'helsinki-finland',
-    name: 'University of Helsinki',
-    country: 'Finland',
-    city: 'Helsinki',
-    established: 1640,
-    type: 'Leading Nordic Research University',
-    tuitionRange: 'EUR €13,000 – €15,000 / yr',
-    intakes: ['August/September (Autumn)'],
-    popularSubjects: ['Computing & IT', 'Health & Applied Science', 'Business & Management'],
-    level: ['Bachelor’s', 'Postgraduate'],
-    minIELTS: '6.5 (minimum 6.0 in writing)',
-    highlights: [
-      'Finland’s largest and oldest academic institution; consistently in global Top 100',
-      'Generous 30 hours per week student employment rights during semester',
-      '2-Year post-study residence permit for international career integration',
-      'Tuition waiver grants covering 50% to 100% of study fees'
-    ],
-    scholarshipAvailable: true,
-    description: 'Pioneering global research in data science, artificial intelligence, and public health in Helsinki, with exceptional international student services.',
-    image: 'https://images.unsplash.com/photo-1538332576228-eb5b4c4de6f5?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 'gcm-malta',
-    name: 'Global College Malta (GCM)',
-    country: 'Malta',
-    city: 'SmartCity Malta, Kalkara',
-    established: 2012,
-    type: 'Accredited European Higher Education Institution',
-    tuitionRange: 'EUR €6,500 – €9,500 / yr',
-    intakes: ['October (Autumn)', 'February (Spring)'],
-    popularSubjects: ['Business & Management', 'Computing & IT', 'Hospitality & Tourism'],
-    level: ['Foundation', 'Diploma', 'Bachelor’s', 'Postgraduate'],
-    minIELTS: '5.5 – 6.0 (or English Medium Certificate)',
-    highlights: [
-      'Dual award pathways with leading British universities (University of Chester)',
-      'Located in SmartCity Malta, the Mediterranean’s leading business and tech park',
-      'Low cost of living, 20 hrs/week student work rights & 9-month EU graduate visa',
-      'Direct credit recognition and fast-track admissions for BCAS HND holders'
-    ],
-    scholarshipAvailable: true,
-    description: 'Dynamic British-modeled business and technology college in Malta offering affordable European qualifications with UK university progression.',
-    image: 'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 'hwu-dubai',
-    name: 'Heriot-Watt University Dubai',
-    country: 'United Arab Emirates',
-    city: 'Dubai International Academic City (DIAC)',
-    established: 2005,
-    type: 'Royal Charter British Branch Campus in Dubai',
-    tuitionRange: 'AED 54,000 – 72,000 / yr (~USD $14,700 – $19,600)',
-    intakes: ['September (Autumn)', 'January (Spring)'],
-    popularSubjects: ['Engineering & Construction', 'Business & Management', 'Computing & IT'],
-    level: ['Bachelor’s', 'Postgraduate'],
-    minIELTS: '6.0 overall',
-    highlights: [
-      'First British campus to establish in Dubai Knowledge/Academic City',
-      'Identical degree certificate issued by Heriot-Watt University UK Edinburgh',
-      'Seamless inter-campus transfer to UK or Malaysia campuses at any stage',
-      'Merit scholarships awarding up to 30% reduction on tuition fees'
-    ],
-    scholarshipAvailable: true,
-    description: 'Renowned for world-class engineering, business, and computer science degrees in Dubai with direct connections to GCC corporate networks.',
-    image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80'
-  }
-];
-
-export const COURSES: Course[] = [
-  {
-    id: 'ossd-cambridge',
-    title: 'Ontario Secondary School Diploma (OSSD) - BCAS International University Placements',
-    category: 'High School & Pre-University',
-    level: 'Foundation',
-    duration: '10 - 12 Months (Fast-Track available)',
-    popularDestinations: ['Canada', 'United Kingdom', 'Australia', 'United States'],
-    overview: 'Earn the prestigious Canadian High School Diploma delivered in Sri Lanka through the official partnership between Cambridge International Academy and BCAS International University Placements. Fully recognized by the Ontario Ministry of Education, the OSSD provides direct admission to premier universities across Canada (University of Toronto, Waterloo, UBC, McGill) and worldwide without requiring a local foundation year.',
-    keyModules: [
-      'Grade 12 University Preparation English (ENG4U)',
-      'Advanced Functions (MHF4U)',
-      'Calculus & Vectors (MCV4U)',
-      'Mathematics of Data Management (MDM4U)',
-      'Business Leadership & Management Fundamentals',
-      'Computer Science & Information Technology',
-      'Canadian & International Law'
-    ],
-    careerOpportunities: [
-      'Direct Canadian University Admissions (U of T, Waterloo, UBC, McGill)',
-      'Direct Entry to UK Russell Group & Australian Group of Eight (Go8)',
-      'Higher Eligibility for High-Tier Canadian Entrance Scholarships',
-      'Smooth Study Permit & Canadian Student Visa Processing'
-    ],
-    entryRequirements: 'G.C.E. O/L completed with minimum 5 passes/credits including English and Mathematics, or partial G.C.E. A/L studies. Direct assessment available.',
-    image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 'bcas-ielts-prep',
-    title: 'IELTS Academic Preparation & Official Testing Coaching',
-    category: 'English Proficiency',
-    level: 'Foundation',
-    duration: '6 - 8 Weeks (Regular & Fast-Track Intensive Batches)',
-    popularDestinations: ['United Kingdom', 'Australia', 'Canada', 'Sweden', 'Finland', 'Malta', 'United Arab Emirates'],
-    overview: 'Master the IELTS Academic exam with BCAS certified language instructors. Comprehensive training across Listening, Reading, Writing, and Speaking with timed mock examinations, individual diagnostic rubrics, official British Council / IDP test registration support, and Band 7.0+ score guarantees for student visa requirements.',
-    keyModules: [
-      'Academic Writing Task 1 (Data Synthesis, Charts, Diagrams & Process Maps)',
-      'Academic Writing Task 2 (Discursive Essays, Balanced Arguments & Stances)',
-      'Advanced Academic Reading Tactics (Skimming, Scanning & Speed Inference)',
-      'Interactive Accent & Fluency Speaking Drills with Native Examiner Rubrics',
-      'Listening Comprehension Across All 4 Real Exam Formats',
-      'Weekly Full-Length Timed Computer-Delivered & Paper Mock Tests'
-    ],
-    careerOpportunities: [
-      'Fulfill UKVI / Australian / Canadian Student Visa Language Standards',
-      'Secure Unconditional University Admission Offers Without Pre-Sessional Fees',
-      'Attain Band 7.0+ to Unlock Merit & International Excellence Scholarships',
-      'Direct Exemption from Foundation English Requirements'
-    ],
-    entryRequirements: 'Open to all students preparing for overseas study or professional migration. Free initial placement assessment test provided on registration.',
-    image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 'computing-it',
-    title: 'Computing, Software Engineering & AI',
-    category: 'Computing',
-    level: 'Bachelor’s',
-    duration: '3 Years (or 1-Year Top-Up after BCAS HND)',
-    popularDestinations: ['United Kingdom', 'Australia', 'Canada', 'Sweden', 'Finland'],
-    overview: 'Gain comprehensive mastery of modern software development, data structures, algorithms, cybersecurity, cloud architecture, and artificial intelligence.',
-    keyModules: [
-      'Object-Oriented Programming (Java / Python)',
-      'Database Architecture & SQL/NoSQL',
-      'Cloud Computing & Distributed Systems',
-      'Full-Stack Web & Mobile App Development',
-      'Machine Learning & Artificial Intelligence Principles',
-      'Cybersecurity & Network Defense'
-    ],
-    careerOpportunities: [
-      'Software Engineer',
-      'Full-Stack Developer',
-      'Data Analyst & Engineer',
-      'Cybersecurity Specialist',
-      'Cloud Systems Architect'
-    ],
-    entryRequirements: 'G.C.E. A/L (2 passes) or BCAS International Foundation Diploma; IELTS 6.0 or equivalent English proficiency.',
-    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 'business-mgmt',
-    title: 'Business Administration & International Management',
-    category: 'Business',
-    level: 'Bachelor’s',
-    duration: '3 Years (or 1-Year Top-Up after BCAS HND)',
-    popularDestinations: ['United Kingdom', 'Australia', 'Canada', 'Malta', 'United Arab Emirates'],
-    overview: 'Equip yourself for global corporate leadership, modern strategic management, digital marketing, business analytics, and global trade operations.',
-    keyModules: [
-      'Strategic Corporate Management',
-      'Digital Marketing & Consumer Psychology',
-      'Financial Accounting & Corporate Valuation',
-      'International Business Strategy & Trade',
-      'Human Resource Management & Leadership',
-      'Business Analytics & Data-Driven Decision Making'
-    ],
-    careerOpportunities: [
-      'Business Development Manager',
-      'Management Consultant',
-      'Digital Marketing Strategist',
-      'Operations & Supply Chain Lead',
-      'Corporate Financial Analyst'
-    ],
-    entryRequirements: 'G.C.E. A/L (2 passes) or BCAS Foundation; IELTS 6.0.',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 'engineering-construction',
-    title: 'Civil & Construction Engineering',
-    category: 'Engineering',
-    level: 'Bachelor’s',
-    duration: '3 to 4 Years (Transferable from BCAS HND in Civil Engineering)',
-    popularDestinations: ['United Kingdom', 'Australia', 'Canada', 'Finland', 'United Arab Emirates'],
-    overview: 'Design, build and maintain resilient infrastructure. Learn structural mechanics, geotechnical engineering, sustainable construction materials, and BIM.',
-    keyModules: [
-      'Structural Analysis & Design (Concrete & Steel)',
-      'Fluid Mechanics & Hydraulics',
-      'Geotechnical Engineering & Soil Mechanics',
-      'Construction Project Management & Contract Law',
-      'Building Information Modelling (BIM) & CAD',
-      'Environmental Engineering & Sustainable Infrastructure'
-    ],
-    careerOpportunities: [
-      'Structural Design Engineer',
-      'Site Construction Engineer',
-      'Project Planning Engineer',
-      'Geotechnical Consultant',
-      'Infrastructure Project Manager'
-    ],
-    entryRequirements: 'G.C.E. A/L in Mathematics stream (or BCAS Engineering Foundation); IELTS 6.0.',
-    image: 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 'health-biomedical',
-    title: 'Biomedical Science & Applied Health',
-    category: 'Health',
-    level: 'Bachelor’s',
-    duration: '3 Years',
-    popularDestinations: ['United Kingdom', 'Australia', 'Canada', 'Sweden'],
-    overview: 'Explore human biology, pathology, biochemistry, pharmacology, and medical laboratory diagnostics. Ideal preparation for clinical, research, or diagnostic laboratory careers.',
-    keyModules: [
-      'Human Anatomy & Clinical Physiology',
-      'Cellular Pathology & Diagnostic Cytology',
-      'Medical Microbiology & Immunology',
-      'Clinical Biochemistry & Hematology',
-      'Molecular Genetics & Genomic Medicine',
-      'Pharmacology & Therapeutics'
-    ],
-    careerOpportunities: [
-      'Biomedical Diagnostic Scientist',
-      'Clinical Research Associate',
-      'Pharmaceutical Specialist',
-      'Public Health Officer',
-      'Laboratory Diagnostics Manager'
-    ],
-    entryRequirements: 'G.C.E. A/L Biology and Chemistry; IELTS 6.5.',
-    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 'hospitality-tourism',
-    title: 'International Hospitality & Tourism Management',
-    category: 'Hospitality',
-    level: 'Bachelor’s',
-    duration: '3 Years with Built-in Industry Internship',
-    popularDestinations: ['United Kingdom', 'Australia', 'Malta', 'United Arab Emirates'],
-    overview: 'Prepare for leadership in luxury hotel management, resort operations, global events, destination marketing, and airline passenger services.',
-    keyModules: [
-      'Hospitality Operational Management',
-      'Global Tourism Marketing & Branding',
-      'Revenue Management & Hotel Analytics',
-      'Event Planning, Conferencing & Exhibition (MICE)',
-      'Customer Experience & Service Quality Management',
-      'Sustainable Tourism & Eco-Resort Development'
-    ],
-    careerOpportunities: [
-      'Hotel & Resort General Manager',
-      'International Events Director',
-      'Guest Experience & Operations Manager',
-      'Tourism Destination Consultant',
-      'Airline & Cruise Operations Specialist'
-    ],
-    entryRequirements: 'G.C.E. A/L (2 passes in any stream) or BCAS Foundation; IELTS 5.5 – 6.0.',
-    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 'law-legal-studies',
-    title: 'Law & International Legal Studies (LLB Pathways)',
-    category: 'Law',
-    level: 'Bachelor’s',
-    duration: '3 Years (Qualifying Law Degree)',
-    popularDestinations: ['United Kingdom', 'Australia'],
-    overview: 'Master foundational legal reasoning, criminal law, constitutional governance, contract law, human rights, and international commercial arbitration.',
-    keyModules: [
-      'Contract Law & Commercial Obligations',
-      'Constitutional & Administrative Law',
-      'Criminal Law & Evidence',
-      'Law of Torts & Civil Liability',
-      'International Commercial Law & Arbitration',
-      'Human Rights & International Law'
-    ],
-    careerOpportunities: [
-      'Legal Adviser / Corporate Counsel',
-      'Compliance Officer',
-      'Arbitration & Dispute Specialist',
-      'Advocate / Solicitor Pathway',
-      'International NGO Policy Officer'
-    ],
-    entryRequirements: 'G.C.E. A/L (3 passes with good English grade); IELTS 6.5.',
-    image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=80'
-  }
-];
+// ============================================================================
+// DEDICATED MODULAR DATA FILES (FOR EASY CODE EDITING):
+// - To edit or add DESTINATIONS -> open src/data/destinations.ts
+// - To edit or add UNIVERSITIES -> open src/data/universities.ts
+// - To edit or add COURSES      -> open src/data/courses.ts
+// ============================================================================
+export { DESTINATIONS } from './destinations';
+export { UNIVERSITIES } from './universities';
+export { COURSES } from './courses';
 
 export const SCHOLARSHIPS: Scholarship[] = [
   {
@@ -1191,6 +333,21 @@ export const SUCCESS_STORIES: SuccessStory[] = [
     adviceForStudents: 'Make the most of the Pearson BTEC HND pathway. It cuts your overseas tuition fees by more than half while graduating with the exact same prestigious degree.',
     category: 'Engineering & Construction',
     image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    id: 'story-10',
+    studentName: 'Zainab Mansoor',
+    fromCampus: 'BCAS Colombo Campus',
+    currentUniversity: 'University of Portsmouth, UK',
+    destination: 'United Kingdom',
+    degreeProgramme: 'BSc (Hons) Cybersecurity & Digital Forensics',
+    graduationYear: '2025 Graduate',
+    currentRole: 'SOC Analyst at Cyber Defense Lab, Hampshire',
+    storyQuote: 'BCAS prepared me with practical lab certifications and handled my UK CAS and priority visa in just 3 weeks.',
+    fullJourney: 'Zainab completed the Computing HND at BCAS Colombo with distinction before topping up into University of Portsmouth. BCAS Placements supervised her compliance documents and secured her an early payment scholarship.',
+    adviceForStudents: 'Build practical project portfolios during your HND years. It guarantees fast-track job interviews in the UK.',
+    category: 'Computing & IT',
+    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80'
   }
 ];
 
@@ -1205,8 +362,8 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: 'Not sure where to begin? Break a major life decision into smaller, stress-free milestones: goals, course options, budget realities, documents, and key questions to ask.',
     heroImage: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=85',
     author: {
-      name: 'BCAS International Advisory Team',
-      role: 'Head of Student Placements'
+      name: 'Ahmath Musharraf',
+      role: 'BCAS International University Placements'
     },
     relatedPostIds: ['blog-documents', 'blog-destination'],
     content: [
@@ -1248,8 +405,8 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: 'Know exactly what paperwork to gather early, how to format your certified translations, and how to write a compelling Statement of Purpose.',
     heroImage: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=85',
     author: {
-      name: 'Academic Admissions Desk',
-      role: 'BCAS Placements Officer'
+      name: 'Ahmath Musharraf',
+      role: 'BCAS International University Placements'
     },
     relatedPostIds: ['blog-visa', 'blog-plan'],
     content: [
@@ -1287,8 +444,8 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: 'Where to search, what eligibility criteria actually mean, and how to structure your scholarship application to stand out from thousands of global applicants.',
     heroImage: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=85',
     author: {
-      name: 'Scholarship & Funding Advisory',
-      role: 'BCAS Senior Counselor'
+      name: 'Ahmath Musharraf',
+      role: 'BCAS International University Placements'
     },
     relatedPostIds: ['blog-budget', 'blog-plan'],
     content: [
@@ -1325,8 +482,8 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: 'Compare the day-to-day realities of studying in the UK, Australia, Canada, New Zealand and Malaysia before making your final commitment.',
     heroImage: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1200&q=85',
     author: {
-      name: 'Global Study Desk',
-      role: 'BCAS Placements Team'
+      name: 'Ahmath Musharraf',
+      role: 'BCAS International University Placements'
     },
     relatedPostIds: ['blog-budget', 'blog-plan'],
     content: [
@@ -1355,8 +512,8 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: 'Learn how to verify the latest immigration criteria, organize your financial proof, and avoid common application traps.',
     heroImage: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=85',
     author: {
-      name: 'Visa Compliance Officer',
-      role: 'BCAS International Placements'
+      name: 'Ahmath Musharraf',
+      role: 'BCAS International University Placements'
     },
     relatedPostIds: ['blog-documents', 'blog-plan'],
     content: [
@@ -1383,8 +540,8 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: 'Calculate accommodation, groceries, transport, utilities, mobile plans, and emergency funds so you start your international journey with peace of mind.',
     heroImage: 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1200&q=85',
     author: {
-      name: 'Student Welfare & Finance',
-      role: 'BCAS Placements Officer'
+      name: 'Ahmath Musharraf',
+      role: 'BCAS International University Placements'
     },
     relatedPostIds: ['blog-scholarships', 'blog-destination'],
     content: [
@@ -1465,7 +622,7 @@ export const DEMO_STUDENT_PROFILE: StudentPortalProfile = {
     name: 'Mrs. Shani Jayawardena',
     role: 'Senior International Placements Adviser',
     campus: 'Colombo City Campus',
-    whatsapp: 'https://wa.me/94761415273'
+    whatsapp: 'https://wa.me/94761415273?text=Hi%20Mrs.%20Shani,%20I%20have%20a%20question%20regarding%20my%20university%20application.'
   }
 };
 
@@ -1561,7 +718,7 @@ export const STUDY_ABROAD_EVENTS: StudyAbroadEvent[] = [
 
 export const TESTIMONIAL_VIDEOS: TestimonialVideo[] = [
   {
-    id: 'video-dinuka',
+    id: 'video-1',
     studentName: 'Dinuka Jayasuriya',
     fromCampus: 'Colombo Campus',
     currentUniversity: 'Coventry University, UK',
@@ -1569,13 +726,15 @@ export const TESTIMONIAL_VIDEOS: TestimonialVideo[] = [
     flag: '🇬🇧',
     degreeProgramme: 'BSc (Hons) Computer Science & Cloud Computing',
     currentRole: 'Cloud Systems Engineer at TechCorp, London',
-    thumbnail: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',
+    thumbnail: 'https://img.youtube.com/vi/VmKpPRvvoJ8/hqdefault.jpg',
     videoDuration: '2:15',
     storyHighlight: 'Saved 2 years of London living expenses by completing the Pearson BTEC HND at BCAS Colombo before transferring into Year 3 at Coventry.',
+    youtubeId: 'VmKpPRvvoJ8',
+    youtubeUrl: 'https://youtu.be/VmKpPRvvoJ8?si=4lwmXfRLWbv9QDir',
     viewsCount: '4.8k'
   },
   {
-    id: 'video-fathima',
+    id: 'video-2',
     studentName: 'Fathima Rishada',
     fromCampus: 'Kandy Campus',
     currentUniversity: 'Deakin University, Melbourne',
@@ -1583,13 +742,15 @@ export const TESTIMONIAL_VIDEOS: TestimonialVideo[] = [
     flag: '🇦🇺',
     degreeProgramme: 'Bachelor of Biomedical Science',
     currentRole: 'Clinical Research Associate, Melbourne Health',
-    thumbnail: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80',
+    thumbnail: 'https://img.youtube.com/vi/V_jLJpa3vbs/hqdefault.jpg',
     videoDuration: '1:48',
     storyHighlight: 'Secured an AUD 10,000 international student merit scholarship through BCAS Kandy counseling and cleared the Australian visa in 14 days.',
+    youtubeId: 'V_jLJpa3vbs',
+    youtubeUrl: 'https://youtu.be/V_jLJpa3vbs?si=IRbEuwtN_HbNIZ33',
     viewsCount: '6.2k'
   },
   {
-    id: 'video-kavishka',
+    id: 'video-3',
     studentName: 'Kavishka Wickramasinghe',
     fromCampus: 'Jaffna Campus',
     currentUniversity: 'University of Toronto',
@@ -1597,13 +758,15 @@ export const TESTIMONIAL_VIDEOS: TestimonialVideo[] = [
     flag: '🇨🇦',
     degreeProgramme: 'Ontario Secondary School Diploma ➔ BSc Software Eng',
     currentRole: 'Software Developer, Toronto Tech Hub',
-    thumbnail: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80',
+    thumbnail: 'https://img.youtube.com/vi/WBRO7qeYf5o/hqdefault.jpg',
     videoDuration: '2:40',
     storyHighlight: 'Completed the Canadian OSSD course with BCAS International University Placements and received direct admission without foundation.',
+    youtubeId: 'WBRO7qeYf5o',
+    youtubeUrl: 'https://youtu.be/WBRO7qeYf5o?si=AU94HycLWvPb5h0t',
     viewsCount: '5.1k'
   },
   {
-    id: 'video-aashif',
+    id: 'video-4',
     studentName: 'Mohamed Aashif',
     fromCampus: 'Kalmunai Campus',
     currentUniversity: 'Middlesex University Dubai & UK',
@@ -1611,10 +774,92 @@ export const TESTIMONIAL_VIDEOS: TestimonialVideo[] = [
     flag: '🇦🇪',
     degreeProgramme: 'BA (Hons) Business Management & Finance',
     currentRole: 'Financial Operations Associate, DIFC Dubai',
-    thumbnail: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80',
-    videoDuration: '1:55',
+    thumbnail: 'https://img.youtube.com/vi/IO6UGECSz20/hqdefault.jpg',
+    videoDuration: '0:55',
     storyHighlight: 'Studied from BCAS Eastern Campus in Kalmunai. BCAS managed my entire offer letter, student visa, and accommodation in Dubai.',
+    youtubeId: 'IO6UGECSz20',
+    youtubeUrl: 'https://youtube.com/shorts/IO6UGECSz20?si=bj3NxPyF684VS1-U',
     viewsCount: '3.9k'
+  },
+  {
+    id: 'video-5',
+    studentName: 'Shehani Mendis',
+    fromCampus: 'Colombo Campus',
+    currentUniversity: 'University of Hertfordshire, UK',
+    destination: 'United Kingdom',
+    flag: '🇬🇧',
+    degreeProgramme: 'LLB (Hons) Law & International Commercial Practice',
+    currentRole: 'Paralegal Associate, London Legal chambers',
+    thumbnail: 'https://img.youtube.com/vi/sWZXt7SZvDU/hqdefault.jpg',
+    videoDuration: '0:50',
+    storyHighlight: 'Direct progression from BCAS Law School into Hertfordshire final year. Bar Vocational Studies guidance arranged by BCAS.',
+    youtubeId: 'sWZXt7SZvDU',
+    youtubeUrl: 'https://youtube.com/shorts/sWZXt7SZvDU?si=FS-J9E611C0U6jkH',
+    viewsCount: '4.4k'
+  },
+  {
+    id: 'video-6',
+    studentName: 'Navin Perera',
+    fromCampus: 'Kandy Campus',
+    currentUniversity: 'University of Wollongong',
+    destination: 'Australia',
+    flag: '🇦🇺',
+    degreeProgramme: 'Bachelor of Civil & Structural Engineering',
+    currentRole: 'Junior Site Engineer, New South Wales Infrastructure',
+    thumbnail: 'https://img.youtube.com/vi/HqC_QoXNP_c/hqdefault.jpg',
+    videoDuration: '0:45',
+    storyHighlight: 'Engineers Australia accredited transfer from BCAS Engineering diploma into Year 2 of Wollongong. Post-study work visa secured.',
+    youtubeId: 'HqC_QoXNP_c',
+    youtubeUrl: 'https://youtube.com/shorts/HqC_QoXNP_c?si=6TMuh-J7hcVoNvet',
+    viewsCount: '5.8k'
+  },
+  {
+    id: 'video-7',
+    studentName: 'Thilina Senanayake',
+    fromCampus: 'Colombo Campus',
+    currentUniversity: 'Jönköping University, Sweden',
+    destination: 'Sweden',
+    flag: '🇸🇪',
+    degreeProgramme: 'MSc International Logistics & Supply Chain Management',
+    currentRole: 'Supply Chain Analyst, Gothenburg',
+    thumbnail: 'https://img.youtube.com/vi/JAUonrQCFkA/hqdefault.jpg',
+    videoDuration: '0:58',
+    storyHighlight: 'Explored European Schengen tuition value with BCAS. Sweden gave me 1 year post-study job seeker visa and world-class innovation culture.',
+    youtubeId: 'JAUonrQCFkA',
+    youtubeUrl: 'https://youtube.com/shorts/JAUonrQCFkA?si=otyO3GaVZNekY9Xy',
+    viewsCount: '4.1k'
+  },
+  {
+    id: 'video-8',
+    studentName: 'Priyanka Nadesan',
+    fromCampus: 'Jaffna Campus',
+    currentUniversity: 'University of Malta',
+    destination: 'Malta',
+    flag: '🇲🇹',
+    degreeProgramme: 'BSc International Hospitality & Tourism Management',
+    currentRole: 'Guest Relations Specialist, St. Julians Malta',
+    thumbnail: 'https://img.youtube.com/vi/9IJg7yM5PEc/hqdefault.jpg',
+    videoDuration: '0:52',
+    storyHighlight: 'Affordable English-speaking European island education. BCAS processed my visa without Schengen travel complications.',
+    youtubeId: '9IJg7yM5PEc',
+    youtubeUrl: 'https://youtube.com/shorts/9IJg7yM5PEc?si=2BhKzBSCY3fixgMY',
+    viewsCount: '3.6k'
+  },
+  {
+    id: 'video-9',
+    studentName: 'Ashan Rodrigo',
+    fromCampus: 'Colombo Campus',
+    currentUniversity: 'University of Portsmouth, UK',
+    destination: 'United Kingdom',
+    flag: '🇬🇧',
+    degreeProgramme: 'BSc (Hons) Cybersecurity & Forensics',
+    currentRole: 'Security Operations Analyst, Hampshire UK',
+    thumbnail: 'https://img.youtube.com/vi/wdg6UrfbiNQ/hqdefault.jpg',
+    videoDuration: '0:48',
+    storyHighlight: 'Direct transfer to University of Portsmouth after completing Pearson BTEC computing credentials at BCAS Colombo.',
+    youtubeId: 'wdg6UrfbiNQ',
+    youtubeUrl: 'https://youtube.com/shorts/wdg6UrfbiNQ?si=ORT2viiXXkAApUsW',
+    viewsCount: '4.7k'
   }
 ];
 

@@ -74,7 +74,7 @@ export const InquiryPage: React.FC = () => {
             </button>
 
             <a
-              href="https://wa.me/94761415273"
+              href="https://wa.me/94761415273?text=Hi%20BCAS,%20I%20would%20like%20assistance%20with%20submitting%20my%20university%20admission%20inquiry."
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-200 font-bold text-xs rounded-xl border border-emerald-400/30 transition-all flex items-center gap-1.5 backdrop-blur-xs"
@@ -213,7 +213,7 @@ export const InquiryPage: React.FC = () => {
                 <span>Prefer In-Person or Phone Guidance?</span>
               </h4>
               <p className="text-xs text-blue-100 leading-relaxed">
-                You can also visit our physical placement admissions desks in Colombo, Jaffna, Kalmunai, and Kandy for face-to-face academic assessment.
+                You can also visit our physical placement admissions desks in Colombo, Jaffna, Kalmunai, and Kandy (Open Monday – Sunday: 08:00 AM – 06:00 PM) for face-to-face academic assessment.
               </p>
               <div className="pt-1 flex items-center justify-between text-xs">
                 <span className="text-blue-200">Toll-Free Hotline:</span>

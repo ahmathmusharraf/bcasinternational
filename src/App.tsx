@@ -14,16 +14,20 @@ import { HomePage } from './pages/HomePage';
 import { DestinationsPage } from './pages/DestinationsPage';
 import { UniversitiesPage } from './pages/UniversitiesPage';
 import { CoursesPage } from './pages/CoursesPage';
+import { OSSDPage } from './pages/OSSDPage';
+import { IELTSPage } from './pages/IELTSPage';
 import { ApplyPage } from './pages/ApplyPage';
 import { InquiryPage } from './pages/InquiryPage';
 import { SuccessStoriesPage } from './pages/SuccessStoriesPage';
 import { BlogsPage } from './pages/BlogsPage';
+import { EventGalleryPage } from './pages/EventGalleryPage';
 import { StudentPortalPage } from './pages/StudentPortalPage';
 import { ContactPage } from './pages/ContactPage';
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { TermsOfServicePage } from './pages/TermsOfServicePage';
 import { CookiePolicyPage } from './pages/CookiePolicyPage';
 import { CookiePreferencesPage } from './pages/CookiePreferencesPage';
+import { FAQPage } from './pages/FAQPage';
 
 const MainContent: React.FC = () => {
   const { currentPage } = useApp();
@@ -38,6 +42,10 @@ const MainContent: React.FC = () => {
         return <UniversitiesPage />;
       case 'courses':
         return <CoursesPage />;
+      case 'ossd':
+        return <OSSDPage />;
+      case 'ielts':
+        return <IELTSPage />;
       case 'apply':
         return <ApplyPage />;
       case 'inquiry':
@@ -46,8 +54,10 @@ const MainContent: React.FC = () => {
         return <SuccessStoriesPage />;
       case 'blogs':
         return <BlogsPage />;
+      case 'events':
+        return <EventGalleryPage />;
       case 'portal':
-        return <StudentPortalPage />;
+        return <HomePage />;
       case 'contact':
         return <ContactPage />;
       case 'privacy':
@@ -58,13 +68,15 @@ const MainContent: React.FC = () => {
         return <CookiePolicyPage />;
       case 'cookie-preferences':
         return <CookiePreferencesPage />;
+      case 'faq':
+        return <FAQPage />;
       default:
         return <HomePage />;
     }
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800 font-sans selection:bg-[#00239C] selection:text-white">
+    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800 font-sans selection:bg-[#00239C] selection:text-white w-full max-w-full overflow-x-hidden">
       {/* Skip to Main Content Accessibility Link */}
       <a
         href="#main-content"

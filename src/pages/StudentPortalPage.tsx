@@ -358,9 +358,9 @@ export const StudentPortalPage: React.FC = () => {
               </p>
             </div>
             <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200">
-              <span className="text-slate-500 block mb-1">Office Hours:</span>
+              <span className="text-slate-500 block mb-1">Admissions Desk Hours:</span>
               <p className="font-semibold text-slate-900">
-                Monday – Saturday: 8:30 AM – 5:30 PM (SLST)
+                Monday – Sunday: 08:00 AM – 06:00 PM (SLST)
               </p>
             </div>
           </div>

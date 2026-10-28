@@ -36,6 +36,11 @@ import {
   HeartHandshake,
   DollarSign,
   PlaneTakeoff,
+  Lightbulb,
+  ClipboardList,
+  FileSearch,
+  PieChart,
+  Rocket,
   Quote,
   Star,
   MapPin,
@@ -49,7 +54,10 @@ import {
   Play,
   Pause,
   Volume2,
-  VolumeX
+  VolumeX,
+  Youtube,
+  Copy,
+  ExternalLink
 } from 'lucide-react';
 
 export const HomePage: React.FC = () => {
@@ -59,12 +67,12 @@ export const HomePage: React.FC = () => {
     addSubmittedApplication
   } = useApp();
 
-  // Written Testimonials: 3 by 3 auto-advance carousel with animations
+  // Written Testimonials: 5 in one line auto-advance carousel with animations
   const [writtenTestimonialPage, setWrittenTestimonialPage] = useState<number>(0);
   const [isTestimonialAutoPlay, setIsTestimonialAutoPlay] = useState<boolean>(true);
   const [isTestimonialHovered, setIsTestimonialHovered] = useState<boolean>(false);
 
-  const TESTIMONIALS_PER_PAGE = 3;
+  const TESTIMONIALS_PER_PAGE = 5;
   const totalTestimonialPages = Math.ceil(SUCCESS_STORIES.length / TESTIMONIALS_PER_PAGE);
 
   useEffect(() => {
@@ -92,16 +100,29 @@ export const HomePage: React.FC = () => {
 
   // Active student testimonial video modal
   const [activeVideoModal, setActiveVideoModal] = useState<TestimonialVideo | null>(null);
-  const [videoMuted, setVideoMuted] = useState<boolean>(false);
+  const [customYoutubeMap] = useState<Record<string, string>>({});
+  const [activePathwayStep, setActivePathwayStep] = useState<number>(0);
+
+  const getCleanYoutubeId = (rawInput?: string): string => {
+    if (!rawInput) return 'VmKpPRvvoJ8';
+    const trimmed = rawInput.trim();
+    const match = trimmed.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=|shorts\/))([\w-]{11})/);
+    if (match && match[1]) return match[1];
+    if (trimmed.length === 11 && !trimmed.includes('/') && !trimmed.includes('?')) return trimmed;
+    return 'VmKpPRvvoJ8';
+  };
 
 
   const handleHeroSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    const params: Record<string, string> = {};
-    if (heroDestination !== 'All') params.destination = heroDestination;
-    if (heroLevel !== 'All') params.level = heroLevel;
-    if (heroField !== 'All') params.category = heroField;
-    navigateTo('courses', params);
+    if (heroDestination !== 'All') {
+      const params: Record<string, string> = { destination: heroDestination };
+      if (heroLevel !== 'All') params.level = heroLevel;
+      if (heroField !== 'All') params.category = heroField;
+      navigateTo('destinations', params);
+    } else {
+      navigateTo('destinations');
+    }
   };
 
   // Destinations section active tab
@@ -188,7 +209,7 @@ export const HomePage: React.FC = () => {
 
 
   return (
-    <div className="space-y-8 sm:space-y-16 lg:space-y-24">
+    <div className="space-y-6 sm:space-y-10 lg:space-y-12">
       {/* Hero Section: Creative Center-Aligned with Cinematic Campus Background Image */}
       <section id="hero" className="relative overflow-hidden pt-7 pb-10 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24 border-b border-slate-900 scroll-mt-20">
         {/* Background Image & Cinematic Gradient Overlay */}
@@ -196,6 +217,8 @@ export const HomePage: React.FC = () => {
           <img
             src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=2000&q=85"
             alt="International University Campus"
+            loading="eager"
+            decoding="async"
             className="w-full h-full object-cover object-center filter brightness-90"
           />
           {/* Deep Royal Navy & Blue Gradient Mask ensuring perfect contrast */}
@@ -241,20 +264,11 @@ export const HomePage: React.FC = () => {
                 <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#00239C]" />
               </button>
               <a
-                href="https://wa.me/94761415273"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-3.5 py-2.5 sm:px-5 sm:py-3.5 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-200 border border-emerald-400/40 font-bold text-xs sm:text-sm rounded-xl transition-all flex items-center justify-center gap-1.5 sm:gap-2 backdrop-blur-xs shadow-md"
-              >
-                <WhatsAppIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-[#25D366]" />
-                <span>WhatsApp: +94 76 141 5273</span>
-              </a>
-              <a
                 href="tel:+94761415273"
-                className="px-3 py-2.5 sm:px-4 sm:py-3.5 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-semibold text-xs sm:text-sm rounded-xl transition-colors flex items-center justify-center gap-1.5 sm:gap-2 backdrop-blur-xs"
+                className="px-3.5 py-2.5 sm:px-5 sm:py-3.5 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-semibold text-xs sm:text-sm rounded-xl transition-colors flex items-center justify-center gap-1.5 sm:gap-2 backdrop-blur-xs"
               >
                 <PhoneCall className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-200" />
-                <span>Call Desk</span>
+                <span>Call Desk: +94 76 141 5273</span>
               </a>
             </div>
 
@@ -316,22 +330,24 @@ export const HomePage: React.FC = () => {
                     onChange={e => setHeroDestination(e.target.value)}
                     className="w-full pl-8 sm:pl-9 pr-2.5 sm:pr-3 py-2 sm:py-2.5 bg-slate-50 hover:bg-slate-100 focus:bg-white text-xs sm:text-sm font-semibold text-slate-900 border border-slate-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-[#00239C] transition-all cursor-pointer"
                   >
-                    <option value="All">All 7 Destinations (Global)</option>
+                    <option value="All">All 9 Destinations (Global)</option>
                     <option value="United Kingdom">United Kingdom 🇬🇧</option>
                     <option value="Australia">Australia 🇦🇺</option>
                     <option value="Canada">Canada 🇨🇦</option>
                     <option value="Sweden">Sweden 🇸🇪</option>
                     <option value="Finland">Finland 🇫🇮</option>
+                    <option value="New Zealand">New Zealand 🇳🇿</option>
+                    <option value="Malaysia">Malaysia 🇲🇾</option>
                     <option value="Malta">Malta 🇲🇹</option>
                     <option value="United Arab Emirates">United Arab Emirates 🇦🇪</option>
                   </select>
                 </div>
               </div>
 
-              {/* Field 2: Study Level */}
+              {/* Field 2: Education Level */}
               <div className="space-y-1 sm:space-y-1.5">
                 <label className="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider block">
-                  Degree Level
+                  Education Level
                 </label>
                 <div className="relative">
                   <GraduationCap className="absolute left-2.5 sm:left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-400 pointer-events-none" />
@@ -383,7 +399,7 @@ export const HomePage: React.FC = () => {
                   className="w-full py-2 sm:py-2.5 px-4 sm:px-5 bg-[#00239C] hover:bg-[#001869] text-white font-bold text-xs sm:text-sm rounded-lg sm:rounded-xl shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer active:scale-98"
                 >
                   <Search className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                  <span>Search Courses</span>
+                  <span>{heroDestination !== 'All' ? `Show ${heroDestination} Only` : 'Explore Destinations'}</span>
                   <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </button>
               </div>
@@ -445,157 +461,440 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 6-Step Study Abroad Journey: Motion Graphics Single-Line Pathway */}
+      {/* 6-STEP STUDY ABROAD INFOGRAPHIC BLUEPRINT */}
       <section id="roadmap" className="max-w-7xl mx-auto px-4 sm:px-6 scroll-mt-28">
-        <div className="bg-gradient-to-r from-slate-950 via-[#020b27] to-slate-950 text-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-7 border border-blue-500/30 shadow-2xl relative overflow-hidden">
+        <div className="bg-white text-slate-900 rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 border border-slate-200/90 shadow-xl relative overflow-hidden">
           
-          {/* Futuristic Background Motion Graphics Ambient Accents */}
-          <div className="absolute top-0 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-10 w-80 h-80 bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -top-12 left-1/3 w-64 h-24 bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent blur-xl pointer-events-none" />
+          {/* Subtle Background Radial Gradients */}
+          <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-50/60 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-orange-50/50 rounded-full blur-3xl pointer-events-none" />
 
-          {/* Header Row */}
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-5 sm:mb-6 relative z-10">
-            <div>
-              <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 text-[10px] sm:text-[11px] font-mono uppercase tracking-wider shadow-[0_0_12px_rgba(6,182,212,0.25)]">
-                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
-                <span>DYNAMIC TRAJECTORY PIPELINE</span>
-                <span className="text-cyan-500 font-bold">· 6 STAGES</span>
+          {/* Infographic Header Row */}
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-6 sm:mb-8 relative z-10">
+            <div className="space-y-1.5 max-w-2xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#00239C] text-[10px] sm:text-[11px] font-bold uppercase tracking-wider shadow-2xs">
+                <span className="w-2 h-2 rounded-full bg-[#00239C] animate-pulse" />
+                <span>OFFICIAL STUDY ABROAD ROADMAP</span>
+                <span className="text-blue-500 font-bold">· 6 CONNECTED STAGES</span>
               </div>
-              <h2 className="text-xl sm:text-3xl font-bold font-display tracking-tight text-white mt-1.5 flex items-center gap-2">
-                <span>Your 6-Step Pathway to Global Graduation</span>
+              
+              <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold font-display tracking-tight text-slate-900 mt-1">
+                Your 6-Step Pathway from Sri Lanka to Overseas Degree
               </h2>
-              <p className="text-xs sm:text-sm text-slate-300 max-w-2xl mt-1 leading-relaxed">
-                Seamless pipeline from academic assessment to university offer letters, visa grants, and flight departure.
+              
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                End-to-end transparent blueprint: from your initial free eligibility audit to fast-track university offers, scholarship grants, visa clearances, and boarding pass.
               </p>
             </div>
 
-            <button
-              type="button"
-              onClick={() => navigateTo('apply')}
-              className="px-4 py-2 bg-gradient-to-r from-[#00239C] to-blue-600 hover:from-blue-600 hover:to-cyan-500 text-white text-xs font-bold rounded-xl shadow-[0_0_20px_rgba(0,35,156,0.4)] transition-all flex items-center gap-1.5 cursor-pointer shrink-0 self-start sm:self-end"
-            >
-              <span>Begin Step 01</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
+            {/* Quick Metrics Strip */}
+            <div className="flex flex-wrap items-center gap-2 text-xs shrink-0">
+              <div className="px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-2 shadow-2xs">
+                <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                <span className="text-slate-600 text-[11px]">Cost: <strong className="text-emerald-700">100% Free</strong></span>
+              </div>
+              <button
+                type="button"
+                onClick={() => navigateTo('apply')}
+                className="px-4 py-2 bg-gradient-to-r from-[#00239C] to-blue-600 hover:from-blue-700 hover:to-blue-800 text-white text-xs font-bold rounded-xl shadow-md hover:shadow-lg transition-all flex items-center gap-1.5 cursor-pointer"
+              >
+                <span>Start Step 01</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
           </div>
 
-          {/* THE 6-STEP MOTION GRAPHIC PIPELINE IN ONE CONTINUOUS LINE */}
-          <div className="relative z-10">
+          {/* THE 6-STEP INFOGRAPHIC PIPELINE: CONTINUOUS S-CURVE RIBBON (MATCHING USER REFERENCE IMAGE) */}
+          <div className="relative z-10 mb-6">
             
-            {/* Glowing Motion Connector Line (Visible on Desktop) */}
-            <div className="hidden lg:block absolute top-[44px] left-6 right-6 h-[2px] bg-gradient-to-r from-cyan-500/40 via-blue-500/60 to-emerald-400/40 pointer-events-none z-0">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-300 to-transparent opacity-75 blur-[1px] animate-pulse" />
+            {/* Scrollable Container on Mobile, Full-Width on Desktop & Large Monitors */}
+            <div className="overflow-x-auto pb-4 pt-2 -mx-3 px-3 scrollbar-thin">
+              <div className="min-w-[960px] max-w-[1140px] 2xl:max-w-[1280px] mx-auto">
+                <svg
+                  viewBox="0 0 1200 480"
+                  className="w-full h-auto select-none overflow-visible"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <defs>
+                    <filter id="disc-shadow" x="-20%" y="-20%" width="140%" height="140%">
+                      <feDropShadow dx="0" dy="4" stdDeviation="6" floodColor="#0F172A" floodOpacity="0.08" />
+                    </filter>
+                    <filter id="badge-shadow" x="-30%" y="-30%" width="160%" height="160%">
+                      <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="#000000" floodOpacity="0.15" />
+                    </filter>
+                  </defs>
+
+                  {/* STEP 01 (Odd: Ribbon is TOP arc, Callout is BOTTOM) */}
+                  {/* Bottom Grey Arc */}
+                  <path
+                    d="M 90 240 A 85 85 0 0 0 260 240"
+                    fill="none"
+                    stroke="#E2E8F0"
+                    strokeWidth="24"
+                    strokeLinecap="butt"
+                  />
+                  {/* Top Orange Ribbon Arc */}
+                  <path
+                    d="M 90 240 A 85 85 0 0 1 260 240"
+                    fill="none"
+                    stroke="#F97316"
+                    strokeWidth="24"
+                    strokeLinecap="butt"
+                  />
+                  {/* Round End Cap at Far Left */}
+                  <circle cx="90" cy="240" r="12" fill="#F97316" />
+
+                  {/* STEP 02 (Even: Ribbon is BOTTOM arc, Callout is TOP) */}
+                  {/* Top Grey Arc */}
+                  <path
+                    d="M 260 240 A 85 85 0 0 1 430 240"
+                    fill="none"
+                    stroke="#E2E8F0"
+                    strokeWidth="24"
+                    strokeLinecap="butt"
+                  />
+                  {/* Bottom Coral/Red Ribbon Arc */}
+                  <path
+                    d="M 260 240 A 85 85 0 0 0 430 240"
+                    fill="none"
+                    stroke="#EF4444"
+                    strokeWidth="24"
+                    strokeLinecap="butt"
+                  />
+
+                  {/* STEP 03 (Odd: Ribbon is TOP arc, Callout is BOTTOM) */}
+                  {/* Bottom Grey Arc */}
+                  <path
+                    d="M 430 240 A 85 85 0 0 0 600 240"
+                    fill="none"
+                    stroke="#E2E8F0"
+                    strokeWidth="24"
+                    strokeLinecap="butt"
+                  />
+                  {/* Top Magenta/Pink Ribbon Arc */}
+                  <path
+                    d="M 430 240 A 85 85 0 0 1 600 240"
+                    fill="none"
+                    stroke="#DB2777"
+                    strokeWidth="24"
+                    strokeLinecap="butt"
+                  />
+
+                  {/* STEP 04 (Even: Ribbon is BOTTOM arc, Callout is TOP) */}
+                  {/* Top Grey Arc */}
+                  <path
+                    d="M 600 240 A 85 85 0 0 1 770 240"
+                    fill="none"
+                    stroke="#E2E8F0"
+                    strokeWidth="24"
+                    strokeLinecap="butt"
+                  />
+                  {/* Bottom Purple Ribbon Arc */}
+                  <path
+                    d="M 600 240 A 85 85 0 0 0 770 240"
+                    fill="none"
+                    stroke="#8B5CF6"
+                    strokeWidth="24"
+                    strokeLinecap="butt"
+                  />
+
+                  {/* STEP 05 (Odd: Ribbon is TOP arc, Callout is BOTTOM) */}
+                  {/* Bottom Grey Arc */}
+                  <path
+                    d="M 770 240 A 85 85 0 0 0 940 240"
+                    fill="none"
+                    stroke="#E2E8F0"
+                    strokeWidth="24"
+                    strokeLinecap="butt"
+                  />
+                  {/* Top Royal Blue Ribbon Arc */}
+                  <path
+                    d="M 770 240 A 85 85 0 0 1 940 240"
+                    fill="none"
+                    stroke="#2563EB"
+                    strokeWidth="24"
+                    strokeLinecap="butt"
+                  />
+
+                  {/* STEP 06 (Even: Ribbon is BOTTOM arc, Callout is TOP) */}
+                  {/* Top Grey Arc */}
+                  <path
+                    d="M 940 240 A 85 85 0 0 1 1110 240"
+                    fill="none"
+                    stroke="#E2E8F0"
+                    strokeWidth="24"
+                    strokeLinecap="butt"
+                  />
+                  {/* Bottom Teal Ribbon Arc */}
+                  <path
+                    d="M 940 240 A 85 85 0 0 0 1110 240"
+                    fill="none"
+                    stroke="#0D9488"
+                    strokeWidth="24"
+                    strokeLinecap="butt"
+                  />
+                  {/* Round End Cap at Far Right */}
+                  <circle cx="1110" cy="240" r="12" fill="#0D9488" />
+
+                  {/* CIRCLE NODES, INNER DISCS, ICONS, BADGES & CALLOUTS */}
+                  {[
+                    {
+                      step: '01',
+                      cx: 175,
+                      isTopRibbon: true,
+                      color: '#F97316',
+                      title: 'Profile Audit',
+                      desc: 'Evaluation of O/L, A/L or transcripts to verify direct entry & credit transfer exemptions.',
+                      icon: Lightbulb
+                    },
+                    {
+                      step: '02',
+                      cx: 345,
+                      isTopRibbon: false,
+                      color: '#EF4444',
+                      title: 'University Match',
+                      desc: 'Targeted shortlist across 100+ partner universities in UK, Australia, Canada, Europe & UAE.',
+                      icon: ClipboardList
+                    },
+                    {
+                      step: '03',
+                      cx: 515,
+                      isTopRibbon: true,
+                      color: '#DB2777',
+                      title: 'Fast Admissions',
+                      desc: 'Priority partner portal submission ensuring fast turnaround for conditional/unconditional offers.',
+                      icon: FileSearch
+                    },
+                    {
+                      step: '04',
+                      cx: 685,
+                      isTopRibbon: false,
+                      color: '#8B5CF6',
+                      title: 'Scholarship Aid',
+                      desc: 'Direct application for South Asian regional bursaries, merit discounts & tuition fee reductions.',
+                      icon: PieChart
+                    },
+                    {
+                      step: '05',
+                      cx: 855,
+                      isTopRibbon: true,
+                      color: '#2563EB',
+                      title: 'Visa Clearance',
+                      desc: '28-day financial audit, genuine student SOP vetting & 1-on-1 embassy mock interview sessions.',
+                      icon: ShieldCheck
+                    },
+                    {
+                      step: '06',
+                      cx: 1025,
+                      isTopRibbon: false,
+                      color: '#0D9488',
+                      title: 'Pre-Departure',
+                      desc: 'Campus accommodation booking, flight schedules, forex setup & overseas student alumni networking.',
+                      icon: Rocket
+                    }
+                  ].map((node, idx) => {
+                    const isSelected = activePathwayStep === idx;
+                    const IconComponent = node.icon;
+                    return (
+                      <g
+                        key={node.step}
+                        className="cursor-pointer group"
+                        onClick={() => setActivePathwayStep(idx)}
+                      >
+                        {/* Inner White Disc with Soft Shadow */}
+                        <circle
+                          cx={node.cx}
+                          cy={240}
+                          r={63}
+                          fill="#FFFFFF"
+                          stroke={isSelected ? node.color : '#E2E8F0'}
+                          strokeWidth={isSelected ? 3.5 : 2}
+                          filter="url(#disc-shadow)"
+                          className="transition-all duration-200 group-hover:stroke-slate-400"
+                        />
+
+                        {/* Selected Active Glow Halo */}
+                        {isSelected && (
+                          <circle
+                            cx={node.cx}
+                            cy={240}
+                            r={67}
+                            fill="none"
+                            stroke={node.color}
+                            strokeWidth="1.5"
+                            strokeDasharray="4 3"
+                            className="animate-spin"
+                            style={{ transformOrigin: `${node.cx}px 240px`, animationDuration: '10s' }}
+                          />
+                        )}
+
+                        {/* Centered Clean Outline Icon */}
+                        <foreignObject
+                          x={node.cx - 24}
+                          y={240 - 24}
+                          width={48}
+                          height={48}
+                          className="pointer-events-none"
+                        >
+                          <div className="w-full h-full flex items-center justify-center">
+                            <IconComponent
+                              className="w-10 h-10 transition-transform duration-200 group-hover:scale-110"
+                              style={{ color: node.color }}
+                              strokeWidth={1.8}
+                            />
+                          </div>
+                        </foreignObject>
+
+                        {/* Number Badge Pill: Sits on the Apex of the Colored Ribbon */}
+                        {node.isTopRibbon ? (
+                          /* Top Apex Badge for Steps 01, 03, 05 */
+                          <g filter="url(#badge-shadow)">
+                            <rect
+                              x={node.cx - 19}
+                              y={155 - 12}
+                              width={38}
+                              height={24}
+                              rx={12}
+                              fill={node.color}
+                            />
+                            <text
+                              x={node.cx}
+                              y={156}
+                              fill="#FFFFFF"
+                              fontSize="12"
+                              fontWeight="800"
+                              fontFamily="system-ui, sans-serif"
+                              textAnchor="middle"
+                              dominantBaseline="central"
+                            >
+                              {node.step}
+                            </text>
+                          </g>
+                        ) : (
+                          /* Bottom Apex Badge for Steps 02, 04, 06 */
+                          <g filter="url(#badge-shadow)">
+                            <rect
+                              x={node.cx - 19}
+                              y={325 - 12}
+                              width={38}
+                              height={24}
+                              rx={12}
+                              fill={node.color}
+                            />
+                            <text
+                              x={node.cx}
+                              y={326}
+                              fill="#FFFFFF"
+                              fontSize="12"
+                              fontWeight="800"
+                              fontFamily="system-ui, sans-serif"
+                              textAnchor="middle"
+                              dominantBaseline="central"
+                            >
+                              {node.step}
+                            </text>
+                          </g>
+                        )}
+
+                        {/* Alternating Callouts & Dotted Vertical Pin Connectors */}
+                        {!node.isTopRibbon ? (
+                          /* TOP CALLOUT for Steps 02, 04, 06 (Ribbon is at bottom, so callout is on top) */
+                          <g>
+                            {/* Dotted Vertical Pin Connector */}
+                            <line
+                              x1={node.cx}
+                              y1={122}
+                              x2={node.cx}
+                              y2={152}
+                              stroke={node.color}
+                              strokeWidth="2"
+                              strokeDasharray="3 3"
+                            />
+                            {/* Connector Pointer Dot */}
+                            <circle
+                              cx={node.cx}
+                              cy={116}
+                              r={3.5}
+                              fill={node.color}
+                            />
+
+                            {/* Top Callout Text */}
+                            <foreignObject
+                              x={node.cx - 82}
+                              y={8}
+                              width={164}
+                              height={100}
+                              className="pointer-events-none"
+                            >
+                              <div className="text-center flex flex-col items-center justify-end h-full px-1">
+                                <h4
+                                  className="text-[14px] font-bold font-display leading-tight tracking-tight transition-transform duration-200 group-hover:scale-105"
+                                  style={{ color: node.color }}
+                                >
+                                  {node.title}
+                                </h4>
+                                <p className="text-[11px] text-slate-500 font-normal leading-snug mt-1.5 line-clamp-3">
+                                  {node.desc}
+                                </p>
+                              </div>
+                            </foreignObject>
+                          </g>
+                        ) : (
+                          /* BOTTOM CALLOUT for Steps 01, 03, 05 (Ribbon is at top, so callout is on bottom) */
+                          <g>
+                            {/* Dotted Vertical Pin Connector */}
+                            <line
+                              x1={node.cx}
+                              y1={338}
+                              x2={node.cx}
+                              y2={368}
+                              stroke={node.color}
+                              strokeWidth="2"
+                              strokeDasharray="3 3"
+                            />
+                            {/* Connector Pointer Dot */}
+                            <circle
+                              cx={node.cx}
+                              cy={374}
+                              r={3.5}
+                              fill={node.color}
+                            />
+
+                            {/* Bottom Callout Text */}
+                            <foreignObject
+                              x={node.cx - 82}
+                              y={382}
+                              width={164}
+                              height={98}
+                              className="pointer-events-none"
+                            >
+                              <div className="text-center flex flex-col items-center justify-start h-full px-1">
+                                <h4
+                                  className="text-[14px] font-bold font-display leading-tight tracking-tight transition-transform duration-200 group-hover:scale-105"
+                                  style={{ color: node.color }}
+                                >
+                                  {node.title}
+                                </h4>
+                                <p className="text-[11px] text-slate-500 font-normal leading-snug mt-1.5 line-clamp-3">
+                                  {node.desc}
+                                </p>
+                              </div>
+                            </foreignObject>
+                          </g>
+                        )}
+                      </g>
+                    );
+                  })}
+                </svg>
+              </div>
             </div>
 
-            {/* Steps Container: Single Line Across All Devices */}
-            <div className="flex flex-nowrap overflow-x-auto snap-x snap-mandatory gap-2.5 sm:gap-3 lg:gap-3.5 pb-2 -mx-2 px-2 scrollbar-none lg:mx-0 lg:px-0 lg:grid lg:grid-cols-6 lg:overflow-visible">
-              {[
-                {
-                  step: '01',
-                  stage: 'STAGE 01',
-                  title: 'Profile Audit',
-                  desc: 'Evaluate O/L, A/L or Diploma for direct entry or foundation.',
-                  tag: '100% Free',
-                  icon: Users,
-                  glow: 'border-cyan-500/40 text-cyan-400 shadow-[0_0_15px_rgba(6,182,212,0.2)]',
-                  badge: 'bg-cyan-500/10 text-cyan-300 border-cyan-500/30'
-                },
-                {
-                  step: '02',
-                  stage: 'STAGE 02',
-                  title: 'University Match',
-                  desc: 'Select best-fit degree from 100+ partner universities.',
-                  tag: '100+ Unis',
-                  icon: BookOpen,
-                  glow: 'border-blue-500/40 text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.2)]',
-                  badge: 'bg-blue-500/10 text-blue-300 border-blue-500/30'
-                },
-                {
-                  step: '03',
-                  stage: 'STAGE 03',
-                  title: 'Fast Offers',
-                  desc: 'Direct partner admissions processing in 48 to 72 hours.',
-                  tag: '48h Offers',
-                  icon: FileCheck,
-                  glow: 'border-indigo-500/40 text-indigo-400 shadow-[0_0_15px_rgba(99,102,241,0.2)]',
-                  badge: 'bg-indigo-500/10 text-indigo-300 border-indigo-500/30'
-                },
-                {
-                  step: '04',
-                  stage: 'STAGE 04',
-                  title: 'Scholarship Aid',
-                  desc: 'Unlock South Asian bursaries and tuition grants up to 50%.',
-                  tag: 'Up to 50%',
-                  icon: BadgePercent,
-                  glow: 'border-amber-500/40 text-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.2)]',
-                  badge: 'bg-amber-500/10 text-amber-300 border-amber-500/30'
-                },
-                {
-                  step: '05',
-                  stage: 'STAGE 05',
-                  title: 'Visa Clearance',
-                  desc: '28-day financial audit, SOP vetting & 1-on-1 embassy mocks.',
-                  tag: '99% Grant',
-                  icon: ShieldCheck,
-                  glow: 'border-emerald-500/40 text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.2)]',
-                  badge: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/30'
-                },
-                {
-                  step: '06',
-                  stage: 'STAGE 06',
-                  title: 'Pre-Departure',
-                  desc: 'Flight booking, airport meet-up & overseas campus dorms.',
-                  tag: 'Fly Out',
-                  icon: PlaneTakeoff,
-                  glow: 'border-rose-500/40 text-rose-400 shadow-[0_0_15px_rgba(244,63,94,0.2)]',
-                  badge: 'bg-rose-500/10 text-rose-300 border-rose-500/30'
-                }
-              ].map((item, idx) => {
-                const IconComponent = item.icon;
-                return (
-                  <div
-                    key={item.step}
-                    onClick={() => navigateTo('apply')}
-                    className="w-[185px] sm:w-[210px] lg:w-auto shrink-0 snap-start bg-slate-900/80 hover:bg-slate-800/90 backdrop-blur-md rounded-2xl border border-slate-700/70 hover:border-cyan-400/60 p-3.5 sm:p-4 flex flex-col justify-between transition-all duration-200 group cursor-pointer hover:-translate-y-1 hover:shadow-[0_10px_25px_-5px_rgba(6,182,212,0.25)] relative z-10"
-                  >
-                    <div>
-                      {/* Top Node Indicator & Stage Tag */}
-                      <div className="flex items-center justify-between mb-3">
-                        <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-slate-950 border ${item.glow} flex items-center justify-center transition-transform group-hover:scale-110`}>
-                          <IconComponent className="w-4 h-4 sm:w-5 sm:h-5" />
-                        </div>
-                        <span className={`text-[9px] font-mono font-bold px-1.5 py-0.5 rounded-full border ${item.badge}`}>
-                          {item.tag}
-                        </span>
-                      </div>
-
-                      {/* Stage Identifier & Title */}
-                      <div className="space-y-0.5 mb-1.5">
-                        <span className="text-[10px] font-mono font-bold text-cyan-400/90 tracking-widest block">
-                          {item.stage}
-                        </span>
-                        <h3 className="text-xs sm:text-sm font-bold text-white font-display group-hover:text-cyan-300 transition-colors leading-tight">
-                          {item.title}
-                        </h3>
-                      </div>
-
-                      {/* Description */}
-                      <p className="text-[10px] sm:text-[11px] text-slate-300 leading-snug line-clamp-2">
-                        {item.desc}
-                      </p>
-                    </div>
-
-                    {/* Footer Motion Link */}
-                    <div className="pt-2 mt-2 border-t border-slate-800/80 flex items-center justify-between text-[10px] font-mono text-cyan-400 group-hover:text-cyan-300">
-                      <span>STEP {item.step}</span>
-                      <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                    </div>
-                  </div>
-                );
-              })}
+            {/* Mobile Scroll Cue */}
+            <div className="sm:hidden text-center mt-1">
+              <span className="text-[10px] text-slate-400 font-medium inline-flex items-center gap-1">
+                <span>← Scroll horizontally to explore all 6 stages →</span>
+              </span>
             </div>
-
           </div>
 
         </div>
@@ -653,7 +952,7 @@ export const HomePage: React.FC = () => {
           ).map(dest => (
             <div
               key={dest.id}
-              onClick={() => navigateTo('destinations')}
+              onClick={() => navigateTo('destinations', { destination: dest.id })}
               className="w-[72vw] sm:w-[280px] md:w-auto shrink-0 snap-center md:snap-align-none group bg-white rounded-2xl sm:rounded-3xl border border-slate-200/90 overflow-hidden shadow-2xs hover:shadow-xl hover:border-blue-300 transition-all duration-300 cursor-pointer flex flex-col justify-between"
             >
               <div>
@@ -826,10 +1125,11 @@ export const HomePage: React.FC = () => {
                 <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
               </button>
               <button
-                onClick={() => navigateTo('courses')}
-                className="text-[11px] sm:text-xs font-semibold text-blue-200 hover:text-white transition-colors cursor-pointer"
+                onClick={() => navigateTo('ossd')}
+                className="text-[11px] sm:text-xs font-semibold text-blue-200 hover:text-white transition-colors cursor-pointer flex items-center gap-1"
               >
-                View OSSD Curriculum ↗
+                <span>View OSSD Curriculum</span>
+                <span>↗</span>
               </button>
             </div>
           </div>
@@ -881,128 +1181,201 @@ export const HomePage: React.FC = () => {
             </div>
 
             <div className="pt-3 mt-3 sm:pt-4 sm:mt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2.5 sm:gap-3">
-              <a
-                href="https://wa.me/94761415273?text=Hi%20BCAS,%20I%20would%20like%20to%20register%20for%20the%20IELTS%20preparation%20course%20and%20diagnostic%20test."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-3 py-1.5 sm:px-4 sm:py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-bold transition-all shadow-xs flex items-center gap-1.5"
+              <button
+                onClick={() => navigateTo('ielts')}
+                className="px-3.5 py-1.5 sm:px-4 sm:py-2 bg-[#00239C] hover:bg-[#001869] text-white rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-bold transition-all shadow-xs flex items-center gap-1.5 cursor-pointer"
               >
-                <WhatsAppIcon className="w-3.5 h-3.5 fill-[#25D366]" />
-                <span>Book Free Diagnostic Test</span>
-              </a>
-              <a
-                href="tel:+94761415273"
-                className="text-[11px] sm:text-xs font-semibold text-[#00239C] hover:underline"
-              >
-                Call IELTS Desk: +94 76 141 5273
-              </a>
+                <span>Study IELTS Preparation</span>
+                <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+              </button>
+              <div className="flex items-center gap-2">
+                <a
+                  href="https://wa.me/94761415273?text=Hi%20BCAS,%20I%20would%20like%20to%20register%20for%20the%20IELTS%20preparation%20course%20and%20diagnostic%20test."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-2.5 py-1.5 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 rounded-lg text-[11px] sm:text-xs font-bold transition-colors flex items-center gap-1.5"
+                >
+                  <WhatsAppIcon className="w-3.5 h-3.5 fill-[#25D366]" />
+                  <span>Free Diagnostic</span>
+                </a>
+                <a
+                  href="tel:+94761415273"
+                  className="text-[11px] sm:text-xs font-semibold text-slate-600 hover:text-[#00239C]"
+                >
+                  +94 76 141 5273
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* THE BCAS STRENGTHS & ADVANTAGE: Strengths Section */}
-      <section id="why-bcas" className="bg-slate-950 text-white py-4 sm:py-6 lg:py-8 relative overflow-hidden scroll-mt-28">
-        {/* Subtle decorative glows */}
-        <div className="absolute top-0 right-1/4 w-72 h-72 bg-[#00239C]/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-10 w-72 h-72 bg-[#BA141A]/10 rounded-full blur-3xl pointer-events-none" />
+      {/* THE BCAS STRENGTHS & ADVANTAGE: Strengths Section (Matching Reference Image) */}
+      <section id="why-bcas" className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6 lg:py-8 scroll-mt-28">
+        <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-lg p-4 sm:p-6 lg:p-8 relative overflow-hidden">
+          
+          {/* Subtle Decorative Ambient Lighting */}
+          <div className="absolute top-0 right-1/4 w-80 h-80 bg-blue-50/50 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-10 w-80 h-80 bg-amber-50/40 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 space-y-3 sm:space-y-4">
           {/* Section Header */}
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 sm:gap-3">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2.5 sm:gap-3 mb-5 sm:mb-6 relative z-10">
             <div>
-              <div className="inline-flex items-center gap-1.5 px-2 py-0.5 sm:px-2.5 sm:py-0.5 bg-blue-900/60 text-blue-300 text-[10px] sm:text-[11px] font-semibold rounded-full border border-blue-700/50">
-                <Award className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-blue-400" />
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-blue-50 text-[#00239C] text-[10px] sm:text-[11px] font-bold rounded-full border border-blue-200 shadow-2xs">
+                <Award className="w-3.5 h-3.5 text-[#00239C]" />
                 <span>THE BCAS STRENGTHS & ADVANTAGE</span>
               </div>
-              <h2 className="text-lg sm:text-2xl font-bold font-display tracking-tight text-white mt-0.5 sm:mt-1">
-                Why Students & Parents Choose BCAS Placements
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold font-display tracking-tight text-slate-900 mt-1">
+                Why Choose Us ?
               </h2>
-              <p className="text-[11px] sm:text-xs text-slate-300 mt-0.5">
-                25+ years in British education · Official partner to 100+ global universities across 7 key destinations.
+              <p className="text-xs sm:text-sm text-slate-500 mt-0.5 font-normal">
+                Why Students & Parents Choose BCAS Placements · 25+ years in British education & direct partner representation.
               </p>
             </div>
-            <div className="hidden md:flex items-center gap-2 text-xs text-blue-300 font-semibold">
-              <span className="px-2.5 py-1 rounded-full bg-blue-900/40 border border-blue-700/40 text-blue-200">
+            <div className="hidden md:flex items-center gap-2 text-xs text-[#00239C] font-semibold">
+              <span className="px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-[#00239C] shadow-2xs">
                 100% Free Service · Zero Agent Fees
               </span>
             </div>
           </div>
 
-          {/* 6 Core Strength Pillars in One Single Line */}
+          {/* 6 Unique Asymmetric Cutout Cards in One Single Line (Matching Reference Image) */}
           <div
             ref={pillarsRef}
-            className="flex overflow-x-auto snap-x snap-mandatory gap-2 sm:gap-2.5 pb-2 -mx-4 px-4 scrollbar-none sm:mx-0 sm:px-0 lg:grid lg:grid-cols-6"
+            className="flex flex-nowrap overflow-x-auto snap-x snap-mandatory gap-3 sm:gap-3.5 pb-2 -mx-3 px-3 scrollbar-none lg:mx-0 lg:px-0 lg:grid lg:grid-cols-6 relative z-10"
           >
             {[
               {
-                badge: 'FREE',
-                badgeColor: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30',
-                icon: HeartHandshake,
-                iconColor: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
+                step: '01',
                 title: '0% Placement Fees',
-                desc: 'No Rs. 150k–300k fees. University counseling, applications and visa audits are 100% free.'
+                desc: 'University counseling, applications and visa audits are 100% free with zero agent charges.',
+                badge: '100% Free',
+                icon: HeartHandshake,
+                bgColor: '#583D72', // Deep Purple (Card 1 in reference image)
+                accentColor: '#583D72',
+                lightColor: '#F3E8FF'
               },
               {
-                badge: 'SAVE 60%',
-                badgeColor: 'bg-amber-500/20 text-amber-300 border-amber-500/30',
-                icon: BadgePercent,
-                iconColor: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
+                step: '02',
                 title: 'Credit Transfer (2+1)',
-                desc: 'Save Rs. 15M+ living costs with Pearson BTEC HND top-up into Year 3 for an identical UK degree.'
+                desc: 'Save Rs. 15M+ living costs with Pearson BTEC HND top-up into Year 3 for an identical UK degree.',
+                badge: 'Save 60%',
+                icon: BadgePercent,
+                bgColor: '#E64A19', // Red-Orange (Card 2 in reference image)
+                accentColor: '#E64A19',
+                lightColor: '#FFEDD5'
               },
               {
-                badge: '100+ UNIS',
-                badgeColor: 'bg-blue-500/20 text-blue-300 border-blue-500/30',
-                icon: Globe2,
-                iconColor: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
+                step: '03',
                 title: '100+ Partner Unis',
-                desc: 'Direct representation across UK, Australia, Canada, Europe & UAE with priority admissions.'
+                desc: 'Direct representation across UK, Australia, Canada, Europe & UAE with priority admissions.',
+                badge: '100+ Unis',
+                icon: Globe2,
+                bgColor: '#F57C00', // Warm Amber/Orange (Card 3 in reference image)
+                accentColor: '#F57C00',
+                lightColor: '#FEF3C7'
               },
               {
-                badge: '98.4% VISA',
-                badgeColor: 'bg-indigo-500/20 text-indigo-300 border-indigo-500/30',
-                icon: ShieldCheck,
-                iconColor: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20',
-                title: 'Visa Audit & Mocks',
-                desc: 'In-house 28-day financial audit, SOP vetting panel & 1-on-1 embassy mock interviews.'
-              },
-              {
-                badge: 'BURSARIES',
-                badgeColor: 'bg-purple-500/20 text-purple-300 border-purple-500/30',
-                icon: Award,
-                iconColor: 'bg-purple-500/10 text-purple-400 border-purple-500/20',
+                step: '04',
                 title: 'Direct Bursaries',
-                desc: 'Automatic £1,500 – £8,000+ South Asian grants & merit tuition reductions before deposit.'
+                desc: 'Automatic £1,500 – £8,000+ South Asian regional grants & merit reductions before deposit.',
+                badge: 'Bursaries',
+                icon: Award,
+                bgColor: '#D4A017', // Golden Yellow (Card 4 in reference image)
+                accentColor: '#B45309',
+                lightColor: '#FEF9C3'
               },
               {
-                badge: '4 HUBS',
-                badgeColor: 'bg-rose-500/20 text-rose-300 border-rose-500/30',
+                step: '05',
+                title: 'Visa Audit & Mocks',
+                desc: 'In-house 28-day financial audit, genuine student SOP vetting panel & 1-on-1 embassy mock interviews.',
+                badge: '98.4% Visa',
+                icon: ShieldCheck,
+                bgColor: '#1E40AF', // Royal Blue
+                accentColor: '#1E40AF',
+                lightColor: '#DBEAFE'
+              },
+              {
+                step: '06',
+                title: '4 Islandwide Hubs',
+                desc: 'Walk-in counseling in Colombo, Kandy, Jaffna & Kalmunai with senior placement advisors.',
+                badge: '4 Campuses',
                 icon: Building2,
-                iconColor: 'bg-rose-500/10 text-rose-400 border-rose-500/20',
-                title: '4 Islandwide Campuses',
-                desc: 'Walk-in parent & student counseling in Colombo, Kandy, Jaffna & Kalmunai with senior advisors.'
+                bgColor: '#0D9488', // Teal
+                accentColor: '#0D9488',
+                lightColor: '#CCFBF1'
               }
-            ].map((pillar, idx) => (
+            ].map(pillar => (
               <div
-                key={idx}
-                className="w-[150px] sm:w-[190px] lg:w-auto shrink-0 snap-start bg-slate-900/90 rounded-xl sm:rounded-2xl border border-slate-800 hover:border-blue-500/50 p-2.5 sm:p-3.5 flex flex-col justify-between transition-all group"
+                key={pillar.step}
+                className="w-[185px] sm:w-[215px] lg:w-auto shrink-0 snap-start relative rounded-2xl overflow-hidden shadow-2xs hover:shadow-xl transition-all duration-300 group hover:-translate-y-1.5 flex flex-col justify-between"
+                style={{ backgroundColor: pillar.bgColor, minHeight: '235px' }}
               >
-                <div>
-                  <div className="flex items-center justify-between mb-1.5 sm:mb-2">
-                    <div className={`w-6 h-6 sm:w-7 sm:h-7 rounded-md sm:rounded-lg border flex items-center justify-center ${pillar.iconColor}`}>
-                      <pillar.icon className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                {/* Top-Right Hollow Outlined Number on the Exposed Colored Base */}
+                <div className="absolute top-2 right-2.5 sm:top-2.5 sm:right-3 select-none pointer-events-none z-0">
+                  <svg width="42" height="32" viewBox="0 0 42 32">
+                    <text
+                      x="21"
+                      y="23"
+                      textAnchor="middle"
+                      fill="none"
+                      stroke="#FFFFFF"
+                      strokeWidth="1.8"
+                      fontSize="22"
+                      fontWeight="800"
+                      fontFamily="system-ui, sans-serif"
+                      letterSpacing="1"
+                    >
+                      {pillar.step}
+                    </text>
+                  </svg>
+                </div>
+
+                {/* White Front Card SVG Scoop Cutout Background */}
+                <svg
+                  className="absolute inset-0 w-full h-full pointer-events-none drop-shadow-xs"
+                  viewBox="0 0 200 240"
+                  preserveAspectRatio="none"
+                  fill="none"
+                >
+                  <path
+                    d="M 0 14 C 0 6 6 0 14 0 L 118 0 C 130 0 138 8 138 20 L 138 32 C 138 44 146 52 158 52 L 186 52 C 194 52 200 58 200 66 L 200 226 C 200 234 194 240 186 240 L 14 240 C 6 240 0 234 0 226 L 0 14 Z"
+                    fill="#FFFFFF"
+                  />
+                </svg>
+
+                {/* Card Content Layer Inside the White Cutout */}
+                <div className="relative z-10 p-3 sm:p-3.5 flex flex-col justify-between h-full pointer-events-auto">
+                  <div>
+                    {/* Top Left Icon */}
+                    <div
+                      className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center transition-transform group-hover:scale-110 shadow-2xs"
+                      style={{ color: pillar.accentColor, backgroundColor: pillar.lightColor }}
+                    >
+                      <pillar.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     </div>
-                    <span className={`px-1 sm:px-1.5 py-0.2 sm:py-0.5 rounded text-[8px] sm:text-[9px] font-bold uppercase tracking-wider border ${pillar.badgeColor}`}>
+
+                    {/* Title */}
+                    <h3 className="font-bold font-display text-[12px] sm:text-[13px] text-slate-900 leading-tight mt-2.5 group-hover:text-[#00239C] transition-colors">
+                      {pillar.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-[10px] sm:text-[10.5px] text-slate-600 leading-snug mt-1.5 line-clamp-3 font-normal">
+                      {pillar.desc}
+                    </p>
+                  </div>
+
+                  {/* Bottom Tag */}
+                  <div className="pt-2 mt-2 border-t border-slate-100 flex items-center justify-between">
+                    <span
+                      className="text-[8.5px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider"
+                      style={{ color: pillar.accentColor, backgroundColor: pillar.lightColor }}
+                    >
                       {pillar.badge}
                     </span>
+                    <ArrowRight className="w-3 h-3 text-slate-400 group-hover:translate-x-0.5 group-hover:text-[#00239C] transition-all" />
                   </div>
-                  <h3 className="text-[11px] sm:text-xs font-bold text-white group-hover:text-blue-300 transition-colors leading-tight">
-                    {pillar.title}
-                  </h3>
-                  <p className="text-[10px] sm:text-[11px] text-slate-400 mt-0.5 sm:mt-1 leading-snug line-clamp-2 sm:line-clamp-3">
-                    {pillar.desc}
-                  </p>
                 </div>
               </div>
             ))}
@@ -1169,17 +1542,17 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* Testimonials & Student Success Stories Section: Creative High-End Design with Videos & Narrow Heading */}
-      <section id="testimonials" className="bg-gradient-to-b from-slate-50 via-white to-blue-50/40 py-6 sm:py-10 lg:py-16 border-y border-slate-200/80 scroll-mt-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-6 sm:space-y-10">
+      <section id="testimonials" className="bg-gradient-to-b from-slate-50 via-white to-blue-50/40 py-5 sm:py-7 lg:py-9 border-y border-slate-200/80 scroll-mt-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-4 sm:space-y-6">
           
           {/* Narrow Editorial Heading */}
           <div className="text-center max-w-lg mx-auto space-y-1 sm:space-y-2">
             <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 sm:px-3 sm:py-0.5 bg-blue-50 text-[#00239C] text-[10px] sm:text-[11px] font-bold rounded-full border border-blue-200 shadow-2xs">
               <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-amber-500" />
-              <span>AUTHENTIC STUDENT OUTCOMES</span>
+              <span>STUDENT JOURNEYS & MILESTONES</span>
             </div>
             <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold font-display text-slate-900 tracking-tight leading-tight">
-              Real Journeys. Global Milestones.
+              Student Journeys & Milestones
             </h2>
             <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto leading-relaxed font-normal">
               Alumni who progressed from BCAS regional campuses in Colombo, Jaffna, Kalmunai, and Kandy to world-ranked universities.
@@ -1196,223 +1569,160 @@ export const HomePage: React.FC = () => {
                 <div>
                   <h3 className="text-xs sm:text-sm font-bold text-slate-900 flex items-center gap-2">
                     <span>Student Video Stories</span>
-                    <span className="text-[9px] sm:text-[10px] font-normal px-1.5 py-0.2 sm:px-2 sm:py-0.5 rounded-full bg-blue-100 text-[#00239C] font-mono">
-                      4 Featured Reels
-                    </span>
                   </h3>
                   <p className="text-[11px] sm:text-xs text-slate-500">
-                    Watch BCAS graduates share their overseas campus and career transition in their own words.
+                    Watch BCAS graduates share their overseas campus and career journey. Click any video to play instantly.
                   </p>
                 </div>
               </div>
 
-              {/* Mobile Swipe Buttons */}
-              <div className="flex items-center gap-1 sm:hidden bg-slate-100 p-1 rounded-lg self-start">
+              {/* Slider Controls - Visible on desktop and mobile for smooth 4-by-4 pagination */}
+              <div className="flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl self-start sm:self-auto">
                 <button
                   type="button"
-                  onClick={() => scrollCarousel(videoTestimonialsRef, 'left')}
-                  className="w-6 h-6 rounded-md bg-white shadow-2xs flex items-center justify-center text-slate-700 hover:text-slate-900 cursor-pointer active:scale-95 transition-all"
-                  aria-label="Previous video"
+                  onClick={() => scrollCarousel(videoTestimonialsRef, 'left', 1120)}
+                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-white shadow-2xs flex items-center justify-center text-slate-700 hover:text-[#00239C] hover:shadow-xs cursor-pointer active:scale-95 transition-all"
+                  aria-label="Previous 4 videos"
+                  title="Previous 4 videos"
                 >
-                  <ChevronLeft className="w-3 h-3" />
+                  <ChevronLeft className="w-4 h-4" />
                 </button>
-                <span className="text-[10px] font-bold text-slate-700 px-1">Swipe Videos</span>
+                <span className="text-[10px] sm:text-[11px] font-bold text-slate-700 px-1.5 font-mono">
+                  4 by 4 View
+                </span>
                 <button
                   type="button"
-                  onClick={() => scrollCarousel(videoTestimonialsRef, 'right')}
-                  className="w-6 h-6 rounded-md bg-white shadow-2xs flex items-center justify-center text-slate-700 hover:text-slate-900 cursor-pointer active:scale-95 transition-all"
-                  aria-label="Next video"
+                  onClick={() => scrollCarousel(videoTestimonialsRef, 'right', 1120)}
+                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-white shadow-2xs flex items-center justify-center text-slate-700 hover:text-[#00239C] hover:shadow-xs cursor-pointer active:scale-95 transition-all"
+                  aria-label="Next 4 videos"
+                  title="Next 4 videos"
                 >
-                  <ChevronRight className="w-3 h-3" />
+                  <ChevronRight className="w-4 h-4" />
                 </button>
               </div>
             </div>
 
-            {/* Video Cards Horizontal Rail / Grid */}
+            {/* Video Cards Horizontal Rail - 4 by 4 strictly in ONE line (VIDEO ONLY, NO NEED TEXT) */}
             <div
               ref={videoTestimonialsRef}
-              className="flex overflow-x-auto snap-x snap-mandatory gap-3 sm:gap-4 pb-2.5 sm:pb-3 -mx-4 px-4 scrollbar-none md:grid md:grid-cols-2 lg:grid-cols-4 md:mx-0 md:px-0 md:overflow-visible"
+              className="flex flex-nowrap overflow-x-auto snap-x snap-mandatory gap-2.5 sm:gap-3.5 pb-2 -mx-4 px-4 scrollbar-none md:mx-0 md:px-0 scroll-smooth"
             >
-              {TESTIMONIAL_VIDEOS.map(video => (
-                <div
-                  key={video.id}
-                  onClick={() => setActiveVideoModal(video)}
-                  className="w-[72vw] sm:w-[280px] md:w-auto shrink-0 snap-center md:snap-align-none bg-white rounded-xl sm:rounded-2xl border border-slate-200/90 shadow-2xs hover:shadow-xl hover:border-blue-400 transition-all duration-300 cursor-pointer group flex flex-col justify-between overflow-hidden"
-                >
-                  <div>
-                    {/* Video Thumbnail with Play Button Overlay */}
-                    <div className="relative h-36 sm:h-44 md:h-48 overflow-hidden bg-slate-950">
-                      <img
-                        src={video.thumbnail}
-                        alt={video.studentName}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-108 opacity-90"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-black/20" />
+              {TESTIMONIAL_VIDEOS.map(video => {
+                const effectiveId = getCleanYoutubeId(customYoutubeMap[video.id] || video.youtubeId);
+                return (
+                  <div
+                    key={video.id}
+                    onClick={() => {
+                      setActiveVideoModal(video);
+                    }}
+                    className="w-[66vw] sm:w-[240px] lg:w-[calc(25%-12px)] shrink-0 snap-start bg-slate-950 rounded-xl sm:rounded-2xl border border-slate-200/90 shadow-2xs hover:shadow-xl hover:border-red-500 transition-all duration-300 cursor-pointer group relative overflow-hidden aspect-[16/10] sm:aspect-[16/9.5]"
+                    title="Click to watch student video story"
+                  >
+                    <img
+                      src={`https://img.youtube.com/vi/${effectiveId}/hqdefault.jpg`}
+                      alt={video.studentName}
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = video.thumbnail || `https://i.ytimg.com/vi/${effectiveId}/hqdefault.jpg`;
+                      }}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-108 opacity-90"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-black/20 to-black/30" />
 
-                      {/* Top Badges */}
-                      <div className="absolute top-2 left-2 right-2 sm:top-2.5 sm:left-2.5 sm:right-2.5 flex items-center justify-between">
-                        <span className="px-1.5 py-0.2 sm:px-2 sm:py-0.5 rounded-md sm:rounded-lg bg-black/60 backdrop-blur-md text-[9px] sm:text-[10px] font-bold text-white border border-white/20 flex items-center gap-1">
-                          <span>{video.flag}</span>
-                          <span className="truncate max-w-[100px] sm:max-w-[120px]">{video.destination}</span>
-                        </span>
-                        <span className="px-1.5 py-0.2 sm:px-2 sm:py-0.5 rounded-md sm:rounded-lg bg-black/70 backdrop-blur-md text-[9px] sm:text-[10px] font-mono font-bold text-amber-300">
-                          {video.videoDuration}
-                        </span>
-                      </div>
-
-                      {/* Center Play Button with ripple effect */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-10 h-10 sm:w-13 sm:h-13 rounded-full bg-[#00239C]/90 text-white flex items-center justify-center shadow-lg group-hover:scale-115 group-hover:bg-[#BA141A] transition-all duration-300 ring-2 sm:ring-4 ring-white/30">
-                          <Play className="w-4 h-4 sm:w-5 sm:h-5 fill-white ml-0.5" />
-                        </div>
-                      </div>
-
-                      {/* Bottom Info inside thumbnail */}
-                      <div className="absolute bottom-2 left-2.5 right-2.5 sm:bottom-2.5 sm:left-3 sm:right-3 text-white">
-                        <span className="text-[9px] sm:text-[10px] font-semibold text-blue-200 block truncate">
-                          {video.currentUniversity}
-                        </span>
-                        <div className="flex items-center justify-between mt-0.5">
-                          <span className="text-[11px] sm:text-xs font-bold leading-tight truncate">
-                            {video.studentName}
-                          </span>
-                          <span className="text-[8px] sm:text-[9px] text-slate-300 flex items-center gap-1 shrink-0">
-                            <Eye className="w-2.5 h-2.5" />
-                            {video.viewsCount}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Card Content */}
-                    <div className="p-2.5 sm:p-3.5 space-y-1.5 sm:space-y-2">
-                      <div className="flex items-center justify-between text-[9px] sm:text-[10px]">
-                        <span className="font-semibold text-slate-500">
-                          From: <strong className="text-slate-800">{video.fromCampus}</strong>
-                        </span>
-                        <span className="text-emerald-700 bg-emerald-50 px-1.5 py-0.2 rounded font-bold">
-                          Verified Alumni
-                        </span>
-                      </div>
-
-                      <p className="text-[11px] sm:text-xs text-slate-600 line-clamp-2 italic leading-relaxed">
-                        &ldquo;{video.storyHighlight}&rdquo;
-                      </p>
-
-                      <div className="pt-1.5 sm:pt-2 border-t border-slate-100 flex items-center gap-1 text-[9px] sm:text-[10px] text-slate-700 font-medium truncate">
-                        <Briefcase className="w-3 h-3 text-[#00239C] shrink-0" />
-                        <span className="truncate">{video.currentRole}</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Card Bottom CTA */}
-                  <div className="p-2.5 pt-0 sm:p-3.5 sm:pt-0">
-                    <div className="pt-2 sm:pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px] sm:text-xs font-bold text-[#00239C] group-hover:text-[#BA141A] transition-colors">
-                      <span className="flex items-center gap-1">
-                        <Play className="w-3 h-3 fill-current" />
-                        <span>Watch Video Story</span>
+                    {/* Top Destination Badge (no duration mentioned) */}
+                    <div className="absolute top-2 left-2">
+                      <span className="px-2 py-0.5 rounded-md bg-black/60 backdrop-blur-md text-[9px] sm:text-[10px] font-bold text-white border border-white/20 flex items-center gap-1">
+                        <span>{video.flag}</span>
+                        <span className="truncate max-w-[120px]">{video.destination}</span>
                       </span>
-                      <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                    </div>
+
+                    {/* Center Play Button with ripple effect */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#BA141A]/95 text-white flex items-center justify-center shadow-lg group-hover:scale-115 group-hover:bg-red-600 transition-all duration-300 ring-2 sm:ring-4 ring-white/30">
+                        <Play className="w-4 h-4 sm:w-5 sm:h-5 fill-white ml-0.5" />
+                      </div>
+                    </div>
+
+                    {/* Bottom subtle bar */}
+                    <div className="absolute bottom-2 left-2.5 right-2.5 flex items-center justify-between text-[10px] text-white/90 drop-shadow-sm pointer-events-none">
+                      <span className="truncate text-blue-200 text-[10px] font-medium">{video.currentUniversity}</span>
+                      <span className="text-red-400 font-bold shrink-0 flex items-center gap-0.5 text-[9px] sm:text-[10px]">
+                        <Play className="w-2.5 h-2.5 fill-current" />
+                        <span>Watch</span>
+                      </span>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
-          {/* Written Reviews Section: Common Across Destinations, 3 by 3 with Auto-Rotation & Animations */}
+          {/* Written Reviews Section: Small, Compact Cards */}
           <div
-            className="pt-3 sm:pt-4 border-t border-slate-200/80 space-y-3 sm:space-y-4"
+            className="pt-3 sm:pt-4 border-t border-slate-200/80 space-y-2.5 sm:space-y-3"
             onMouseEnter={() => setIsTestimonialHovered(true)}
             onMouseLeave={() => setIsTestimonialHovered(false)}
           >
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3">
-              <div>
-                <div className="flex items-center gap-2">
-                  <h3 className="text-xs sm:text-base font-bold text-slate-900 flex items-center gap-1.5 font-display">
-                    <Star className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-amber-400 text-amber-400" />
-                    <span>Global Alumni Written Testimonials</span>
-                  </h3>
-                  <span className="px-1.5 py-0.2 sm:px-2 sm:py-0.5 rounded-full bg-blue-50 text-[#00239C] text-[9px] sm:text-[10px] font-bold border border-blue-200/60">
-                    All Destinations
-                  </span>
-                </div>
-                <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">
-                  Verified student reviews from Colombo, Jaffna, Kalmunai, and Kandy campuses worldwide.
-                </p>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-2">
+              <div className="flex items-center gap-2">
+                <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400 shrink-0" />
+                <h3 className="text-xs sm:text-sm font-bold text-slate-900 font-display">
+                  Student Journeys & Milestones
+                </h3>
               </div>
 
-              {/* 3-by-3 Navigation & Auto-cycle Controls */}
-              <div className="flex items-center gap-1.5 sm:gap-2 self-start sm:self-auto bg-slate-50 p-1 sm:p-1.5 rounded-lg sm:rounded-xl border border-slate-200/80 shadow-2xs">
-                {/* Auto Play / Pause Toggle Button */}
+              {/* 5-in-One-Line Navigation Controls */}
+              <div className="flex items-center gap-1.5 bg-slate-50 p-1 rounded-lg border border-slate-200/80 self-start sm:self-auto text-xs">
                 <button
                   type="button"
                   onClick={() => setIsTestimonialAutoPlay(prev => !prev)}
-                  className="px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-md sm:rounded-lg bg-white hover:bg-slate-100 text-slate-700 text-[10px] sm:text-[11px] font-semibold flex items-center gap-1 border border-slate-200 transition-colors cursor-pointer"
-                  title={isTestimonialAutoPlay ? 'Pause auto-rotation' : 'Resume auto-rotation'}
+                  className="px-1.5 py-0.5 rounded bg-white hover:bg-slate-100 text-slate-700 text-[10px] font-semibold flex items-center gap-1 border border-slate-200 transition-colors cursor-pointer"
+                  title={isTestimonialAutoPlay ? 'Pause' : 'Play'}
                 >
-                  {isTestimonialAutoPlay ? (
-                    <>
-                      <Pause className="w-3 h-3 text-[#00239C]" />
-                      <span className="hidden md:inline text-slate-600">
-                        {isTestimonialHovered ? 'Paused (hover)' : 'Auto-cycling'}
-                      </span>
-                    </>
-                  ) : (
-                    <>
-                      <Play className="w-3 h-3 text-emerald-600 fill-emerald-600" />
-                      <span className="hidden md:inline text-slate-600">Paused</span>
-                    </>
-                  )}
+                  {isTestimonialAutoPlay ? <Pause className="w-2.5 h-2.5 text-[#00239C]" /> : <Play className="w-2.5 h-2.5 text-emerald-600 fill-emerald-600" />}
+                  <span className="hidden sm:inline text-[10px] text-slate-600">{isTestimonialAutoPlay ? 'Auto' : 'Paused'}</span>
                 </button>
 
-                {/* Dot Pagination indicators */}
-                <div className="flex items-center gap-1 px-1 sm:px-2">
+                <div className="flex items-center gap-1 px-1">
                   {Array.from({ length: totalTestimonialPages }).map((_, idx) => (
                     <button
                       key={idx}
                       onClick={() => setWrittenTestimonialPage(idx)}
-                      aria-label={`Go to testimonial page ${idx + 1}`}
-                      className={`h-1.5 sm:h-2 rounded-full transition-all cursor-pointer ${
+                      aria-label={`Go to page ${idx + 1}`}
+                      className={`h-1.5 rounded-full transition-all cursor-pointer ${
                         writtenTestimonialPage === idx
-                          ? 'w-4 sm:w-6 bg-[#00239C]'
-                          : 'w-1.5 sm:w-2 bg-slate-300 hover:bg-slate-400'
+                          ? 'w-4 bg-[#00239C]'
+                          : 'w-1.5 bg-slate-300 hover:bg-slate-400'
                       }`}
                     />
                   ))}
                 </div>
 
-                <span className="text-[10px] sm:text-[11px] font-bold text-slate-600 font-mono px-1">
-                  {writtenTestimonialPage + 1}/{totalTestimonialPages}
-                </span>
-
-                {/* Prev & Next Buttons */}
                 <div className="flex items-center gap-1">
                   <button
                     type="button"
                     onClick={handlePrevTestimonials}
-                    className="w-6 h-6 sm:w-7 sm:h-7 rounded-md sm:rounded-lg bg-white shadow-2xs flex items-center justify-center text-slate-700 hover:text-slate-900 hover:bg-slate-100 cursor-pointer border border-slate-200 active:scale-95 transition-all"
-                    aria-label="Previous 3 testimonials"
+                    className="w-5 h-5 rounded bg-white shadow-2xs flex items-center justify-center text-slate-700 hover:text-slate-900 cursor-pointer border border-slate-200 active:scale-95 transition-all"
+                    aria-label="Previous testimonials"
                   >
-                    <ChevronLeft className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                    <ChevronLeft className="w-3 h-3" />
                   </button>
                   <button
                     type="button"
                     onClick={handleNextTestimonials}
-                    className="w-6 h-6 sm:w-7 sm:h-7 rounded-md sm:rounded-lg bg-white shadow-2xs flex items-center justify-center text-slate-700 hover:text-slate-900 hover:bg-slate-100 cursor-pointer border border-slate-200 active:scale-95 transition-all"
-                    aria-label="Next 3 testimonials"
+                    className="w-5 h-5 rounded bg-white shadow-2xs flex items-center justify-center text-slate-700 hover:text-slate-900 cursor-pointer border border-slate-200 active:scale-95 transition-all"
+                    aria-label="Next testimonials"
                   >
-                    <ChevronRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                    <ChevronRight className="w-3 h-3" />
                   </button>
                 </div>
               </div>
             </div>
 
-            {/* Testimonial Cards: 3 By 3 with keyframe animation on page change */}
+            {/* Testimonial Cards: 5 In One Line */}
             <div
               key={writtenTestimonialPage}
-              className="grid grid-cols-1 md:grid-cols-3 gap-2.5 sm:gap-4 animate-in fade-in slide-in-from-right-4 duration-500 fill-mode-both"
+              className="flex flex-nowrap overflow-x-auto snap-x snap-mandatory pb-2 -mx-4 px-4 scrollbar-none lg:mx-0 lg:px-0 lg:grid lg:grid-cols-5 gap-2.5 sm:gap-3 animate-in fade-in slide-in-from-right-4 duration-300 fill-mode-both"
             >
               {SUCCESS_STORIES.slice(
                 writtenTestimonialPage * TESTIMONIALS_PER_PAGE,
@@ -1420,168 +1730,65 @@ export const HomePage: React.FC = () => {
               ).map(story => (
                 <div
                   key={story.id}
-                  className="bg-gradient-to-b from-white via-slate-50/50 to-white rounded-xl sm:rounded-2xl border border-slate-200/90 hover:border-blue-400 shadow-2xs hover:shadow-lg transition-all duration-300 p-3 sm:p-4 lg:p-5 flex flex-col justify-between relative group overflow-hidden"
+                  className="w-[230px] sm:w-[250px] lg:w-auto shrink-0 snap-start bg-white rounded-xl border border-slate-200/90 hover:border-blue-400 shadow-2xs hover:shadow-md transition-all p-2.5 sm:p-3 flex flex-col justify-between group"
                 >
-                  <Quote className="absolute right-2 -bottom-2 w-16 sm:w-20 h-16 sm:h-20 text-slate-100 group-hover:text-blue-50/70 transition-colors pointer-events-none -rotate-12" />
-
-                  <div className="space-y-2 sm:space-y-2.5 relative z-10">
-                    <div className="flex items-center justify-between gap-2 border-b border-slate-100 pb-1.5 sm:pb-2">
-                      <div className="flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-500" />
-                        <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500">
-                          {story.destination}
-                        </span>
-                      </div>
-
+                  <div className="space-y-1.5">
+                    <div className="flex items-center justify-between text-[10px]">
+                      <span className="font-bold text-[#00239C] bg-blue-50 px-1.5 py-0.2 rounded truncate max-w-[110px]">
+                        {story.destination}
+                      </span>
                       <div className="flex items-center gap-0.5 text-amber-400">
                         {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-2.5 h-2.5 sm:w-3 sm:h-3 fill-amber-400" />
+                          <Star key={i} className="w-2.5 h-2.5 fill-amber-400" />
                         ))}
-                        <span className="text-[9px] sm:text-[10px] font-bold text-slate-600 ml-1">5.0</span>
                       </div>
                     </div>
 
-                    <div className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg bg-blue-50/70 border border-blue-100 flex items-center justify-between text-[10px] sm:text-[11px] font-semibold text-[#00239C]">
-                      <span className="truncate">{story.currentUniversity}</span>
-                      <span className="text-[8px] sm:text-[9px] bg-white px-1.5 py-0.2 rounded text-blue-700 shadow-2xs font-mono shrink-0">
-                        Degree / Top-Up
-                      </span>
-                    </div>
-
-                    <p className="text-[11px] sm:text-xs text-slate-700 italic leading-relaxed line-clamp-2 sm:line-clamp-3">
+                    <p className="text-[11px] text-slate-600 italic line-clamp-2 leading-relaxed">
                       &ldquo;{story.storyQuote}&rdquo;
                     </p>
 
-                    <div className="flex items-center gap-1.5 text-[9px] sm:text-[10px] text-emerald-800 bg-emerald-50 px-2 py-0.5 sm:py-1 rounded-md border border-emerald-100/80 font-medium">
-                      <Briefcase className="w-3 h-3 shrink-0 text-emerald-600" />
-                      <span className="truncate">Career: {story.currentRole}</span>
+                    <div className="text-[10px] text-slate-500 font-medium truncate">
+                      ➔ {story.currentUniversity}
                     </div>
                   </div>
 
-                  <div className="pt-2 mt-2 sm:pt-2.5 sm:mt-3 border-t border-slate-100 flex items-center justify-between gap-2 relative z-10">
-                    <div className="flex items-center gap-2 sm:gap-2.5">
-                      <div className="relative">
-                        <img
-                          src={story.image}
-                          alt={story.studentName}
-                          className="w-7 h-7 sm:w-9 sm:h-9 rounded-full object-cover ring-2 ring-blue-100"
-                          onError={e => {
-                            (e.currentTarget as HTMLImageElement).src =
-                              'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80';
-                          }}
-                        />
-                        <span className="absolute -bottom-0.5 -right-0.5 w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-emerald-500 ring-2 ring-white" />
-                      </div>
-                      <div>
-                        <h4 className="text-[11px] sm:text-xs font-bold text-slate-900 leading-tight">
+                  <div className="pt-2 mt-1.5 border-t border-slate-100 flex items-center justify-between gap-1.5">
+                    <div className="flex items-center gap-1.5 truncate">
+                      <img
+                        src={story.image}
+                        alt={story.studentName}
+                        className="w-5 h-5 sm:w-6 sm:h-6 rounded-full object-cover ring-1 ring-blue-100 shrink-0"
+                        onError={e => {
+                          (e.currentTarget as HTMLImageElement).src =
+                            'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80';
+                        }}
+                      />
+                      <div className="truncate">
+                        <span className="text-[10.5px] font-bold text-slate-900 block truncate leading-tight">
                           {story.studentName}
-                        </h4>
-                        <span className="text-[9px] sm:text-[10px] text-slate-500 block">
-                          {story.fromCampus} · Verified Alumni
+                        </span>
+                        <span className="text-[8.5px] text-slate-400 block truncate">
+                          {story.fromCampus}
                         </span>
                       </div>
                     </div>
 
-                    <button
-                      onClick={() => navigateTo('stories')}
-                      className="text-[10px] sm:text-[11px] font-bold text-[#00239C] hover:text-[#001869] cursor-pointer inline-flex items-center gap-0.5"
-                    >
-                      <span>Read Journey</span>
-                      <ArrowRight className="w-2.5 h-2.5" />
-                    </button>
+                    <span className="text-[8.5px] font-semibold text-emerald-700 bg-emerald-50 px-1 py-0.2 rounded shrink-0">
+                      {story.currentRole.split(' at ')[0] || 'Alumni'}
+                    </span>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* 1-Line Trust Strip Below Testimonials */}
-          <div className="bg-white rounded-lg sm:rounded-xl border border-slate-200/90 p-2.5 sm:p-3 shadow-2xs flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-3">
-            <div className="flex items-center gap-1.5 sm:gap-2">
-              <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600 shrink-0" />
-              <span className="text-[11px] sm:text-xs text-slate-700">
-                Over 25,000+ BCAS students placed at leading universities worldwide across Colombo, Jaffna, Kalmunai, and Kandy since 1999.
-              </span>
-            </div>
-            <div className="flex items-center gap-2 shrink-0 w-full sm:w-auto justify-end">
-              <button
-                onClick={() => navigateTo('apply')}
-                className="px-2.5 py-1 sm:px-3 sm:py-1.5 bg-[#00239C] hover:bg-[#001869] text-white rounded-md sm:rounded-lg text-[11px] sm:text-xs font-bold transition-all cursor-pointer"
-              >
-                Free Assessment
-              </button>
-              <a
-                href="https://wa.me/94761415273"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-2.5 py-1 sm:px-3 sm:py-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 rounded-md sm:rounded-lg text-[11px] sm:text-xs font-bold flex items-center gap-1"
-              >
-                <WhatsAppIcon className="w-3 h-3 fill-[#25D366]" />
-                <span>WhatsApp</span>
-              </a>
-            </div>
-          </div>
+
 
         </div>
       </section>
 
-      {/* Frequently Asked Questions: One-View Clean Layout */}
-      <section id="faq" className="max-w-4xl mx-auto px-4 sm:px-6 scroll-mt-28">
-        <div className="text-center mb-4 sm:mb-8 space-y-1 sm:space-y-2">
-          <div className="inline-flex items-center gap-1.5 px-2 py-0.5 sm:px-2.5 sm:py-0.5 text-[10px] sm:text-xs font-bold text-[#BA141A] uppercase tracking-wider bg-red-50 rounded-full border border-red-200">
-            <HelpCircle className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#BA141A]" />
-            <span>FREQUENT QUESTIONS</span>
-          </div>
-          <h2 className="text-xl sm:text-3xl font-bold font-display text-slate-900">
-            Good to know before you begin.
-          </h2>
-          <p className="text-xs sm:text-sm text-slate-600">
-            Clear, honest answers to common queries asked by students and parents.
-          </p>
-        </div>
 
-        <div className="space-y-2 sm:space-y-3">
-          <details className="group bg-white rounded-lg sm:rounded-xl border border-slate-200/90 p-3 sm:p-5 [&_summary::-webkit-details-marker]:hidden cursor-pointer shadow-2xs">
-            <summary className="flex items-center justify-between font-bold text-slate-900 text-xs sm:text-base">
-              <span>Do I have to pay BCAS for university counseling and admissions support?</span>
-              <span className="text-slate-400 group-open:rotate-180 transition-transform text-xs">▼</span>
-            </summary>
-            <p className="text-[11px] sm:text-sm text-slate-600 mt-2 pt-2 sm:mt-3 sm:pt-3 leading-relaxed border-t border-slate-100">
-              No. BCAS International University Placements provides student counseling, university admissions processing, and standard document verification completely free of charge. You only pay the official university tuition fees and government visa charges.
-            </p>
-          </details>
-
-          <details className="group bg-white rounded-lg sm:rounded-xl border border-slate-200/90 p-3 sm:p-5 [&_summary::-webkit-details-marker]:hidden cursor-pointer shadow-2xs">
-            <summary className="flex items-center justify-between font-bold text-slate-900 text-xs sm:text-base">
-              <span>Can I apply if I haven&apos;t taken the IELTS or PTE exam yet?</span>
-              <span className="text-slate-400 group-open:rotate-180 transition-transform text-xs">▼</span>
-            </summary>
-            <p className="text-[11px] sm:text-sm text-slate-600 mt-2 pt-2 sm:mt-3 sm:pt-3 leading-relaxed border-t border-slate-100">
-              Yes! You can secure a <strong>Conditional Offer Letter</strong> using your current school or diploma records while you prepare for English proficiency testing. Some universities also accept strong G.C.E. O/L or A/L English grades in lieu of IELTS.
-            </p>
-          </details>
-
-          <details className="group bg-white rounded-lg sm:rounded-xl border border-slate-200/90 p-3 sm:p-5 [&_summary::-webkit-details-marker]:hidden cursor-pointer shadow-2xs">
-            <summary className="flex items-center justify-between font-bold text-slate-900 text-xs sm:text-base">
-              <span>How does credit transfer from BCAS HND to a UK Top-Up degree work?</span>
-              <span className="text-slate-400 group-open:rotate-180 transition-transform text-xs">▼</span>
-            </summary>
-            <p className="text-[11px] sm:text-sm text-slate-600 mt-2 pt-2 sm:mt-3 sm:pt-3 leading-relaxed border-t border-slate-100">
-              Completing a Pearson BTEC HND at BCAS equals the first two years (Level 4 & 5) of a British bachelor’s degree. You can transfer directly into Year 3 (final year) at partner universities in the UK, earning the exact same degree certificate with only 1 year of overseas living expenses.
-            </p>
-          </details>
-
-          <details className="group bg-white rounded-lg sm:rounded-xl border border-slate-200/90 p-3 sm:p-5 [&_summary::-webkit-details-marker]:hidden cursor-pointer shadow-2xs">
-            <summary className="flex items-center justify-between font-bold text-slate-900 text-xs sm:text-base">
-              <span>Does BCAS guarantee student visa approval?</span>
-              <span className="text-slate-400 group-open:rotate-180 transition-transform text-xs">▼</span>
-            </summary>
-            <p className="text-[11px] sm:text-sm text-slate-600 mt-2 pt-2 sm:mt-3 sm:pt-3 leading-relaxed border-t border-slate-100">
-              No agency can legitimately guarantee a visa outcome. The final decision rests entirely with the sovereign immigration authorities (such as UK Visas & Immigration or Australian Home Affairs). BCAS ensures your documents and financial statements fully conform to official legal checklists to maximize success.
-            </p>
-          </details>
-        </div>
-      </section>
 
       {/* Campus Visit & WhatsApp Strip */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -1594,7 +1801,7 @@ export const HomePage: React.FC = () => {
               Ready to take your next step?
             </h2>
             <p className="text-xs sm:text-sm text-blue-100 max-w-lg">
-              Visit any of our 4 campuses in Colombo, Jaffna, Kalmunai, or Kandy, or call our admissions desk directly at <a href="tel:+94761415273" className="underline font-bold text-white">+94 76 141 5273</a>.
+              Visit any of our 4 campuses in Colombo, Jaffna, Kalmunai, or Kandy (Admissions Desk: Monday – Sunday: 08:00 AM – 06:00 PM), or call directly at <a href="tel:+94761415273" className="underline font-bold text-white">+94 76 141 5273</a>.
             </p>
           </div>
 
@@ -1607,7 +1814,7 @@ export const HomePage: React.FC = () => {
               <span>Call Us: +94 76 141 5273</span>
             </a>
             <a
-              href="https://wa.me/94761415273"
+              href="https://wa.me/94761415273?text=Hi%20BCAS,%20I%20would%20like%20to%20book%20a%20campus%20counseling%20visit."
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto px-4 py-2.5 sm:px-5 sm:py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs sm:text-sm rounded-xl shadow-md transition-all flex items-center justify-center gap-2"
@@ -1665,130 +1872,15 @@ export const HomePage: React.FC = () => {
               </button>
             </div>
 
-            {/* Simulated Cinematic Video Player Container (16:9 Aspect) */}
-            <div className="relative aspect-video bg-black overflow-hidden group">
-              <img
-                src={activeVideoModal.thumbnail}
-                alt={activeVideoModal.studentName}
-                className="w-full h-full object-cover opacity-85"
+            {/* Real YouTube Embed Player Container (16:9 Aspect) */}
+            <div className="relative aspect-video bg-black overflow-hidden">
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${getCleanYoutubeId(customYoutubeMap[activeVideoModal.id] || activeVideoModal.youtubeId)}?autoplay=1&rel=0&modestbranding=1`}
+                title={`${activeVideoModal.studentName} - Study Abroad Story`}
+                className="w-full h-full border-0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/60" />
-
-              {/* Upper Reel Badge & Live Status */}
-              <div className="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
-                <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-bold text-white border border-white/20 flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-                  <span>BCAS ALUMNI SPOTLIGHT</span>
-                </span>
-                <span className="text-[11px] font-mono text-white/90 bg-black/50 px-2 py-0.5 rounded-md">
-                  {activeVideoModal.videoDuration}
-                </span>
-              </div>
-
-              {/* Center Play Button & Equalizer Animation */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-                <div className="w-16 h-16 rounded-full bg-[#00239C] text-white flex items-center justify-center shadow-2xl ring-4 ring-white/30 transform transition-transform hover:scale-110 cursor-pointer">
-                  <Play className="w-7 h-7 fill-white ml-1" />
-                </div>
-
-                {/* Animated Equalizer Wave Bars */}
-                <div className="flex items-center gap-1 px-3 py-1.5 bg-black/60 backdrop-blur-md rounded-full border border-white/10">
-                  <div className="w-1 h-3 bg-amber-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                  <div className="w-1 h-5 bg-amber-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                  <div className="w-1 h-2 bg-amber-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
-                  <div className="w-1 h-6 bg-amber-400 rounded-full animate-bounce" style={{ animationDelay: '200ms' }} />
-                  <div className="w-1 h-4 bg-amber-400 rounded-full animate-bounce" style={{ animationDelay: '400ms' }} />
-                  <span className="text-[10px] font-bold text-slate-200 ml-1.5">Audio Track Active</span>
-                </div>
-              </div>
-
-              {/* Closed Caption Subtitle Ribbon */}
-              <div className="absolute bottom-11 left-4 right-4 text-center">
-                <p className="inline-block px-3 py-1.5 rounded-xl bg-black/80 backdrop-blur-md text-xs sm:text-sm font-medium text-amber-200 max-w-xl mx-auto shadow-lg border border-white/10">
-                  &ldquo;{activeVideoModal.storyHighlight}&rdquo;
-                </p>
-              </div>
-
-              {/* Bottom Video Controls Scrub Bar */}
-              <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black via-black/80 to-transparent flex items-center justify-between gap-3 text-xs">
-                <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    className="p-1 text-white hover:text-amber-400 transition-colors cursor-pointer"
-                    aria-label="Play/Pause"
-                  >
-                    <Play className="w-4 h-4 fill-white" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setVideoMuted(!videoMuted)}
-                    className="p-1 text-white hover:text-amber-400 transition-colors cursor-pointer"
-                    aria-label={videoMuted ? 'Unmute' : 'Mute'}
-                  >
-                    {videoMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-                  </button>
-                  <span className="text-[10px] text-slate-300 font-mono">0:45 / {activeVideoModal.videoDuration}</span>
-                </div>
-
-                {/* Progress Bar */}
-                <div className="flex-1 h-1.5 bg-slate-700 rounded-full overflow-hidden mx-2 cursor-pointer">
-                  <div className="h-full bg-gradient-to-r from-blue-500 to-amber-400 w-2/5 rounded-full" />
-                </div>
-
-                <span className="text-[10px] font-bold text-slate-400">1080p HD</span>
-              </div>
-            </div>
-
-            {/* Student Pathway Details & Direct Enquire Action */}
-            <div className="p-4 sm:p-5 space-y-3 bg-slate-900">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                <div className="p-2.5 rounded-xl bg-slate-950 border border-slate-800">
-                  <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">Program & Destination</span>
-                  <span className="font-semibold text-white text-[11px] block mt-0.5 truncate">
-                    {activeVideoModal.degreeProgramme}
-                  </span>
-                  <span className="text-[10px] text-blue-300">{activeVideoModal.currentUniversity}</span>
-                </div>
-
-                <div className="p-2.5 rounded-xl bg-slate-950 border border-slate-800">
-                  <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">Current Role / Career</span>
-                  <span className="font-semibold text-emerald-400 text-[11px] block mt-0.5 truncate">
-                    {activeVideoModal.currentRole}
-                  </span>
-                  <span className="text-[10px] text-slate-400">Via BCAS {activeVideoModal.fromCampus}</span>
-                </div>
-              </div>
-
-              <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-2.5">
-                <span className="text-xs text-slate-400">
-                  Want to follow this study pathway?
-                </span>
-
-                <div className="flex items-center gap-2 w-full sm:w-auto">
-                  <a
-                    href="https://wa.me/94761415273"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 sm:flex-none px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
-                  >
-                    <WhatsAppIcon className="w-3.5 h-3.5 fill-white" />
-                    <span>WhatsApp Advisor</span>
-                  </a>
-
-                  <button
-                    type="button"
-                    onClick={() => {
-                      const dest = activeVideoModal.destination;
-                      setActiveVideoModal(null);
-                      navigateTo('apply', { destination: dest, subject: activeVideoModal.degreeProgramme });
-                    }}
-                    className="flex-1 sm:flex-none px-4 py-2 rounded-xl bg-[#00239C] hover:bg-[#001869] text-white text-xs font-bold transition-colors flex items-center justify-center gap-1.5 shadow-md cursor-pointer"
-                  >
-                    <span>Apply for {activeVideoModal.destination}</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </div>
             </div>
           </div>
         </div>

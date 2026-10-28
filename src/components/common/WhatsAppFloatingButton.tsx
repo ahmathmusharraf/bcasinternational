@@ -26,7 +26,7 @@ export const WhatsAppFloatingButton: React.FC = () => {
       )}
 
       <a
-        href="https://wa.me/94761415273"
+        href="https://wa.me/94761415273?text=Hi%20BCAS,%20I%20would%20like%20to%20inquire%20about%20studying%20abroad%20and%20university%20admissions."
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat directly with BCAS University Admissions on WhatsApp (+94 76 141 5273)"
